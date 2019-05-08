@@ -44,7 +44,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Row="1" Tag="1" Margin="0,2,0,0" VerticalAlignment="Center">
-                                        <Button Name="btnStart1" Content="Test" Margin="0,0,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="23"  Width="60" Click="Button_Click" />
+                                        <Button Name="btnStart1" Content="触发" Margin="0,0,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="23"  Width="60" Click="Button_Click" />
                                         <TextBox VerticalContentAlignment="Center" Name="tb1" Width="Auto" MinWidth="120" IsReadOnly="True" Height="23" Text="90%"/>
                                         <Ellipse Height="15" Name="ellipse1" Stroke="Transparent"  Fill="Gray" Width="15" Margin="5,0"/>
                                         <TextBlock Name="blk1" VerticalAlignment="Center">准备好了</TextBlock>
@@ -71,7 +71,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Row="1" Tag="2" Margin='0,2,0,0'>
-                                        <Button Name="btnStart2"  Content="Test" Margin="0,0,5,0" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click" />
+                                        <Button Name="btnStart2"  Content="触发" Margin="0,0,5,0" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click" />
                                         <TextBox Name="tb2" Width="Auto" VerticalContentAlignment="Center" MinWidth="120" IsReadOnly="True" Height="23" Text="90%"/>
                                         <Ellipse Fill="Gray" Height="15" Name="ellipse2" Stroke="Transparent" Width="15" Margin="5,0"/>
                                         <TextBlock Name="blk2" VerticalAlignment="Center">准备好了</TextBlock>
@@ -99,7 +99,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Row="1" Tag="3" Margin="0,2,0,0">
-                                        <Button Name="btnStart3"  Content="Test" Margin="0,0,5,0" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click"/>
+                                        <Button Name="btnStart3"  Content="触发" Margin="0,0,5,0" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click"/>
                                         <TextBox Name="tb3" Width="Auto" MinWidth="120" VerticalContentAlignment="Center" IsReadOnly="True" Height="23" Text="90%"/>
                                         <Ellipse Fill="Gray" Height="15" Name="ellipse3" Stroke="Transparent" Width="15" Margin="5,0"/>
                                         <TextBlock Name="blk3" VerticalAlignment="Center">准备好了</TextBlock>
@@ -125,7 +125,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Orientation="Horizontal" Grid.Row="1" Tag="4" Margin="0,2,0,0">
-                                        <Button  Name="btnStart4" Content="Test" Margin="0,0,5,0" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click"/>
+                                        <Button  Name="btnStart4" Content="触发" Margin="0,0,5,0" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click"/>
                                         <TextBox Name="tb4" Width="Auto" VerticalContentAlignment="Center" MinWidth="120" IsReadOnly="True" Height="23" Text="90%"/>
                                         <Ellipse Fill="Gray" Height="15" Name="ellipse4" Stroke="Transparent" Width="15" Margin="5,0"/>
                                         <TextBlock Name="blk4" VerticalAlignment="Center">准备好了</TextBlock>

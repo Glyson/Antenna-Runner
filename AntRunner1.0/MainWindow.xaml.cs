@@ -1078,6 +1078,9 @@ namespace AntRunner
                 }
                 MessageBox.Show("Report error! \n\n\n" + ex.Message);
             }
+            finally
+            {
+            }
         }
         private void InsertData(Excel.Worksheet sh, ref int r, List<SingleData> list1, ParaObject para)
         {
