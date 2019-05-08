@@ -1,0 +1,48 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AntRunner.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="OutputDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Manufacture" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Apple</Value>
+    </Setting>
+    <Setting Name="Code" Type="System.String" Scope="User">
+      <Value Profile="(Default)">001</Value>
+    </Setting>
+    <Setting Name="Memo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">this is an antenna.</Value>
+    </Setting>
+    <Setting Name="GPIB" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Para1" Type="AntRunner.ParaObject" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Para2" Type="AntRunner.ParaObject" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Para3" Type="AntRunner.ParaObject" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Para4" Type="AntRunner.ParaObject" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TriggerType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Auto</Value>
+    </Setting>
+    <Setting Name="Deep" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="AutoDelay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="AutoDiff" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="MatchCnt" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
