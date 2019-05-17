@@ -92,8 +92,7 @@ namespace AntRunner
             btnStart2.IsEnabled = false;
             btnStart3.IsEnabled = false;
             btnStart4.IsEnabled = false;
-
-
+            
             InitCount();
         }
 
