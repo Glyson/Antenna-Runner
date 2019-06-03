@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         WindowState="Maximized" Closing="Window_Closing"
+        xmlns:prop="clr-namespace:AntRunner.Properties"
         WindowStartupLocation="CenterScreen"
         Title="Antenna Runner 1.0" Height="468" Width="739">
     <Grid>
@@ -38,7 +39,7 @@
                     <xcad:LayoutDocumentPaneGroup Orientation="Horizontal">
                         <xcad:LayoutDocumentPane>
                             <xcad:LayoutDocument Title="端口 1  ( S11 )" CanFloat="False" CanClose="False">
-                                <Grid>
+                                <Grid IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Enable}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="200*"/>
                                         <RowDefinition Height="Auto"/>
@@ -65,7 +66,7 @@
                         </xcad:LayoutDocumentPane>
                         <xcad:LayoutDocumentPane>
                             <xcad:LayoutDocument Title="端口 2  ( S22 )" CanFloat="False" CanClose="False">
-                                <Grid>
+                                <Grid IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Enable}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="200*"/>
                                         <RowDefinition Height="Auto"/>
@@ -93,7 +94,7 @@
                     <xcad:LayoutDocumentPaneGroup Orientation="Horizontal">
                         <xcad:LayoutDocumentPane>
                             <xcad:LayoutDocument Title="端口 3  ( S33 )" CanFloat="False" CanClose="False">
-                                <Grid>
+                                <Grid IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Enable}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="200*"/>
                                         <RowDefinition Height="Auto"/>
@@ -119,7 +120,7 @@
                         </xcad:LayoutDocumentPane>
                         <xcad:LayoutDocumentPane>
                             <xcad:LayoutDocument Title="端口 4  ( S44 )" CanFloat="False" CanClose="False">
-                                <Grid>
+                                <Grid IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Enable}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="200*"/>
                                         <RowDefinition Height="Auto"/>

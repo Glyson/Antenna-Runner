@@ -44,5 +44,14 @@
     <Setting Name="MatchCnt" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="TraceFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LOG</Value>
+    </Setting>
+    <Setting Name="Trace" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S11</Value>
+    </Setting>
+    <Setting Name="Instrument" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

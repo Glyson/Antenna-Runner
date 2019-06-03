@@ -9,6 +9,16 @@ using System.Windows.Data;
 
 namespace AntRunner
 {
+    public enum Instrument
+    { 
+        Agilent_5071C,
+        Agilent_8753ES,
+    }
+    public enum TraceFormat
+    {
+        SWR,
+        LOG,
+    }
     public enum TriggerType
     {
         Auto,

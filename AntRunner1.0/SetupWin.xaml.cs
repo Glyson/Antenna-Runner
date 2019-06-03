@@ -166,59 +166,59 @@ namespace AntRunner
         {
             if (MainWindow.Self.State == State.Running)
             {
-                System.Windows.MessageBox.Show(this, "Testing...", "Tips");
+                System.Windows.MessageBox.Show(this, "正在测试...", "Tips");
                 return;
             }
-            if (MainWindow.Self.VNA == null || !MainWindow.Self.VNA.IsOK)
+            if (MainWindow.Self.vna == null || !MainWindow.Self.vna.IsOK)
             {
-                MainWindow.Self.VNA = VNA_AT5071C.GetInstance();
-                if (!MainWindow.Self.VNA.Init(Settings.Default.GPIB))
+                MainWindow.Self.vna = VNA.CreateVNA();
+                if (!MainWindow.Self.vna.Init(Settings.Default.GPIB))
                 {
                     return;
                 }
             }
             System.Windows.Controls.Button btn = sender as System.Windows.Controls.Button;
             this.Cursor = System.Windows.Input.Cursors.Wait;
-            int port = int.Parse(btn.Tag.ToString());
+            string trace = btn.Tag.ToString();
             SortedList<double, double> list;
             string root = string.Format("{0}\\{1}", Settings.Default.OutputDir, "Cal");
             if (!Directory.Exists(root))
                 Directory.CreateDirectory(root);
             string path;
             string dateStr = DateTime.Now.ToString("yyyy.MM.dd HH.mm");
-            MainWindow.Self.VNA.Setup();
-            switch (port)
+            MainWindow.Self.vna.Config();
+            switch (trace)
             {
-                case 1:
-                    MainWindow.Self.VNA.Setup(Settings.Default.Para1);
-                    list = MainWindow.Self.VNA.ReadSWRByTrace(Settings.Default.Para1);
+                case "S11":
+                    MainWindow.Self.vna.Setup(Settings.Default.Para1);
+                    list = MainWindow.Self.vna.ReadTrace(Settings.Default.Para1);
                     path = string.Format("{0}\\REFER_{1}_{2}.csv", root, Settings.Default.Para1.Trace, dateStr);
                     if (OutputRefer(list, path))
                     {
                         Settings.Default.Para1.ReferTracePath = path;
                     }
                     break;
-                case 2:
-                    MainWindow.Self.VNA.Setup(Settings.Default.Para2);
-                    list = MainWindow.Self.VNA.ReadSWRByTrace(Settings.Default.Para2);
+                case "S22":
+                    MainWindow.Self.vna.Setup(Settings.Default.Para2);
+                    list = MainWindow.Self.vna.ReadTrace(Settings.Default.Para2);
                     path = string.Format("{0}\\REFER_{1}_{2}.csv", root, Settings.Default.Para2.Trace, dateStr);
                     if (OutputRefer(list, path))
                     {
                         Settings.Default.Para2.ReferTracePath = path;
                     }
                     break;
-                case 3:
-                    MainWindow.Self.VNA.Setup(Settings.Default.Para3);
-                    list = MainWindow.Self.VNA.ReadSWRByTrace(Settings.Default.Para3);
+                case "S33":
+                    MainWindow.Self.vna.Setup(Settings.Default.Para3);
+                    list = MainWindow.Self.vna.ReadTrace(Settings.Default.Para3);
                     path = string.Format("{0}\\REFER_{1}_{2}.csv", root, Settings.Default.Para3.Trace, dateStr);
                     if (OutputRefer(list, path))
                     {
                         Settings.Default.Para3.ReferTracePath = path;
                     }
                     break;
-                case 4:
-                    MainWindow.Self.VNA.Setup(Settings.Default.Para4);
-                    list = MainWindow.Self.VNA.ReadSWRByTrace(Settings.Default.Para4);
+                case "S44":
+                    MainWindow.Self.vna.Setup(Settings.Default.Para4);
+                    list = MainWindow.Self.vna.ReadTrace(Settings.Default.Para4);
                     path = string.Format("{0}\\REFER_{1}_{2}.csv", root, Settings.Default.Para4.Trace, dateStr);
                     if (OutputRefer(list, path))
                     {

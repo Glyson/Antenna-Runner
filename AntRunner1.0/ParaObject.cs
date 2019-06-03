@@ -170,27 +170,38 @@ namespace AntRunner
             set { _scannerCOM = value; }
         }
 
-        private double _referFreq = 950;
+        private double _cutBW = 950;
 
-        public double ReferFreq
+        public double CutBW
         {
-            get { return _referFreq; }
+            get { return _cutBW; }
             set
             {
-                _referFreq = value;
-                OnPropertyChanged("ReferFreq");
+                _cutBW = value;
+                OnPropertyChanged("CutBW");
             }
         }
 
-        private double _referPower = 10;
+        private double _cutPow = 10;
 
-        public double ReferPower
+        public double CutPow
         {
-            get { return _referPower; }
+            get { return _cutPow; }
             set
             {
-                _referPower = value;
-                OnPropertyChanged("ReferPower");
+                _cutPow = value;
+                OnPropertyChanged("CutPow");
+            }
+        }
+        private double _diffBW = 100;
+
+        public double DiffBW
+        {
+            get { return _diffBW; }
+            set
+            {
+                _diffBW = value;
+                OnPropertyChanged("DiffBW");
             }
         }
         private double _diffFreq = 100;

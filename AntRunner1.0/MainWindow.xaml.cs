@@ -35,7 +35,7 @@ namespace AntRunner
         bool manual1, manual2, manual3, manual4;
         SortedList<double, double> refer1, refer2, refer3, refer4;
         public static MainWindow Self;
-        public VNA_AT5071C VNA = null;
+        public VNA vna = null;
         Brush bshPass = Brushes.SkyBlue;
         Brush bshFail = Brushes.Red;
         Brush bshTgr = Brushes.ForestGreen;
@@ -92,7 +92,7 @@ namespace AntRunner
             btnStart2.IsEnabled = false;
             btnStart3.IsEnabled = false;
             btnStart4.IsEnabled = false;
-            
+
             InitCount();
         }
 
@@ -109,10 +109,10 @@ namespace AntRunner
         public void InitCount()
         {
             List<SingleData> temp;
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para1?.Trace, out Count1, out Pass1, out temp);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para2?.Trace, out Count2, out Pass2, out temp);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para3?.Trace, out Count3, out Pass3, out temp);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para4?.Trace, out Count4, out Pass4, out temp);
+            GetCount(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1, out temp);
+            GetCount(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2, out temp);
+            GetCount(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3, out temp);
+            GetCount(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4, out temp);
             tb1.Text = GetPercentStr(Count1, Pass1);
             tb2.Text = GetPercentStr(Count2, Pass2);
             tb3.Text = GetPercentStr(Count3, Pass3);
@@ -183,18 +183,23 @@ namespace AntRunner
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            if (State == State.Running)
+            {
+                MessageBox.Show("正在测试...");
+                return;
+            }
             SetupWin win = new SetupWin();
             win.Owner = this;
-            win.ShowDialog(); 
+            win.ShowDialog();
         }
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
             if (State == State.Running)
             {
-                MessageBox.Show(this, "Testing...", "Tips", MessageBoxButton.OK);
+                MessageBox.Show(this, "正在测试...", "Tips", MessageBoxButton.OK);
                 return;
             }
-            if (!SetupVNA())
+            if (!InitVNA())
                 return;
 
             Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
@@ -213,43 +218,73 @@ namespace AntRunner
         {
 
         }
-        private bool SetupVNA()
+        private bool InitVNA()
         {
 
-            if (VNA == null || !VNA.IsOK)
+            if (vna == null || !vna.IsOK)
             {
-                VNA = VNA_AT5071C.GetInstance();
+                vna = VNA.CreateVNA();
 
                 if (IsSkip) return true;
-                if (!VNA.Init(Settings.Default.GPIB))
+                if (!vna.Init(Settings.Default.GPIB))
                 {
                     return false;
                 }
             }
-            VNA.Setup();
+            vna.Config();
             return true;
-
         }
         private void Start(ParaObject para, ref SortedList<double, double> refer, ref Ellipse elli, ref Button btn, ref Thread td)
         {
             if (para.Enable)
             {
-                if (VNA != null)
+                if (para.Trace == "S11")
                 {
-                    VNA.Setup(para);
+                    refer1 = GetRefer(Settings.Default.Para1);
+                    if (refer1 == null) return;
                 }
-                elli.Fill = bshPass; 
+                else if (para.Trace == "S22")
+                {
+                    refer2 = GetRefer(Settings.Default.Para2);
+                    if (refer2 == null) return;
+                }
+                else if (para.Trace == "S33")
+                {
+                    refer3 = GetRefer(Settings.Default.Para3);
+                    if (refer3 == null) return;
+                }
+                else if (para.Trace == "S44")
+                {
+                    refer4 = GetRefer(Settings.Default.Para4);
+                    if (refer4 == null) return;
+                }
+
+                lock (vna)
+                {
+                    if (vna != null)
+                    {
+                        vna.Setup(para);
+                    }
+                }
+                elli.Fill = bshPass;
                 btn.IsEnabled = true;
                 State = State.Running;
                 if (para.Trace == "S11")
+                {
                     td = new Thread(ThreadStart1);
+                }
                 else if (para.Trace == "S22")
+                {
                     td = new Thread(ThreadStart2);
+                }
                 else if (para.Trace == "S33")
+                {
                     td = new Thread(ThreadStart3);
+                }
                 else if (para.Trace == "S44")
+                {
                     td = new Thread(ThreadStart4);
-
+                }
                 td.Start();
             }
         }
@@ -326,10 +361,9 @@ namespace AntRunner
                 btnStart1.IsEnabled = false;
                 ellipse1.Fill = bshTgr;
             }));
-            lock (VNA)
+            lock (vna)
             {
-                list = VNA.ReadSWR(Settings.Default.Para1);
-                ok = CheckPass(list, Settings.Default.Para1);
+                ok = CheckPass(ref list, Settings.Default.Para1);
                 Output(Settings.Default.Para1, list, ok);
                 Count1++;
             }
@@ -352,10 +386,9 @@ namespace AntRunner
                 btnStart2.IsEnabled = false;
                 ellipse2.Fill = bshTgr;
             }));
-            lock (VNA)
+            lock (vna)
             {
-                list = VNA.ReadSWR(Settings.Default.Para2);
-                ok = CheckPass(list, Settings.Default.Para2);
+                ok = CheckPass(ref list, Settings.Default.Para2);
                 Output(Settings.Default.Para2, list, ok);
                 Count2++;
             }
@@ -378,10 +411,9 @@ namespace AntRunner
                 btnStart3.IsEnabled = false;
                 ellipse3.Fill = bshTgr;
             }));
-            lock (VNA)
+            lock (vna)
             {
-                list = VNA.ReadSWR(Settings.Default.Para3);
-                ok = CheckPass(list, Settings.Default.Para3);
+                ok = CheckPass(ref list, Settings.Default.Para3);
                 Output(Settings.Default.Para3, list, ok);
                 Count3++;
             }
@@ -404,10 +436,9 @@ namespace AntRunner
                 btnStart4.IsEnabled = false;
                 ellipse4.Fill = bshTgr;
             }));
-            lock (VNA)
+            lock (vna)
             {
-                list = VNA.ReadSWR(Settings.Default.Para4);
-                ok = CheckPass(list, Settings.Default.Para4);
+                ok = CheckPass(ref list, Settings.Default.Para4);
                 Output(Settings.Default.Para4, list, ok);
                 Count4++;
             }
@@ -423,24 +454,7 @@ namespace AntRunner
         }
         private bool AutoTriger(ParaObject para)
         {
-            SortedList<double, double> refer = null;
             Trace type = (Trace)Enum.Parse(typeof(Trace), para.Trace);
-            switch (type)
-            {
-                case Trace.S11:
-                    refer = refer1;
-                    break;
-                case Trace.S22:
-                    refer = refer2;
-                    break;
-                case Trace.S33:
-                    refer = refer3;
-                    break;
-                case Trace.S44:
-                    refer = refer4;
-                    break;
-            }
-
             SortedList<double, double> listPre = null;
             SortedList<double, double> list = null;
             List<SortedList<double, double>> all = new List<SortedList<double, double>>();
@@ -456,9 +470,9 @@ namespace AntRunner
                 if (type == Trace.S44 && manual4)
                     return true;
                 Thread.Sleep(Settings.Default.AutoDelay);
-                lock (VNA)
+                lock (vna)
                 {
-                    list = VNA.ReadSWRByTrace(para);
+                    list = vna.ReadTrace(para);
                 }
                 if (listPre == null)
                 {
@@ -538,18 +552,48 @@ namespace AntRunner
             }
             return true;
         }
-
-        private bool CheckPass(SortedList<double, double> list, ParaObject para)
+        private List<double> GetMarker(string text)
         {
-            return CheckPass2(list, para);
+            List<double> list = new List<double>();
+            string[] arr = text.Split('\r', '\n');
+            double fq;
+            foreach (string str in arr)
+            {
+                if (double.TryParse(str, out fq))
+                {
+                    if (!list.Contains(fq))
+                        list.Add(fq);
+                }
+            }
+            return list;
+        }
+        private bool CheckPass(ref SortedList<double, double> list, ParaObject para)
+        {
+            if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
+            {
+                list = vna.ReadTrace(para);
+                return CheckPass2(list, para);
+            }
+            else
+            {
+                SortedList<double, double> raw = vna.ReadTrace(para);
+                list = new SortedList<double, double>();
+                List<double> markers = GetMarker(para.MarkerText);
+                foreach (double marker in markers)
+                {
+                    list.Add(marker, GetPointByTrace(raw, marker));
+                }
+                return CheckPass1(list, para);
+            }
         }
 
         private bool CheckPass1(SortedList<double, double> list, ParaObject para)
         {
+            SortedList<double, double> referTrace = GetReferTrace(para);
             double refer, min, max;
             foreach (KeyValuePair<double, double> item in list)
             {
-                refer = GetRefer(para, item.Key);
+                refer = GetPointByTrace(referTrace, item.Key);
                 min = refer - para.ReferDiff;
                 max = refer + para.ReferDiff;
                 if (item.Value < min || item.Value > max)
@@ -558,36 +602,65 @@ namespace AntRunner
             return true;
         }
 
-        private bool CheckPass2(SortedList<double, double> list, ParaObject para)
+        private bool CheckPass2(SortedList<double, double> trace, ParaObject para)
         {
-            double minVal = double.NaN;
-            double minValFreq = double.NaN;
-            foreach (KeyValuePair<double, double> item in list)
-            {
-                if (minVal == double.NaN)
-                {
-                    minVal = item.Value;
-                    minValFreq = item.Key;
-                }
-                else
-                {
-                    if (item.Value < minVal)
-                    {
-                        minVal = item.Value;
-                        minValFreq = item.Key;
-                    }
-                }
-            }
-            if (Math.Abs(minValFreq - para.ReferFreq) > Math.Abs(para.DiffFreq))
+            double powRef, fqRef, powMin, fqMin;
+            SortedList<double, double> referTrace = GetReferTrace(para);
+            GetTraceMin(referTrace, out fqRef, out powRef);
+            GetTraceMin(trace, out fqMin, out powMin);
+            double diffFreq = Math.Abs(para.DiffFreq);
+            double diffPower = Math.Abs(para.DiffPower);
+            //检查最低点的频率偏差(横向比较)
+            if (fqMin < fqRef - diffFreq || fqMin > fqRef + diffFreq)
                 return false;
 
-            if (Math.Abs(minVal - para.ReferPower) > Math.Abs(para.DiffPower))
+            //检查最低点的功能偏差（纵向比较）
+            if (powMin < powRef - diffPower || powMin > powRef + diffPower)
                 return false;
 
+            //检查功率切线的频宽（频宽比较）
+            double bw = GetBandByPowerInTrace(trace, para.CutPow);
+            double diffBW = Math.Abs(para.DiffBW);
+            if (bw < para.CutBW - diffBW || bw > para.CutBW + diffBW)
+                return false;
+            
             return true;
         }
 
-        private double GetRefer(ParaObject para, double freq)
+        private double GetBandByPowerInTrace(SortedList<double, double> trace, double cutPower)
+        {
+            double minFreq, minPower;
+            GetTraceMin(trace, out minFreq, out minPower);
+            SortedList<double, double> trace1 = new SortedList<double, double>();
+            SortedList<double, double> trace2 = new SortedList<double, double>();
+
+            foreach (KeyValuePair<double, double> item in trace)
+            {
+                if (item.Key < minFreq)
+                {
+                    trace1.Add(item.Key, item.Value);
+                }
+                else
+                {
+                    trace2.Add(item.Key, item.Value);
+                }
+            }
+            double[] keys = trace1.Values.ToArray<double>();
+            int index = ~Array.BinarySearch(keys, cutPower);
+            double gt = keys[index];
+            double lt = keys[index - 1];
+            double cutF1 = gt - (gt - lt) * (trace1[gt] - cutPower) / (trace1[gt] - trace1[lt]);
+
+            keys = trace2.Values.ToArray<double>();
+            index = ~Array.BinarySearch(keys, cutPower);
+            gt = keys[index];
+            lt = keys[index - 1];
+            double cutF2 = gt - (gt - lt) * (trace2[gt] - cutPower) / (trace2[gt] - trace2[lt]);
+
+            return Math.Abs(cutF2 - cutF1);
+        }
+
+        private SortedList<double, double> GetReferTrace(ParaObject para)
         {
             SortedList<double, double> trace = null;
             Trace type = (Trace)Enum.Parse(typeof(Trace), para.Trace);
@@ -606,11 +679,17 @@ namespace AntRunner
                     trace = refer4;
                     break;
             }
-            double refer = GetRefer(trace, freq);
-            return refer;
+            return trace;
         }
 
-        private double GetRefer(SortedList<double, double> trace, double freq)
+        private void GetTraceMin(SortedList<double, double> trace, out double freq, out double pow)
+        {
+            KeyValuePair<double, double> min = trace.Min();
+            freq = min.Key;
+            pow = min.Value;
+        }
+
+        private double GetPointByTrace(SortedList<double, double> trace, double freq)
         {
             if (trace.ContainsKey(freq))
                 return trace[freq];
@@ -688,7 +767,7 @@ namespace AntRunner
         private void MenuItem_Click_6(object sender, RoutedEventArgs e)
         {
             MenuItem menu = sender as MenuItem;
-            if(menu.Tag.ToString()=="1")
+            if (menu.Tag.ToString() == "1")
             {
                 pgp1.Inlines.Clear();
             }
@@ -735,6 +814,7 @@ namespace AntRunner
                         sr.Close();
                         fs.Close();
                     }
+                    para.CutBW = GetBandByPowerInTrace(list, para.CutPow);
                     return list;
                 }
                 catch (Exception ex)
@@ -800,40 +880,40 @@ namespace AntRunner
                     {
                         t1.Abort();
                         t1 = null;
+                        ellipse1.Fill = Brushes.Gray;
+                        blk1.Text = "停止";
+                        btnStart1.IsEnabled = false;
                     }
-                    ellipse1.Fill = Brushes.Gray;
-                    blk1.Text = "停止";
-                    btnStart1.IsEnabled = false;
                     break;
                 case 2:
                     if (t2 != null)
                     {
                         t2.Abort();
                         t2 = null;
+                        ellipse2.Fill = Brushes.Gray;
+                        blk2.Text = "停止";
+                        btnStart2.IsEnabled = false;
                     }
-                    ellipse2.Fill = Brushes.Gray;
-                    blk2.Text = "停止";
-                    btnStart2.IsEnabled = false;
                     break;
                 case 3:
                     if (t3 != null)
                     {
                         t3.Abort();
                         t3 = null;
+                        ellipse3.Fill = Brushes.Gray;
+                        blk3.Text = "停止";
+                        btnStart3.IsEnabled = false;
                     }
-                    ellipse3.Fill = Brushes.Gray;
-                    blk3.Text = "停止";
-                    btnStart3.IsEnabled = false;
                     break;
                 case 4:
                     if (t4 != null)
                     {
                         t4.Abort();
                         t4 = null;
+                        ellipse4.Fill = Brushes.Gray;
+                        blk4.Text = "停止";
+                        btnStart4.IsEnabled = false;
                     }
-                    ellipse4.Fill = Brushes.Gray;
-                    blk4.Text = "停止";
-                    btnStart4.IsEnabled = false;
                     break;
             }
         }
@@ -1014,10 +1094,10 @@ namespace AntRunner
                 sh.Cells[r, 5] = "S44";
                 r++;
                 sh.Cells[r, 1] = "Frequency Reference";
-                sh.Cells[r, 2] = string.Format("{0} MHz", Settings.Default.Para1.ReferFreq);
-                sh.Cells[r, 3] = string.Format("{0} MHz", Settings.Default.Para2.ReferFreq);
-                sh.Cells[r, 4] = string.Format("{0} MHz", Settings.Default.Para3.ReferFreq);
-                sh.Cells[r, 5] = string.Format("{0} MHz", Settings.Default.Para4.ReferFreq);
+                sh.Cells[r, 2] = string.Format("{0} MHz", Settings.Default.Para1.CutBW);
+                sh.Cells[r, 3] = string.Format("{0} MHz", Settings.Default.Para2.CutBW);
+                sh.Cells[r, 4] = string.Format("{0} MHz", Settings.Default.Para3.CutBW);
+                sh.Cells[r, 5] = string.Format("{0} MHz", Settings.Default.Para4.CutBW);
                 r++;
                 sh.Cells[r, 1] = "Frequency Difference";
                 sh.Cells[r, 2] = string.Format("{0} MHz", Settings.Default.Para1.DiffFreq);
@@ -1026,10 +1106,10 @@ namespace AntRunner
                 sh.Cells[r, 5] = string.Format("{0} MHz", Settings.Default.Para4.DiffFreq);
                 r++;
                 sh.Cells[r, 1] = "Power Reference";
-                sh.Cells[r, 2] = string.Format("{0} dBm", Settings.Default.Para1.ReferPower);
-                sh.Cells[r, 3] = string.Format("{0} dBm", Settings.Default.Para2.ReferPower);
-                sh.Cells[r, 4] = string.Format("{0} dBm", Settings.Default.Para3.ReferPower);
-                sh.Cells[r, 5] = string.Format("{0} dBm", Settings.Default.Para4.ReferPower);
+                sh.Cells[r, 2] = string.Format("{0} dBm", Settings.Default.Para1.CutPow);
+                sh.Cells[r, 3] = string.Format("{0} dBm", Settings.Default.Para2.CutPow);
+                sh.Cells[r, 4] = string.Format("{0} dBm", Settings.Default.Para3.CutPow);
+                sh.Cells[r, 5] = string.Format("{0} dBm", Settings.Default.Para4.CutPow);
                 r++;
                 sh.Cells[r, 1] = "Power Difference";
                 sh.Cells[r, 2] = string.Format("{0} dB", Settings.Default.Para1.DiffPower);
@@ -1124,7 +1204,7 @@ namespace AntRunner
         {
             if (State == State.Running)
             {
-                MessageBox.Show("In testing, can not to reset.", "Tips", MessageBoxButton.OK);
+                MessageBox.Show("正在测试...", "Tips", MessageBoxButton.OK);
             }
             else
             {

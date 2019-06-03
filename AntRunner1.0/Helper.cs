@@ -10,6 +10,17 @@ namespace AntRunner
 {
     static class Helper
     {
+        public static TEnum String2Enum<TEnum>(string str)
+        {
+            try
+            {
+                return (TEnum)Enum.Parse(typeof(TEnum), str);
+            }
+            catch
+            {
+                return default(TEnum);
+            }
+        }
         /// <summary>
         /// 刷新UI
         /// </summary>
@@ -17,7 +28,7 @@ namespace AntRunner
         {
             DispatcherFrame frame = new DispatcherFrame();
             Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background,
-                new DispatcherOperationCallback(delegate (object f)
+                new DispatcherOperationCallback(delegate(object f)
                 {
                     ((DispatcherFrame)f).Continue = false;
 

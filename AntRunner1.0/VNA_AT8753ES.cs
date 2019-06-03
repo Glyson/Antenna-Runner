@@ -9,12 +9,21 @@ using System.Threading;
 
 namespace AntRunner
 {
-    public class VNA_AT5071C : VNA
+    public class VNA_AT8753ES : VNA
     {
-        public override void Config()
+        public void Setup()
         {
             //Write("SYST:PRES");
-            GetPorts();
+            portList.Clear();
+            if (Settings.Default.Para1.Enable)
+                portList.Add(1);
+            if (Settings.Default.Para2.Enable)
+                portList.Add(2);
+            if (Settings.Default.Para3.Enable)
+                portList.Add(3);
+            if (Settings.Default.Para4.Enable)
+                portList.Add(4);
+
             string chCmd = "DISP:SPL D1";
             int portCnt = portList.Count;
             if (portCnt == 2)
@@ -29,26 +38,26 @@ namespace AntRunner
             Write("TRIG:SOUR INT");
             Write("FORM:DATA ASC");
         }
-        public override void Setup(ParaObject para)
+        public void Setup(ParaObject para)
         {
             if (MainWindow.IsSkip) return;
 
             int ch = int.Parse(para.Trace.Last().ToString());
             ch = portList.IndexOf(ch) + 1;
-            Write("DISP:WIND{0}:ACT", ch);
-            Write("CALC{0}:PAR:DEF {1}", ch, para.Trace);
+            Write("CHAN{0}", ch);
+            Write(para.Trace);
             //Write("CALC{0}:PAR:COUN 1", ch);
             if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
             {
-                Write("CALC{0}:FORM MLOG", ch);
+                Write("CALC{0}:FORM LOGM", ch);
             }
             else
             {
                 Write("CALC{0}:FORM SWR", ch);
             }
-            Write("SENS{0}:FREQ:STAR {1}", ch, para.FreqStart * 1E6);
-            Write("SENS{0}:FREQ:STOP {1}", ch, para.FreqStop * 1E6);
-            Write("SENS{0}:SWE:POIN {1}", ch, para.Points);
+            Write("STAR {0}", para.FreqStart * 1E6);
+            Write("STOP {0}", para.FreqStop * 1E6);
+            Write("POIN {0}", para.Points);
             Write("SENS{0}:SWE:TYPE LIN", ch);
 
             //Write("SENS{0}:BWID {1}", ch, Settings.Default.Para1.Bandwidth);
@@ -61,25 +70,6 @@ namespace AntRunner
 
             Write("DISP:WIND{0}:TRAC1:Y:AUTO", ch);
         }
-        //public SortedList<double, double> ReadTrace(ParaObject para)
-        //{
-        //    SortedList<double, double> raw = ReadSWRByTrace(para);
-        //    if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
-        //    {
-        //        return raw;
-        //    }
-        //    else
-        //    {
-        //        SortedList<double, double> list = new SortedList<double, double>();
-        //        List<double> markers = GetMarker(para.MarkerText);
-        //        foreach (double marker in markers)
-        //        {
-        //            list.Add(marker, GetSingle(raw, marker));
-        //        }
-        //        return list;
-        //    }
-        //}
-     
 
         public override SortedList<double, double> ReadTrace(ParaObject para)
         {
@@ -100,6 +90,11 @@ namespace AntRunner
         private string[] ReadTrace(ParaObject para, int dimCnt = 1)
         {
             int ch = int.Parse(para.Trace.Last().ToString());
+
+            Write("CHAN{0}", 1);
+            Write("FORM4");
+            Write("OUTPFORM");
+
             Write(string.Format("DISP:WIND{0}:TRAC1:Y:AUTO", ch));
             Write(string.Format("CALC{0}:DATA:FDAT?", ch));//CAL
             string cur = string.Empty;
