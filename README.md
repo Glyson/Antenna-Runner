@@ -1,2 +1,2 @@
-# Test
-be first to use git, test only
+# My Projects
+be first to use git
