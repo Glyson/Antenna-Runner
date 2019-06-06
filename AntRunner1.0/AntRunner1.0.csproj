@@ -85,20 +85,22 @@
     <Compile Include="AboutWin.xaml.cs">
       <DependentUpon>AboutWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\TriggerType2IsEnable.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="EnumList.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="MyComputer.cs" />
     <Compile Include="ParaObject.cs" />
-    <Compile Include="TestType2IsEnable2.cs" />
+    <Compile Include="Converter\TestType2IsEnable2.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SetupWin.xaml.cs">
       <DependentUpon>SetupWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleData.cs" />
-    <Compile Include="TestType2IsEnable1.cs" />
-    <Compile Include="VNA.cs" />
-    <Compile Include="VNA_AT5071C.cs" />
-    <Compile Include="VNA_AT8753ES.cs" />
+    <Compile Include="Converter\TestType2IsEnable1.cs" />
+    <Compile Include="Instrument\VNA.cs" />
+    <Compile Include="Instrument\VNA_AT5071C.cs" />
+    <Compile Include="Instrument\VNA_AT8753ES.cs" />
     <Page Include="AboutWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="0030110064.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="support.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

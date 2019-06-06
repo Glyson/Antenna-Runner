@@ -39,7 +39,6 @@ namespace AntRunner
             if (MainWindow.Self.State == State.Running)
             {
                 this.IsEnabled = false;
-
             }
         }
 
@@ -97,7 +96,7 @@ namespace AntRunner
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.Para2.Power = Settings.Default.Para1.Power;
-            Settings.Default.Para2.Enable = Settings.Default.Para1.Enable;
+            //Settings.Default.Para2.Enable = Settings.Default.Para1.Enable;
             Settings.Default.Para2.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para2.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para2.FreqStop = Settings.Default.Para1.FreqStop;
@@ -107,9 +106,13 @@ namespace AntRunner
             Settings.Default.Para2.MarkerType = Settings.Default.Para1.MarkerType;
             Settings.Default.Para2.ReferDiff = Settings.Default.Para1.ReferDiff;
             Settings.Default.Para2.ReferTracePath = Settings.Default.Para1.ReferTracePath;
+            Settings.Default.Para2.CutPow = Settings.Default.Para1.CutPow;
+            Settings.Default.Para2.DiffBW = Settings.Default.Para1.DiffBW;
+            Settings.Default.Para2.DiffFreq = Settings.Default.Para1.DiffFreq;
+            Settings.Default.Para2.DiffPower = Settings.Default.Para1.DiffPower;
 
             Settings.Default.Para3.Power = Settings.Default.Para1.Power;
-            Settings.Default.Para3.Enable = Settings.Default.Para1.Enable;
+            //Settings.Default.Para3.Enable = Settings.Default.Para1.Enable;
             Settings.Default.Para3.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para3.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para3.FreqStop = Settings.Default.Para1.FreqStop;
@@ -119,9 +122,13 @@ namespace AntRunner
             Settings.Default.Para3.MarkerType = Settings.Default.Para1.MarkerType;
             Settings.Default.Para3.ReferDiff = Settings.Default.Para1.ReferDiff;
             Settings.Default.Para3.ReferTracePath = Settings.Default.Para1.ReferTracePath;
+            Settings.Default.Para3.CutPow = Settings.Default.Para1.CutPow;
+            Settings.Default.Para3.DiffBW = Settings.Default.Para1.DiffBW;
+            Settings.Default.Para3.DiffFreq = Settings.Default.Para1.DiffFreq;
+            Settings.Default.Para3.DiffPower = Settings.Default.Para1.DiffPower;
 
             Settings.Default.Para4.Power = Settings.Default.Para1.Power;
-            Settings.Default.Para4.Enable = Settings.Default.Para1.Enable;
+            //Settings.Default.Para4.Enable = Settings.Default.Para1.Enable;
             Settings.Default.Para4.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para4.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para4.FreqStop = Settings.Default.Para1.FreqStop;
@@ -131,6 +138,10 @@ namespace AntRunner
             Settings.Default.Para4.MarkerType = Settings.Default.Para1.MarkerType;
             Settings.Default.Para4.ReferDiff = Settings.Default.Para1.ReferDiff;
             Settings.Default.Para4.ReferTracePath = Settings.Default.Para1.ReferTracePath;
+            Settings.Default.Para4.CutPow = Settings.Default.Para1.CutPow;
+            Settings.Default.Para4.DiffBW = Settings.Default.Para1.DiffBW;
+            Settings.Default.Para4.DiffFreq = Settings.Default.Para1.DiffFreq;
+            Settings.Default.Para4.DiffPower = Settings.Default.Para1.DiffPower;
 
             System.Windows.MessageBox.Show(this, "Mapping OK.", "Tips");
         }
@@ -172,16 +183,19 @@ namespace AntRunner
             if (MainWindow.Self.vna == null || !MainWindow.Self.vna.IsOK)
             {
                 MainWindow.Self.vna = VNA.CreateVNA();
-                if (!MainWindow.Self.vna.Init(Settings.Default.GPIB))
+                if (!MainWindow.IsSkip)
                 {
-                    return;
+                    if (!MainWindow.Self.vna.Init(Settings.Default.GPIB))
+                    {
+                        return;
+                    }
                 }
             }
             System.Windows.Controls.Button btn = sender as System.Windows.Controls.Button;
             this.Cursor = System.Windows.Input.Cursors.Wait;
             string trace = btn.Tag.ToString();
             SortedList<double, double> list;
-            string root = string.Format("{0}\\{1}", Settings.Default.OutputDir, "Cal");
+            string root = string.Format("{0}\\{1}", Settings.Default.OutputDir, "Calibration");
             if (!Directory.Exists(root))
                 Directory.CreateDirectory(root);
             string path;
@@ -239,51 +253,78 @@ namespace AntRunner
                 MainWindow.Self.InitCount();
         }
 
-        //private void InitCOM()
-        //{
-        //    string[] ports = SerialPort.GetPortNames();
-        //    cbPort1.ItemsSource = ports;
-        //    cbPort2.ItemsSource = ports;
-        //    cbPort3.ItemsSource = ports;
-        //    cbPort4.ItemsSource = ports;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            //dialog.InitialDirectory = Settings.Default.OutputDir;
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = dialog.FileName;
+                System.Windows.Controls.Button btn = sender as System.Windows.Controls.Button;
+                string trace = btn.Tag.ToString();
+                switch (trace)
+                {
+                    case "S11":
+                        Settings.Default.Para1.ReferTracePath = path;
+                        break;
+                    case "S22":
+                        Settings.Default.Para2.ReferTracePath = path;
+                        break;
+                    case "S33":
+                        Settings.Default.Para3.ReferTracePath = path;
+                        break;
+                    case "S44":
+                        Settings.Default.Para4.ReferTracePath = path;
+                        break;
+                }
+            }
+        }
 
-        //}
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    string[] ports = SerialPort.GetPortNames();
-        //    string pre;
-        //    int tag = int.Parse((sender as System.Windows.Controls.Button).Tag.ToString());
-        //    switch (tag)
-        //    {
-        //        case 1:
-        //            pre = cbPort1.Text;
-        //            cbPort1.ItemsSource = null;
-        //            cbPort1.Items.Clear();
-        //            cbPort1.ItemsSource = ports;
-        //            cbPort1.Text = pre;
-        //            break;
-        //        case 2:
-        //            pre = cbPort2.Text;
-        //            cbPort2.ItemsSource = null;
-        //            cbPort2.Items.Clear();
-        //            cbPort2.ItemsSource = ports;
-        //            cbPort2.Text = pre;
-        //            break;
-        //        case 3:
-        //            pre = cbPort3.Text;
-        //            cbPort3.ItemsSource = null;
-        //            cbPort3.Items.Clear();
-        //            cbPort3.ItemsSource = ports;
-        //            cbPort3.Text = pre;
-        //            break;
-        //        case 4:
-        //            pre = cbPort4.Text;
-        //            cbPort4.ItemsSource = null;
-        //            cbPort4.Items.Clear();
-        //            cbPort4.ItemsSource = ports;
-        //            cbPort4.Text = pre;
-        //            break;
-        //    }
-        //}
+            //private void InitCOM()
+            //{
+            //    string[] ports = SerialPort.GetPortNames();
+            //    cbPort1.ItemsSource = ports;
+            //    cbPort2.ItemsSource = ports;
+            //    cbPort3.ItemsSource = ports;
+            //    cbPort4.ItemsSource = ports;
+
+            //}
+            //private void Button_Click(object sender, RoutedEventArgs e)
+            //{
+            //    string[] ports = SerialPort.GetPortNames();
+            //    string pre;
+            //    int tag = int.Parse((sender as System.Windows.Controls.Button).Tag.ToString());
+            //    switch (tag)
+            //    {
+            //        case 1:
+            //            pre = cbPort1.Text;
+            //            cbPort1.ItemsSource = null;
+            //            cbPort1.Items.Clear();
+            //            cbPort1.ItemsSource = ports;
+            //            cbPort1.Text = pre;
+            //            break;
+            //        case 2:
+            //            pre = cbPort2.Text;
+            //            cbPort2.ItemsSource = null;
+            //            cbPort2.Items.Clear();
+            //            cbPort2.ItemsSource = ports;
+            //            cbPort2.Text = pre;
+            //            break;
+            //        case 3:
+            //            pre = cbPort3.Text;
+            //            cbPort3.ItemsSource = null;
+            //            cbPort3.Items.Clear();
+            //            cbPort3.ItemsSource = ports;
+            //            cbPort3.Text = pre;
+            //            break;
+            //        case 4:
+            //            pre = cbPort4.Text;
+            //            cbPort4.ItemsSource = null;
+            //            cbPort4.Items.Clear();
+            //            cbPort4.ItemsSource = ports;
+            //            cbPort4.Text = pre;
+            //            break;
+            //    }
+            //}
+        }
     }
-}

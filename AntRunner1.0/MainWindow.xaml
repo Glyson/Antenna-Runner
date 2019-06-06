@@ -151,9 +151,10 @@
         <StatusBar Grid.Row="2" Margin="0,0,0,0" Padding="3,0,0,0" Name="statusBar1">
             <StatusBar.Items>
                 <StatusBarItem Padding="0">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                         <TextBlock VerticalAlignment="Center">总统计：</TextBlock>
-                        <TextBox Name="tbAll"  VerticalContentAlignment="Center" Width="Auto" MinWidth="120" Height="23" Text="98/100 | 90%"></TextBox>
+                        <TextBox Name="tbAll"  VerticalContentAlignment="Center" Width="Auto" Margin="7,0,0,0"
+                                 MinWidth="120" Height="23" Text="98/100 | 90%" IsReadOnly="True"></TextBox>
                   </StackPanel>
                     </StatusBarItem>
             </StatusBar.Items>

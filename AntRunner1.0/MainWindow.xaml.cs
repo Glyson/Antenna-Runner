@@ -34,6 +34,8 @@ namespace AntRunner
         Thread t1, t2, t3, t4;
         bool manual1, manual2, manual3, manual4;
         SortedList<double, double> refer1, refer2, refer3, refer4;
+        Dictionary<double, double> markersCal1, markersCal2, markersCal3, markersCal4;
+        Dictionary<double, double> markers1, markers2, markers3, markers4;
         public static MainWindow Self;
         public VNA vna = null;
         Brush bshPass = Brushes.SkyBlue;
@@ -108,77 +110,15 @@ namespace AntRunner
         }
         public void InitCount()
         {
-            List<SingleData> temp;
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1, out temp);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2, out temp);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3, out temp);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4, out temp);
+            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1);
+            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2);
+            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3);
+            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4);
             tb1.Text = GetPercentStr(Count1, Pass1);
             tb2.Text = GetPercentStr(Count2, Pass2);
             tb3.Text = GetPercentStr(Count3, Pass3);
             tb4.Text = GetPercentStr(Count4, Pass4);
             tbAll.Text = GetPercentStr(Count1 + Count2 + Count3 + Count4, Pass1 + Pass2 + Pass3 + Pass4);
-        }
-        private void GetCount(string path, string trace, out int count, out int pass, out List<SingleData> list)
-        {
-            count = 0;
-            pass = 0;
-            list = new List<SingleData>();
-            string dir = string.Format("{0}\\{1}", path, trace);
-            if (!Directory.Exists(dir))
-                return;
-            string[] files = Directory.GetFiles(dir);
-            string str;
-            SingleData single = null;
-            SortedList<double, double> listData = null;
-            SortedList<double, double> referData = null;
-            StreamReader sr = null;
-            try
-            {
-                foreach (string file in files)
-                {
-                    using (sr = new StreamReader(file))
-                    {
-                        str = sr.ReadLine();
-                        if (!str.Contains("Result"))
-                        {
-                            sr.Close();
-                            continue;
-                        }
-                        single = new SingleData();
-                        single.Filename = System.IO.Path.GetFileName(file);
-                        single.Result = str.Split(',')[1];
-                        single.Code = sr.ReadLine().Split(',')[1];
-                        single.TraceType = sr.ReadLine().Split(',')[1];
-                        sr.ReadLine();
-                        single.Memo = sr.ReadLine().Split(',')[1];
-                        sr.ReadLine();
-                        sr.ReadLine();
-                        listData = new SortedList<double, double>();
-                        referData = new SortedList<double, double>();
-                        while ((str = sr.ReadLine()) != null)
-                        {
-                            listData.Add(double.Parse(str.Split(',')[0]), double.Parse(str.Split(',')[1]));
-                            referData.Add(double.Parse(str.Split(',')[0]), double.Parse(str.Split(',')[2]));
-                        }
-                        single.ListData = listData;
-                        single.ReferData = referData;
-                        sr.Close();
-                        count++;
-                        if (single.Result == "Pass")
-                            pass++;
-                        list.Add(single);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                if (sr != null)
-                {
-                    sr.Close();
-                    sr = null;
-                }
-            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -201,6 +141,9 @@ namespace AntRunner
             }
             if (!InitVNA())
                 return;
+
+            if (Settings.Default.MatchCnt < 2)
+                Settings.Default.MatchCnt = 2;
 
             Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
             Start(Settings.Default.Para2, ref refer2, ref ellipse2, ref btnStart2, ref t2);
@@ -354,7 +297,8 @@ namespace AntRunner
         }
         private void Run1()
         {
-            bool ok;
+            bool pass;
+            List<int> errors;
             SortedList<double, double> list = null;
             btnStart1.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -363,15 +307,16 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                ok = CheckPass(ref list, Settings.Default.Para1);
-                Output(Settings.Default.Para1, list, ok);
+                pass = CheckPass(ref list, Settings.Default.Para1, out errors);
+                string path = DataAccess.Output(Settings.Default.Para1, list, errors);
+                LogMsg(Settings.Default.Para1.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
                 Count1++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
             {
-                if (ok) Pass1++;
-                ellipse1.Fill = ok ? bshPass : bshFail;
-                blk1.Text = ok ? "合格" : "不合格";
+                if (pass) Pass1++;
+                ellipse1.Fill = pass ? bshPass : bshFail;
+                blk1.Text = pass ? "合格" : "不合格";
                 tb1.Text = GetPercentStr(Count1, Pass1);
                 UpdateAll();
                 btnStart1.IsEnabled = true;
@@ -379,7 +324,8 @@ namespace AntRunner
         }
         private void Run2()
         {
-            bool ok;
+            bool pass;
+            List<int> errors;
             SortedList<double, double> list = null;
             btnStart2.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -388,15 +334,16 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                ok = CheckPass(ref list, Settings.Default.Para2);
-                Output(Settings.Default.Para2, list, ok);
+                pass = CheckPass(ref list, Settings.Default.Para2, out errors);
+                string path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                LogMsg(Settings.Default.Para2.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
                 Count2++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
             {
-                if (ok) Pass2++;
-                ellipse2.Fill = ok ? bshPass : bshFail;
-                blk2.Text = ok ? "合格" : "不合格";
+                if (pass) Pass2++;
+                ellipse2.Fill = pass ? bshPass : bshFail;
+                blk2.Text = pass ? "合格" : "不合格";
                 tb2.Text = GetPercentStr(Count2, Pass2);
                 UpdateAll();
                 btnStart2.IsEnabled = true;
@@ -404,7 +351,8 @@ namespace AntRunner
         }
         private void Run3()
         {
-            bool ok;
+            bool pass;
+            List<int> errors;
             SortedList<double, double> list = null;
             btnStart3.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -413,15 +361,16 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                ok = CheckPass(ref list, Settings.Default.Para3);
-                Output(Settings.Default.Para3, list, ok);
+                pass = CheckPass(ref list, Settings.Default.Para3, out errors);
+                string path = DataAccess.Output(Settings.Default.Para3, list, errors);
+                LogMsg(Settings.Default.Para3.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
                 Count3++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
             {
-                if (ok) Pass3++;
-                ellipse3.Fill = ok ? bshPass : bshFail;
-                blk3.Text = ok ? "合格" : "不合格";
+                if (pass) Pass3++;
+                ellipse3.Fill = pass ? bshPass : bshFail;
+                blk3.Text = pass ? "合格" : "不合格";
                 tb3.Text = GetPercentStr(Count3, Pass3);
                 UpdateAll();
                 btnStart3.IsEnabled = true;
@@ -429,7 +378,8 @@ namespace AntRunner
         }
         private void Run4()
         {
-            bool ok;
+            bool pass;
+            List<int> errors;
             SortedList<double, double> list = null;
             btnStart4.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -438,15 +388,16 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                ok = CheckPass(ref list, Settings.Default.Para4);
-                Output(Settings.Default.Para4, list, ok);
+                pass = CheckPass(ref list, Settings.Default.Para4, out errors);
+                string path = DataAccess.Output(Settings.Default.Para4, list, errors);
+                LogMsg(Settings.Default.Para4.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
                 Count4++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
             {
-                if (ok) Pass4++;
-                ellipse4.Fill = ok ? bshPass : bshFail;
-                blk4.Text = ok ? "合格" : "不合格";
+                if (pass) Pass4++;
+                ellipse4.Fill = pass ? bshPass : bshFail;
+                blk4.Text = pass ? "合格" : "不合格";
                 tb4.Text = GetPercentStr(Count4, Pass4);
                 UpdateAll();
                 btnStart4.IsEnabled = true;
@@ -455,10 +406,9 @@ namespace AntRunner
         private bool AutoTriger(ParaObject para)
         {
             Trace type = (Trace)Enum.Parse(typeof(Trace), para.Trace);
-            SortedList<double, double> listPre = null;
             SortedList<double, double> list = null;
             List<SortedList<double, double>> all = new List<SortedList<double, double>>();
-            bool firstDeep = false;
+            bool triggerDeep = false;
             while (true)
             {
                 if (type == Trace.S11 && manual1)
@@ -472,77 +422,95 @@ namespace AntRunner
                 Thread.Sleep(Settings.Default.AutoDelay);
                 lock (vna)
                 {
-                    list = vna.ReadTrace(para);
+                    list = vna.ReadTrace(para);//读曲线
                 }
-                if (listPre == null)
+                if (IsDeep(list, Settings.Default.Deep))//如果是底噪，即触发过底噪，之前数据清空，路过
                 {
-                    listPre = list;
+                    triggerDeep = true;
+                    all.Clear();
                     continue;
                 }
-                else
+
+                if (!triggerDeep && !IsSkip)//如果没有触发过底噪，跳过
+                    continue;
+
+                //如果触发过底噪（说明重新拎过天线），且数据不是底噪，这个数据才是可用的
+                btnStart1.Dispatcher.BeginInvoke(new Action(delegate
                 {
-                    if (IsDeep(list, Settings.Default.Deep))
+                    switch (type)
                     {
-                        firstDeep = true;
-                        continue;
+                        case Trace.S11:
+                            ellipse1.Fill = bshTgr;
+                            blk1.Text = "正在触发 . . .";
+                            break;
+                        case Trace.S22:
+                            ellipse2.Fill = bshTgr;
+                            blk2.Text = "正在触发 . . .";
+                            break;
+                        case Trace.S33:
+                            ellipse3.Fill = bshTgr;
+                            blk3.Text = "正在触发 . . .";
+                            break;
+                        case Trace.S44:
+                            ellipse4.Fill = bshTgr;
+                            blk4.Text = "正在触发 . . .";
+                            break;
                     }
-
-                    if (!firstDeep && !IsSkip)
-                        continue;
-
-                    btnStart1.Dispatcher.BeginInvoke(new Action(delegate
+                }));
+                all.Add(list);
+                if (all.Count >= Settings.Default.MatchCnt)
+                {
+                    //如果所有曲线全匹配，ok，否则把最旧的数据删掉，再测一条曲线
+                    if (MatchTrace(all, Settings.Default.AutoDiff))
                     {
-                        switch (type)
-                        {
-                            case Trace.S11:
-                                ellipse1.Fill = bshTgr;
-                                blk1.Text = "正在触发 . . .";
-                                break;
-                            case Trace.S22:
-                                ellipse2.Fill = bshTgr;
-                                blk2.Text = "正在触发 . . .";
-                                break;
-                            case Trace.S33:
-                                ellipse3.Fill = bshTgr;
-                                blk3.Text = "正在触发 . . .";
-                                break;
-                            case Trace.S44:
-                                ellipse4.Fill = bshTgr;
-                                blk4.Text = "正在触发 . . .";
-                                break;
-                        }
-                    }));
-                    if (Settings.Default.MatchCnt < 2)
-                        Settings.Default.MatchCnt = 2;
-                    if (all.Count >= Settings.Default.MatchCnt)
-                    {
-                        for (int i = Settings.Default.MatchCnt - 1; i >= 0; i--)
-                        {
-                            if (!MatchTrace(list, all[i], Settings.Default.AutoDiff))
-                                continue;
-                        }
                         return true;
                     }
-                    all.Add(list);
+                    else
+                    {
+                        all.RemoveAt(0);
+                    }
                 }
-                listPre = list;
             }
         }
-        private bool MatchTrace(SortedList<double, double> trace1, SortedList<double, double> trace2, double prec)
+        //private bool MatchTrace(SortedList<double, double> trace1, SortedList<double, double> trace2, double diff)
+        //{
+        //    if (trace1.Count() != trace2.Count())
+        //        return false;
+        //    else
+        //    {
+        //        diff = Math.Abs(diff);
+        //        for (int i = 0; i < trace1.Count(); i++)
+        //        {
+        //            if (Math.Abs(trace1.Values[i] - trace2.Values[i]) > diff)
+        //                return false;
+        //        }
+        //        return true;
+        //    }
+        //}
+        private bool MatchTrace(List<SortedList<double, double>> lists, double diff)
         {
-            if (trace1.Count() != trace2.Count())
+            if (lists.Count() <= 1)
                 return false;
-            else
+
+            diff = Math.Abs(diff);
+            int traceCnt = lists.Count();
+            for (int i = 0; i < lists[traceCnt - 1].Count(); i++)
             {
-                for (int i = 0; i < trace1.Count(); i++)
+                for (int j = 0; j < traceCnt - 1; j++)
                 {
-                    if (trace1.Values[i] - trace2.Values[i] > prec)
+                    if (Math.Abs(lists[traceCnt - 1].Values[i] - lists[j].Values[i]) > diff)
                         return false;
                 }
-                return true;
             }
+            return true;
         }
 
+        /// <summary>
+        /// 判断是否是底噪，（曲线全是deep值之上）
+        /// </summary>
+        /// <param name="trace"></param>
+        /// <param name="deep"></param>
+        /// <returns></returns>
         private bool IsDeep(SortedList<double, double> trace, double deep)
         {
             foreach (KeyValuePair<double, double> item in trace)
@@ -567,12 +535,12 @@ namespace AntRunner
             }
             return list;
         }
-        private bool CheckPass(ref SortedList<double, double> list, ParaObject para)
+        private bool CheckPass(ref SortedList<double, double> list, ParaObject para, out List<int> errors)
         {
             if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
             {
                 list = vna.ReadTrace(para);
-                return CheckPass2(list, para);
+                return CheckPass2(list, para, out errors);
             }
             else
             {
@@ -583,6 +551,7 @@ namespace AntRunner
                 {
                     list.Add(marker, GetPointByTrace(raw, marker));
                 }
+                errors = new List<int>();
                 return CheckPass1(list, para);
             }
         }
@@ -602,8 +571,9 @@ namespace AntRunner
             return true;
         }
 
-        private bool CheckPass2(SortedList<double, double> trace, ParaObject para)
+        private bool CheckPass2(SortedList<double, double> trace, ParaObject para, out List<int> errorCode)
         {
+            errorCode = new List<int>();
             double powRef, fqRef, powMin, fqMin;
             SortedList<double, double> referTrace = GetReferTrace(para);
             GetTraceMin(referTrace, out fqRef, out powRef);
@@ -612,22 +582,30 @@ namespace AntRunner
             double diffPower = Math.Abs(para.DiffPower);
             //检查最低点的频率偏差(横向比较)
             if (fqMin < fqRef - diffFreq || fqMin > fqRef + diffFreq)
-                return false;
+            {
+                errorCode.Add(1);
+            }
 
             //检查最低点的功能偏差（纵向比较）
             if (powMin < powRef - diffPower || powMin > powRef + diffPower)
-                return false;
+            {
+                errorCode.Add(2);
+            }
 
             //检查功率切线的频宽（频宽比较）
-            double bw = GetBandByPowerInTrace(trace, para.CutPow);
+            ParaObject para2 = new ParaObject();
+            para2.CutPow = para.CutPow;
+            para.Markers = GetParaDataInTrace(trace, para2);
             double diffBW = Math.Abs(para.DiffBW);
-            if (bw < para.CutBW - diffBW || bw > para.CutBW + diffBW)
-                return false;
-            
-            return true;
+            if (para2.CutBW < para.CutBW - diffBW || para2.CutBW > para.CutBW + diffBW)
+            {
+                errorCode.Add(3);
+            }
+
+            return errorCode.Count == 0;
         }
 
-        private double GetBandByPowerInTrace(SortedList<double, double> trace, double cutPower)
+        private Dictionary<double, double> GetParaDataInTrace(SortedList<double, double> trace, ParaObject para)
         {
             double minFreq, minPower;
             GetTraceMin(trace, out minFreq, out minPower);
@@ -636,7 +614,7 @@ namespace AntRunner
 
             foreach (KeyValuePair<double, double> item in trace)
             {
-                if (item.Key < minFreq)
+                if (item.Key <= minFreq)
                 {
                     trace1.Add(item.Key, item.Value);
                 }
@@ -645,21 +623,81 @@ namespace AntRunner
                     trace2.Add(item.Key, item.Value);
                 }
             }
-            double[] keys = trace1.Values.ToArray<double>();
-            int index = ~Array.BinarySearch(keys, cutPower);
-            double gt = keys[index];
-            double lt = keys[index - 1];
-            double cutF1 = gt - (gt - lt) * (trace1[gt] - cutPower) / (trace1[gt] - trace1[lt]);
+            double cutPower = para.CutPow;
+            double cutF1, cutF2;
+            double[] values = trace1.Values.ToArray<double>();
+            int index = LocateTrace(values, cutPower);
+            if (index <= 0)
+            {
+                cutF1 = trace1.Keys[index];
+            }
+            else
+            {
+                double gt = values[index];
+                double lt = values[index - 1];
+                double gtF = trace1.Keys[index];
+                double ltF = trace1.Keys[index - 1];
+                cutF1 = gtF - (gtF - ltF) * (gt - cutPower) / (gt - lt);
+            }
 
-            keys = trace2.Values.ToArray<double>();
-            index = ~Array.BinarySearch(keys, cutPower);
-            gt = keys[index];
-            lt = keys[index - 1];
-            double cutF2 = gt - (gt - lt) * (trace2[gt] - cutPower) / (trace2[gt] - trace2[lt]);
+            values = trace2.Values.ToArray<double>();
+            index = LocateTrace(values, cutPower);
+            if (index <= 0)
+            {
+                cutF2 = trace2.Keys[index];
+            }
+            else
+            {
+                double gt = values[index];
+                double lt = values[index - 1];
+                double gtF = trace2.Keys[index];
+                double ltF = trace2.Keys[index - 1];
+                cutF2 = gtF - (gtF - ltF) * (gt - cutPower) / (gt - lt);
+            }
+            if (cutF2 < cutF1)
+            {
+                para.CutLeftFreq = cutF2;
+                para.CutRightFreq = cutF1;
+            }
+            else
+            {
+                para.CutLeftFreq = cutF1;
+                para.CutRightFreq = cutF2;
+            }
+            para.CutBW = para.CutRightFreq - para.CutLeftFreq;
 
-            return Math.Abs(cutF2 - cutF1);
+            Dictionary<double, double> markers = new Dictionary<double, double>();
+            markers.Add(para.CutLeftFreq, para.CutPow);
+            if (!markers.ContainsKey(minFreq))
+            {
+                markers.Add(minFreq, minPower);
+            }
+            if (!markers.ContainsKey(para.CutRightFreq))
+            {
+                markers.Add(para.CutRightFreq, para.CutPow);
+            }
+            return markers;
         }
 
+        private int LocateTrace(double[] arr, double value)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                if (arr[i] < value && arr[i + 1] > value)
+                {
+                    return i;
+                }
+                else if (arr[i] > value && arr[i + 1] < value)
+                {
+                    return i;
+                }
+                else if (arr[i] == value)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
         private SortedList<double, double> GetReferTrace(ParaObject para)
         {
             SortedList<double, double> trace = null;
@@ -684,9 +722,17 @@ namespace AntRunner
 
         private void GetTraceMin(SortedList<double, double> trace, out double freq, out double pow)
         {
-            KeyValuePair<double, double> min = trace.Min();
-            freq = min.Key;
-            pow = min.Value;
+            //KeyValuePair<double, double> min = trace.Min();
+            pow = trace.Values[0]; ;
+            freq = trace.Keys[0];
+            foreach (KeyValuePair<double, double> item in trace)
+            {
+                if (item.Value < pow)
+                {
+                    pow = item.Value;
+                    freq = item.Key;
+                }
+            }
         }
 
         private double GetPointByTrace(SortedList<double, double> trace, double freq)
@@ -704,65 +750,7 @@ namespace AntRunner
             double lt = keys[index - 1];
             return trace[gt] - (gt - freq) * (trace[gt] - trace[lt]) / (gt - lt);
         }
-        private string Output(ParaObject para, SortedList<double, double> list, bool isOK)
-        {
-            StreamWriter writer = null;
-            try
-            {
-                string path = GetFilePath(para, isOK);
-                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
-                {
-                    writer = new StreamWriter(fs);
-                    writer.WriteLine("Result," + (isOK ? "Pass" : "Fail"));
-                    writer.WriteLine("Code," + Settings.Default.Code);
-                    writer.WriteLine("Trace," + para.Trace);
-                    writer.WriteLine("Refer Span," + para.ReferDiff);
-                    writer.WriteLine("Memo," + Settings.Default.Memo);
-                    writer.WriteLine();
-                    writer.WriteLine("Frequency,Data,Cal");
 
-                    double cal;
-                    double freq, val;
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        freq = list.Keys[i];
-                        val = list.Values[i];
-                        cal = 0;// GetRefer(para, freq);
-                        writer.WriteLine("{0},{1},{2}", freq, val, cal);
-                    }
-                    writer.Flush();
-                    writer.Close();
-                    writer = null;
-                    fs.Close();
-                    LogMsg(para.Trace, isOK, (isOK ? "Pass" : "Fail") + " | Stored in : ", path);
-                    return path;
-                }
-            }
-            catch (Exception ex)
-            {
-                if (writer != null)
-                {
-                    writer.Flush();
-                    writer.Close();
-                }
-                return null;
-            }
-        }
-        private string GetFilePath(ParaObject para, bool pass)
-        {
-            string root = string.Format("{0}\\{1}",
-                    Settings.Default.OutputDir,
-                    para.Trace);
-            if (!Directory.Exists(root))
-                Directory.CreateDirectory(root);
-            string path = string.Format("{0}\\{1}_{2}_{3}_{4}.csv",
-                    root,
-                    para.Trace,
-                    Settings.Default.Code,
-                    DateTime.Now.ToString("MMddHHmmss"),
-                    pass ? "Pass" : "Fail");
-            return path;
-        }
 
         private void MenuItem_Click_6(object sender, RoutedEventArgs e)
         {
@@ -814,7 +802,7 @@ namespace AntRunner
                         sr.Close();
                         fs.Close();
                     }
-                    para.CutBW = GetBandByPowerInTrace(list, para.CutPow);
+                    para.MarkersCal = GetParaDataInTrace(list, para);
                     return list;
                 }
                 catch (Exception ex)
@@ -1014,16 +1002,29 @@ namespace AntRunner
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            Report();
+            this.Cursor = Cursors.Wait;
+            if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
+            {
+                DataAccess.Report_LOG();
+            }
+            else
+            {
+                Report2();
+            }
+
+            this.Cursor = Cursors.Arrow;
         }
 
-        private void Report()
+        //LOG Report
+
+        //SWR Report
+        private void Report2()
         {
             List<SingleData> list1, list2, list3, list4;
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1, out list1);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2, out list2);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3, out list3);
-            GetCount(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4, out list4);
+            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1, out list1);
+            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2, out list2);
+            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3, out list3);
+            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4, out list4);
 
             StreamWriter writer = null;
             try
@@ -1093,7 +1094,7 @@ namespace AntRunner
                 sh.Cells[r, 4] = "S33";
                 sh.Cells[r, 5] = "S44";
                 r++;
-                sh.Cells[r, 1] = "Frequency Reference";
+                sh.Cells[r, 1] = "Cut Power";
                 sh.Cells[r, 2] = string.Format("{0} MHz", Settings.Default.Para1.CutBW);
                 sh.Cells[r, 3] = string.Format("{0} MHz", Settings.Default.Para2.CutBW);
                 sh.Cells[r, 4] = string.Format("{0} MHz", Settings.Default.Para3.CutBW);

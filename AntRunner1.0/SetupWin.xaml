@@ -9,6 +9,7 @@
         Title="设置参数" Height="560" Width="604" ResizeMode="NoResize">
     <Window.Resources>
         <my:StringToVisibility x:Key="s2v"/>
+        <my:TriggerType2IsEnable x:Key="t2v"/>
         <my:TestType2IsEnable1 x:Key="s12v"/>
         <my:TestType2IsEnable2 x:Key="s22v"/>
         <Style TargetType="TextBox">
@@ -57,13 +58,16 @@
                     <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="仪表地址 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="结果输出目录 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="端口开关 : " VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="触发方式 : " VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="自动触发极限值 : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="测量方式： " VerticalAlignment="Center"/>
+
+                    <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="触发方式 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="自动触发等待时间 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="ms" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="曲线匹配范围 : " VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="曲线匹配次数 : " VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="测量方式： " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="自动触发极限值（底噪） : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="8" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="dBm" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="自动触发曲线偏差限值 : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="9" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="dBm" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="自动触发曲线匹配次数 : " VerticalAlignment="Center"/>
 
                     <ComboBox HorizontalAlignment="Left" Name="cbIns" VerticalAlignment="Center" Width="270" Grid.Row="1" Grid.Column="1"
                               SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=Instrument}" 
@@ -86,21 +90,25 @@
                     </StackPanel>
                     <ComboBox Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
                               DisplayMemberPath="Value" SelectedValuePath="Value"  
-                              ItemsSource="{Binding Source={my:Enumeration {x:Type my:TriggerType}}}"
-                              SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType}"/>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Deep, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" TextChanged="TextBox_TextChanged" />
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDelay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" TextChanged="TextBox_TextChanged"/>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDiff, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" TextChanged="TextBox_TextChanged"/>
-                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=MatchCnt, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" TextChanged="TextBox_TextChanged"/>
-                    <ComboBox Grid.Row="10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
-                              DisplayMemberPath="Value" SelectedValuePath="Value"  
                               ItemsSource="{Binding Source={my:Enumeration {x:Type my:TraceFormat}}}"
                               SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat}"/>
 
+                    <ComboBox Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
+                              DisplayMemberPath="Value" SelectedValuePath="Value"  
+                              ItemsSource="{Binding Source={my:Enumeration {x:Type my:TriggerType}}}"
+                              SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType}"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
+                             IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDelay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" TextChanged="TextBox_TextChanged"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
+                             IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Deep, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" TextChanged="TextBox_TextChanged" />
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
+                             IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDiff, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" TextChanged="TextBox_TextChanged"/>
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
+                             IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=MatchCnt, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" TextChanged="TextBox_TextChanged"/>
                 </Grid>
             </TabItem>
             <TabItem Header="端口1">
@@ -129,7 +137,7 @@
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
                     <TextBlock Visibility="Collapsed" Grid.Row="2" HorizontalAlignment="Right" Text="扫描枪串口: " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率 : " VerticalAlignment="Center" />
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="带宽 : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="中频带宽 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="开始频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="结束频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="扫描点数 : " VerticalAlignment="Center"/>
@@ -153,6 +161,8 @@
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Trace}" 
                                 IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Enable}"/>
+                        <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
+                                Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Trace}" />
                     </StackPanel>
                     <TextBox IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"
                              Grid.Row="9"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.CutPow, UpdateSourceTrigger=PropertyChanged}" />
@@ -208,7 +218,7 @@
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
                     <TextBlock Visibility="Collapsed" Grid.Row="2" HorizontalAlignment="Right" Text="扫描枪串口: " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率 : " VerticalAlignment="Center" />
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="带宽 : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="中频带宽 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="开始频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="结束频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="扫描点数 : " VerticalAlignment="Center"/>
@@ -232,6 +242,8 @@
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Trace}" 
                                 IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Enable}"/>
+                        <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
+                                Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Trace}" />
                     </StackPanel>
                     <TextBox IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"
                              Grid.Row="9"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.CutPow, UpdateSourceTrigger=PropertyChanged}" />
@@ -286,7 +298,7 @@
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
                     <TextBlock Visibility="Collapsed" Grid.Row="2" HorizontalAlignment="Right" Text="扫描枪串口: " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率 : " VerticalAlignment="Center" />
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="带宽 : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="中频带宽 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="开始频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="结束频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="扫描点数 : " VerticalAlignment="Center"/>
@@ -310,6 +322,8 @@
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Trace}" 
                                 IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Enable}"/>
+                        <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
+                                Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Trace}" />
                     </StackPanel>
                     <TextBox IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"
                              Grid.Row="9"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.CutPow, UpdateSourceTrigger=PropertyChanged}" />
@@ -364,7 +378,7 @@
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
                     <TextBlock Visibility="Collapsed" Grid.Row="2" HorizontalAlignment="Right" Text="扫描枪串口: " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率 : " VerticalAlignment="Center" />
-                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="带宽 : " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="中频带宽 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="开始频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="结束频率 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="扫描点数 : " VerticalAlignment="Center"/>
@@ -388,6 +402,8 @@
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Trace}" 
                                 IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Enable}"/>
+                        <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
+                                Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Trace}" />
                     </StackPanel>
                     <TextBox IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"
                              Grid.Row="9"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.CutPow, UpdateSourceTrigger=PropertyChanged}" />

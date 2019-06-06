@@ -35,6 +35,13 @@ namespace AntRunner
             get { return _code; }
             set { _code = value; }
         }
+        private string _errors;
+
+        public string Errors
+        {
+            get { return _errors; }
+            set { _errors = value; }
+        }
         private string _memo;
 
         public string Memo

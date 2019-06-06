@@ -181,6 +181,29 @@ namespace AntRunner
                 OnPropertyChanged("CutBW");
             }
         }
+        private double _cutLeftFreq = 950;
+
+        public double CutLeftFreq
+        {
+            get { return _cutLeftFreq; }
+            set
+            {
+                _cutLeftFreq = value;
+                OnPropertyChanged("CutLeftFreq");
+            }
+        }
+        private double _cutRightFreq = 950;
+
+        public double CutRightFreq
+        {
+            get { return _cutRightFreq; }
+            set
+            {
+                _cutRightFreq = value;
+                OnPropertyChanged("CutRightFreq");
+            }
+        }
+
 
         private double _cutPow = 10;
 
@@ -226,8 +249,26 @@ namespace AntRunner
                 OnPropertyChanged("DiffPower");
             }
         }
-
-
+        private object _markers;
+        public object Markers
+        {
+            get { return _markers; }
+            set
+            {
+                _markers = value;
+                //OnPropertyChanged("Markers");
+            }
+        }
+        private object _markersCal;
+        public object MarkersCal
+        {
+            get { return _markersCal; }
+            set
+            {
+                _markersCal = value;
+                //OnPropertyChanged("MarkersCal");
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propName)
         {
