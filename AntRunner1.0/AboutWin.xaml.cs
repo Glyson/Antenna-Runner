@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AntRunner
 {
@@ -18,9 +9,13 @@ namespace AntRunner
     /// </summary>
     public partial class AboutWin : Window
     {
+
         public AboutWin()
         {
             InitializeComponent();
+            tipTime.ToolTip = DateTime.Now.ToString("yyyy/MM/dd") + " - " + MainWindow.Self.expireTime.ToString("yyyy/MM/dd");
+            ToolTipService.SetShowDuration(tipTime, 2000);
+            ToolTipService.SetInitialShowDelay(tipTime, 10000);
         }
     }
 }

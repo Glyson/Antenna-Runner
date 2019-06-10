@@ -1,12 +1,46 @@
 ﻿<Window x:Class="AntRunner.AboutWin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="About Us" Height="330.888" Width="574.224" WindowStyle="ToolWindow" ResizeMode="NoResize">
+        Title="About us" Height="296.185" Width="462.045" WindowStyle="ToolWindow" ResizeMode="NoResize">
     <Grid>
-        <Image Height="110"  Margin="119,72,0,0" Name="image1" Stretch="Uniform" Source="/AntRunner;component/0030110064.jpg" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Image Height="127"  Margin="327,63,0,0" Name="image2" Stretch="Uniform" Source="/AntRunner;component/support.jpg" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock Height="23"   Margin="115,196,333,0" Text="Antenna Runner 1.0" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <TextBlock Height="23"   Margin="336,196,123,0" Text="Technical Support" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <TextBlock   Margin="0,150,0,20" Text="Copyright (C) 2019 XIN. All Rights Reserved." Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Label Height="110" Width="110" 
+               VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label.Background>
+                <ImageBrush ImageSource="logo.ico" Stretch="Uniform"/>
+            </Label.Background>
+        </Label>
+        <Image Height="127"  Name="image2" Stretch="Uniform"  Opacity="0"
+               Source="/AntRunner;component/support.jpg" VerticalAlignment="Center" 
+               HorizontalAlignment="Center">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="image2" Storyboard.TargetProperty="Opacity"
+                                             From="0" To="1" Duration="0:0:0.5" ></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="image2" Storyboard.TargetProperty="Opacity"
+                                             From="1" To="0" Duration="0:0:0.5" ></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+        <TextBlock Height="23" Name="blk1"  Text="Antenna Runner 1.0" 
+                   VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="168,182,167,0"/>
+        <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" >
+            <TextBlock Text="Copyright " Foreground="Gray"/>
+            <TextBlock Name="tipTime" Text="©" Foreground="Gray"/>
+            <TextBlock Text=" 2019 STAR All Rights Reserved." Foreground="Gray"/>
+        </StackPanel>
     </Grid>
 </Window>

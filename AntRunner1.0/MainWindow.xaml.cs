@@ -42,6 +42,7 @@ namespace AntRunner
         Brush bshFail = Brushes.Red;
         Brush bshTgr = Brushes.ForestGreen;
         private State state = State.Stoped;
+        public DateTime expireTime;
 
         public State State
         {
@@ -104,9 +105,8 @@ namespace AntRunner
             StreamReader sr = new StreamReader(fs);
             string str = sr.ReadLine();
             str = Helper.Decode(str);
-
-            DateTime time = DateTime.Parse(str);
-            return DateTime.Now > time;
+            expireTime = DateTime.Parse(str);
+            return DateTime.Now > expireTime;
         }
         public void InitCount()
         {
@@ -535,14 +535,15 @@ namespace AntRunner
             }
             return list;
         }
+        #region Check
         private bool CheckPass(ref SortedList<double, double> list, ParaObject para, out List<int> errors)
         {
             if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
             {
                 list = vna.ReadTrace(para);
-                return CheckPass2(list, para, out errors);
+                return CheckPass_LOG(list, para, out errors);
             }
-            else
+            else if (Settings.Default.TraceFormat == TraceFormat.SWR.ToString())
             {
                 SortedList<double, double> raw = vna.ReadTrace(para);
                 list = new SortedList<double, double>();
@@ -552,11 +553,16 @@ namespace AntRunner
                     list.Add(marker, GetPointByTrace(raw, marker));
                 }
                 errors = new List<int>();
-                return CheckPass1(list, para);
+                return CheckPass_SWR(list, para);
+            }
+            else
+            {
+                errors = new List<int>();
+                return true;
             }
         }
 
-        private bool CheckPass1(SortedList<double, double> list, ParaObject para)
+        private bool CheckPass_SWR(SortedList<double, double> list, ParaObject para)
         {
             SortedList<double, double> referTrace = GetReferTrace(para);
             double refer, min, max;
@@ -571,7 +577,7 @@ namespace AntRunner
             return true;
         }
 
-        private bool CheckPass2(SortedList<double, double> trace, ParaObject para, out List<int> errorCode)
+        private bool CheckPass_LOG(SortedList<double, double> trace, ParaObject para, out List<int> errorCode)
         {
             errorCode = new List<int>();
             double powRef, fqRef, powMin, fqMin;
@@ -595,7 +601,7 @@ namespace AntRunner
             //检查功率切线的频宽（频宽比较）
             ParaObject para2 = new ParaObject();
             para2.CutPow = para.CutPow;
-            para.Markers = GetParaDataInTrace(trace, para2);
+            para.Markers = GetMarkersInTrace(trace, para2);
             double diffBW = Math.Abs(para.DiffBW);
             if (para2.CutBW < para.CutBW - diffBW || para2.CutBW > para.CutBW + diffBW)
             {
@@ -604,11 +610,20 @@ namespace AntRunner
 
             return errorCode.Count == 0;
         }
+        #endregion
 
-        private Dictionary<double, double> GetParaDataInTrace(SortedList<double, double> trace, ParaObject para)
+        /// <summary>
+        /// 读曲线中的Marker,(共3个Marker：最低点、功能切线左右两点)
+        /// </summary>
+        /// <param name="trace"></param>
+        /// <param name="para"></param>
+        /// <returns></returns>
+        private Dictionary<double, double> GetMarkersInTrace(SortedList<double, double> trace, ParaObject para)
         {
             double minFreq, minPower;
             GetTraceMin(trace, out minFreq, out minPower);
+            Dictionary<double, double> markers = new Dictionary<double, double>();
+            markers.Add(minFreq, minPower);
             SortedList<double, double> trace1 = new SortedList<double, double>();
             SortedList<double, double> trace2 = new SortedList<double, double>();
 
@@ -666,11 +681,9 @@ namespace AntRunner
             }
             para.CutBW = para.CutRightFreq - para.CutLeftFreq;
 
-            Dictionary<double, double> markers = new Dictionary<double, double>();
-            markers.Add(para.CutLeftFreq, para.CutPow);
-            if (!markers.ContainsKey(minFreq))
+            if (!markers.ContainsKey(para.CutLeftFreq))
             {
-                markers.Add(minFreq, minPower);
+                markers.Add(para.CutLeftFreq, para.CutPow);
             }
             if (!markers.ContainsKey(para.CutRightFreq))
             {
@@ -802,7 +815,7 @@ namespace AntRunner
                         sr.Close();
                         fs.Close();
                     }
-                    para.MarkersCal = GetParaDataInTrace(list, para);
+                    para.MarkersCal = GetMarkersInTrace(list, para);
                     return list;
                 }
                 catch (Exception ex)

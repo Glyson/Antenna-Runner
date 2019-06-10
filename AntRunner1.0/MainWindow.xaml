@@ -155,8 +155,11 @@
                         <TextBlock VerticalAlignment="Center">总统计：</TextBlock>
                         <TextBox Name="tbAll"  VerticalContentAlignment="Center" Width="Auto" Margin="7,0,0,0"
                                  MinWidth="120" Height="23" Text="98/100 | 90%" IsReadOnly="True"></TextBox>
-                  </StackPanel>
-                    </StatusBarItem>
+                    </StackPanel>
+                </StatusBarItem>
+                <StatusBarItem Padding="0" HorizontalAlignment="Right">
+                    <Label Name="tipTime" HorizontalAlignment="Right" Height="20" Width="20"></Label>
+                </StatusBarItem>
             </StatusBar.Items>
         </StatusBar>
     </Grid>
