@@ -9,7 +9,6 @@ namespace AntRunner
     /// </summary>
     public partial class AboutWin : Window
     {
-
         public AboutWin()
         {
             InitializeComponent();

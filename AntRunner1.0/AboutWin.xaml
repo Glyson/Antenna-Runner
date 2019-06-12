@@ -7,12 +7,8 @@
             <RowDefinition Height="200*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Label Height="110" Width="110" 
-               VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Label.Background>
-                <ImageBrush ImageSource="logo.ico" Stretch="Uniform"/>
-            </Label.Background>
-        </Label>
+        <Image Height="110" Source="logo.ico" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center">
+        </Image>
         <Image Height="127"  Name="image2" Stretch="Uniform"  Opacity="0"
                Source="/AntRunner;component/support.jpg" VerticalAlignment="Center" 
                HorizontalAlignment="Center">
@@ -35,12 +31,12 @@
                 </EventTrigger>
             </Image.Triggers>
         </Image>
-        <TextBlock Height="23" Name="blk1"  Text="Antenna Runner 1.0" 
+        <TextBlock Name="blk1"  Text="Antenna Runner 1.0" 
                    VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="168,182,167,0"/>
         <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" >
             <TextBlock Text="Copyright " Foreground="Gray"/>
             <TextBlock Name="tipTime" Text="©" Foreground="Gray"/>
-            <TextBlock Text=" 2019 STAR All Rights Reserved." Foreground="Gray"/>
+            <TextBlock Text=" 2019 GLY All Rights Reserved." Foreground="Gray"/>
         </StackPanel>
     </Grid>
 </Window>
