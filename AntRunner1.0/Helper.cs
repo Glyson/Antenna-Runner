@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
@@ -10,6 +12,14 @@ namespace AntRunner
 {
     static class Helper
     {
+        public static string GetEnumDescription(Enum e)
+        {
+            FieldInfo field= e.GetType().GetField(e.ToString());
+            object[] objs = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            if (objs == null || objs.Length == 0)
+                return e.ToString();
+            return ((DescriptionAttribute)objs[0]).Description;
+        }
         public static TEnum String2Enum<TEnum>(string str)
         {
             try

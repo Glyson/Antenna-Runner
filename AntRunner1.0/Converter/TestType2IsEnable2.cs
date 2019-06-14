@@ -15,9 +15,9 @@ namespace AntRunner
             switch (value.ToString ())
             {
                 case "SWR":
-                    return false;
+                    return Visibility.Collapsed;
                 default:
-                    return true;
+                    return Visibility.Visible;
             }
         }
 

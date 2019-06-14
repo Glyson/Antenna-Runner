@@ -95,8 +95,7 @@ namespace AntRunner
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.Para2.Power = Settings.Default.Para1.Power;
-            //Settings.Default.Para2.Enable = Settings.Default.Para1.Enable;
+            Settings.Default.Para2.Power = Settings.Default.Para1.Power; 
             Settings.Default.Para2.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para2.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para2.FreqStop = Settings.Default.Para1.FreqStop;
@@ -110,9 +109,10 @@ namespace AntRunner
             Settings.Default.Para2.DiffBW = Settings.Default.Para1.DiffBW;
             Settings.Default.Para2.DiffFreq = Settings.Default.Para1.DiffFreq;
             Settings.Default.Para2.DiffPower = Settings.Default.Para1.DiffPower;
+            Settings.Default.Para2.DiffFreq_Bad = Settings.Default.Para1.DiffFreq_Bad;
+            Settings.Default.Para2.DiffPower_Bad = Settings.Default.Para1.DiffPower_Bad;
 
-            Settings.Default.Para3.Power = Settings.Default.Para1.Power;
-            //Settings.Default.Para3.Enable = Settings.Default.Para1.Enable;
+            Settings.Default.Para3.Power = Settings.Default.Para1.Power; 
             Settings.Default.Para3.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para3.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para3.FreqStop = Settings.Default.Para1.FreqStop;
@@ -126,9 +126,10 @@ namespace AntRunner
             Settings.Default.Para3.DiffBW = Settings.Default.Para1.DiffBW;
             Settings.Default.Para3.DiffFreq = Settings.Default.Para1.DiffFreq;
             Settings.Default.Para3.DiffPower = Settings.Default.Para1.DiffPower;
+            Settings.Default.Para3.DiffFreq_Bad = Settings.Default.Para1.DiffFreq_Bad;
+            Settings.Default.Para3.DiffPower_Bad = Settings.Default.Para1.DiffPower_Bad;
 
-            Settings.Default.Para4.Power = Settings.Default.Para1.Power;
-            //Settings.Default.Para4.Enable = Settings.Default.Para1.Enable;
+            Settings.Default.Para4.Power = Settings.Default.Para1.Power; 
             Settings.Default.Para4.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para4.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para4.FreqStop = Settings.Default.Para1.FreqStop;
@@ -142,6 +143,8 @@ namespace AntRunner
             Settings.Default.Para4.DiffBW = Settings.Default.Para1.DiffBW;
             Settings.Default.Para4.DiffFreq = Settings.Default.Para1.DiffFreq;
             Settings.Default.Para4.DiffPower = Settings.Default.Para1.DiffPower;
+            Settings.Default.Para4.DiffFreq_Bad = Settings.Default.Para1.DiffFreq_Bad;
+            Settings.Default.Para4.DiffPower_Bad = Settings.Default.Para1.DiffPower_Bad;
 
             System.Windows.MessageBox.Show(this, "Mapping OK.", "Tips");
         }

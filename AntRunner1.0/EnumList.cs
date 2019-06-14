@@ -9,6 +9,23 @@ using System.Windows.Data;
 
 namespace AntRunner
 {
+    public enum ErrorCode
+    {
+        [Description("Power Low")]
+        PowL=1,
+        [Description("Power High")]
+        PowH,
+        [Description("Frequency Low")]
+        FreqL,
+        [Description("Frequency High")]
+        FreqH,
+        [Description("Frequency Width Low")]
+        FreqBandWidthL,
+        [Description("Frequency Width High")]
+        FreqBandWidthH,
+        [Description("Short Circuit")]
+        Bad,
+    }
     public enum Instrument
     { 
         Agilent_5071C,

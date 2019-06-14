@@ -12,12 +12,12 @@ namespace AntRunner
     public static class DataAccess
     {
         #region single test output
-        public static string Output(ParaObject para, SortedList<double, double> list, List<int> errors)
+        public static string Output(ParaObject para, SortedList<double, double> list, List<ErrorCode> errors)
         {
             StreamWriter writer = null;
             try
             {
-                bool pass = errors != null && errors.Count > 0;
+                bool pass = !(errors != null && errors.Count > 0);
                 string path = GetFilePath(para, pass);
                 using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
                 {
@@ -27,6 +27,7 @@ namespace AntRunner
                     writer.WriteLine("DUT Code," + Settings.Default.Code);
                     writer.WriteLine("Trace Type," + para.Trace);
                     writer.WriteLine("Cut Power," + para.CutPow);
+                    writer.WriteLine("Frequency Width ," + para.CutBW);
                     writer.WriteLine("Frequency Width Difference," + para.DiffBW);
                     writer.WriteLine("Frequency Difference," + para.DiffFreq);
                     writer.WriteLine("Power Difference," + para.DiffPower);
@@ -187,6 +188,9 @@ namespace AntRunner
                     sh.Cells[r, 1] = "Cut Power";
                     sh.Cells[r, 2] = string.Format("{0} dBm", tempPara.CutPow);
                     r++;
+                    sh.Cells[r, 1] = "Frequency Width";
+                    sh.Cells[r, 2] = string.Format("{0} MHz", tempPara.CutBW);
+                    r++;
                     sh.Cells[r, 1] = "Frequency Width Difference";
                     sh.Cells[r, 2] = string.Format("{0} MHz", tempPara.DiffBW);
                     r++;
@@ -198,11 +202,22 @@ namespace AntRunner
 
                     if (listData.Count > 0)
                     {
-                        int j = 1;
+                        int j = 0;
+                        string tag = "Left";
                         foreach (KeyValuePair<double, double> item in listData[0].ReferData)
                         {
                             r++;
-                            sh.Cells[r, 1] = "Marker " + (j++);
+                            j++;
+                            if (j == 2)
+                            {
+                                tag = "Low";
+                            }
+                            else if (j == 3)
+                            {
+                                tag = "Right";
+                            }
+
+                            sh.Cells[r, 1] = string.Format("Marker ({0})", tag);
                             sh.Cells[r, 2] = string.Format("{0,4} MHz", Math.Round(item.Key, 2));
                             sh.Cells[r, 3] = string.Format("{0} dBm", Math.Round(item.Value, 2));
                         }
@@ -267,10 +282,13 @@ namespace AntRunner
                 sh.Cells[r, ++c] = "Code";
                 sh.Cells[r, ++c] = "Result";
                 c++;
-                for (int i = 1; i <= 3; i++)
-                {
-                    sh.Cells[r, ++c] = "Marker " + i;
-                }
+                sh.Cells[r, ++c] = "频率偏差";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 20;
+                sh.Cells[r, ++c] = "功率偏差";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 20;
+                sh.Cells[r, ++c] = "频宽偏差";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 30;
+                sh.Cells[r, ++c] = "短路";
                 foreach (SingleData data in listData)
                 {
                     r++;
@@ -279,27 +297,73 @@ namespace AntRunner
                     sh.Cells[r, ++c] = data.Code;
                     sh.Cells[r, ++c] = data.Result;
 
-                    c++;
-                    foreach (KeyValuePair<double, double> item in data.ListData)
-                    {
-                        sh.Cells[r, ++c] = string.Format("{0,7} MHz: {1} dBm",
-                            Math.Round(item.Key, 2), Math.Round(item.Value, 2));
-                    }
-
                     if (data.Result == "Fail")
                     {
                         ((Excel.Range)sh.Rows[r, Type.Missing]).Font.ColorIndex = 3;
-
-                        if (data.Errors.Contains('3'))
-                        {
-                            ((Excel.Range)sh.Cells[r, 5]).Font.Bold = true;
-                            ((Excel.Range)sh.Cells[r, 7]).Font.Bold = true;
-                        }
-                        if (data.Errors.Contains('1') || data.Errors.Contains('2'))
-                        {
-                            ((Excel.Range)sh.Cells[r, 6]).Font.Bold = true;
-                        }
                     }
+                    else
+                    {
+                        ((Excel.Range)sh.Rows[r, Type.Missing]).Font.ColorIndex = 1;
+                    }
+
+                    c++;
+                    string tag = "正常";
+                    ((Excel.Range)sh.Cells[r, 5]).Font.ColorIndex = 1;
+                    if (data.Errors.Contains(ErrorCode.FreqL.ToString()))
+                    {
+                        tag = "偏低";
+                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 6;
+                    }
+                    else if (data.Errors.Contains(ErrorCode.FreqH.ToString()))
+                    {
+                        tag = "偏高";
+                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 3;
+                    }
+                    string str = string.Format("{0:N2} MHz | {1}", data.ListData.Keys[1], tag);
+                    sh.Cells[r, ++c] = str;
+
+                    tag = "正常";
+                    ((Excel.Range)sh.Cells[r, 6]).Font.ColorIndex = 1;
+                    if (data.Errors.Contains(ErrorCode.PowL.ToString()))
+                    {
+                        tag = "偏低";
+                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 6;
+                    }
+                    else if (data.Errors.Contains(ErrorCode.PowH.ToString()))
+                    {
+                        tag = "偏高";
+                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 3;
+                    }
+                    str = string.Format("{0:N2} MHz | {1}", data.ListData.Values[1], tag);
+                    sh.Cells[r, ++c] = str;
+
+                    tag = "正常";
+                    ((Excel.Range)sh.Cells[r, 7]).Font.ColorIndex = 1;
+                    if (data.Errors.Contains(ErrorCode.FreqBandWidthL.ToString()))
+                    {
+                        tag = "偏低";
+                        ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 6;
+                    }
+                    else if (data.Errors.Contains(ErrorCode.FreqBandWidthH.ToString()))
+                    {
+                        tag = "偏高";
+                        ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 3;
+                    }
+                    str = string.Format("{0:N2} - {1:N2} = {2:N2}MHz | {3}",
+                        data.ListData.Values.Last(), data.ListData.Values.First(),
+                        data.ListData.Values.Last() - data.ListData.Values.First(), tag);
+                    sh.Cells[r, ++c] = str;
+
+                    tag = "否";
+                    ((Excel.Range)sh.Cells[r, 8]).Font.ColorIndex = 1;
+                    if (data.Errors.Contains(ErrorCode.Bad.ToString()))
+                    {
+                        tag = "是";
+                        ((Excel.Range)sh.Cells[r, 8]).Interior.ColorIndex = 3;
+                    }
+                    sh.Cells[r, ++c] = tag;
+
+
                 }
             }
         }

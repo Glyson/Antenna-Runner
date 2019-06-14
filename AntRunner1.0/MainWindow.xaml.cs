@@ -298,7 +298,7 @@ namespace AntRunner
         private void Run1()
         {
             bool pass;
-            List<int> errors;
+            List<ErrorCode> errors;
             SortedList<double, double> list = null;
             btnStart1.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -309,7 +309,7 @@ namespace AntRunner
             {
                 pass = CheckPass(ref list, Settings.Default.Para1, out errors);
                 string path = DataAccess.Output(Settings.Default.Para1, list, errors);
-                LogMsg(Settings.Default.Para1.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
+                LogMsg(Settings.Default.Para1.Trace, path, errors);
                 Count1++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
@@ -325,7 +325,7 @@ namespace AntRunner
         private void Run2()
         {
             bool pass;
-            List<int> errors;
+            List<ErrorCode> errors;
             SortedList<double, double> list = null;
             btnStart2.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -336,7 +336,7 @@ namespace AntRunner
             {
                 pass = CheckPass(ref list, Settings.Default.Para2, out errors);
                 string path = DataAccess.Output(Settings.Default.Para2, list, errors);
-                LogMsg(Settings.Default.Para2.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
+                LogMsg(Settings.Default.Para2.Trace, path, errors);
                 Count2++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
@@ -352,7 +352,7 @@ namespace AntRunner
         private void Run3()
         {
             bool pass;
-            List<int> errors;
+            List<ErrorCode> errors;
             SortedList<double, double> list = null;
             btnStart3.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -363,7 +363,7 @@ namespace AntRunner
             {
                 pass = CheckPass(ref list, Settings.Default.Para3, out errors);
                 string path = DataAccess.Output(Settings.Default.Para3, list, errors);
-                LogMsg(Settings.Default.Para3.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
+                LogMsg(Settings.Default.Para3.Trace, path, errors);
                 Count3++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
@@ -379,7 +379,7 @@ namespace AntRunner
         private void Run4()
         {
             bool pass;
-            List<int> errors;
+            List<ErrorCode> errors;
             SortedList<double, double> list = null;
             btnStart4.Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -390,7 +390,7 @@ namespace AntRunner
             {
                 pass = CheckPass(ref list, Settings.Default.Para4, out errors);
                 string path = DataAccess.Output(Settings.Default.Para4, list, errors);
-                LogMsg(Settings.Default.Para4.Trace, pass, (pass ? "Pass" : "Fail") + " | Stored in : ", path);
+                LogMsg(Settings.Default.Para4.Trace, path, errors);
                 Count4++;
             }
             this.Dispatcher.BeginInvoke(new Action(delegate
@@ -536,7 +536,7 @@ namespace AntRunner
             return list;
         }
         #region Check
-        private bool CheckPass(ref SortedList<double, double> list, ParaObject para, out List<int> errors)
+        private bool CheckPass(ref SortedList<double, double> list, ParaObject para, out List<ErrorCode> errors)
         {
             if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
             {
@@ -552,12 +552,12 @@ namespace AntRunner
                 {
                     list.Add(marker, GetPointByTrace(raw, marker));
                 }
-                errors = new List<int>();
+                errors = new List<ErrorCode>();
                 return CheckPass_SWR(list, para);
             }
             else
             {
-                errors = new List<int>();
+                errors = new List<ErrorCode>();
                 return true;
             }
         }
@@ -577,25 +577,37 @@ namespace AntRunner
             return true;
         }
 
-        private bool CheckPass_LOG(SortedList<double, double> trace, ParaObject para, out List<int> errorCode)
+        private bool CheckPass_LOG(SortedList<double, double> trace, ParaObject para, out List<ErrorCode> errorCode)
         {
-            errorCode = new List<int>();
+            errorCode = new List<ErrorCode>();
             double powRef, fqRef, powMin, fqMin;
             SortedList<double, double> referTrace = GetReferTrace(para);
             GetTraceMin(referTrace, out fqRef, out powRef);
             GetTraceMin(trace, out fqMin, out powMin);
             double diffFreq = Math.Abs(para.DiffFreq);
             double diffPower = Math.Abs(para.DiffPower);
+            double diffFreqBad = Math.Abs(para.DiffFreq_Bad);
+            double diffPowerBad = Math.Abs(para.DiffPower_Bad);
+            //errorCode.Add(ErrorCode.FreqL);
+            //errorCode.Add(ErrorCode.PowH);
             //检查最低点的频率偏差(横向比较)
-            if (fqMin < fqRef - diffFreq || fqMin > fqRef + diffFreq)
+            if (fqMin < fqRef - diffFreq)
             {
-                errorCode.Add(1);
+                errorCode.Add(ErrorCode.FreqL);
+            }
+            if (fqMin > fqRef + diffFreq)
+            {
+                errorCode.Add(ErrorCode.FreqH);
             }
 
             //检查最低点的功能偏差（纵向比较）
-            if (powMin < powRef - diffPower || powMin > powRef + diffPower)
+            if (powMin < powRef - diffPower)
             {
-                errorCode.Add(2);
+                errorCode.Add(ErrorCode.PowL);
+            }
+            if (powMin > powRef + diffPower)
+            {
+                errorCode.Add(ErrorCode.PowH);
             }
 
             //检查功率切线的频宽（频宽比较）
@@ -603,11 +615,21 @@ namespace AntRunner
             para2.CutPow = para.CutPow;
             para.Markers = GetMarkersInTrace(trace, para2);
             double diffBW = Math.Abs(para.DiffBW);
-            if (para2.CutBW < para.CutBW - diffBW || para2.CutBW > para.CutBW + diffBW)
+            if (para2.CutBW < para.CutBW - diffBW)
             {
-                errorCode.Add(3);
+                errorCode.Add(ErrorCode.FreqBandWidthL);
+            }
+            if (para2.CutBW > para.CutBW + diffBW)
+            {
+                errorCode.Add(ErrorCode.FreqBandWidthH);
             }
 
+            //检查短路
+            if (powMin < powRef - diffPowerBad || powMin > powRef + diffPowerBad
+                || fqMin < fqRef - diffFreqBad || fqMin > fqRef + diffFreqBad)
+            {
+                errorCode.Add(ErrorCode.Bad);
+            }
             return errorCode.Count == 0;
         }
         #endregion
@@ -792,7 +814,7 @@ namespace AntRunner
             string path = para.ReferTracePath;
             if (!File.Exists(path))
             {
-                LogMsg(port, Brushes.Red, string.Format("No found Cal File({0})", path));
+                LogMsg(port, Brushes.Red, string.Format("没有校准文件：“{0}”", path));
                 return null;
             }
             else
@@ -940,11 +962,11 @@ namespace AntRunner
         }
 
         #region LOG
-        void link_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        void link_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             System.Diagnostics.Process.Start(e.Uri.LocalPath);
         }
-        private void LogMsg(int port, Brush bsh, string msg, string path = null)
+        private void LogMsg(int port, Brush bsh, string msg)
         {
             Paragraph pgp = pgp1;
             RichTextBox rtb = rtb1;
@@ -980,35 +1002,73 @@ namespace AntRunner
             run.Foreground = bsh;
             pgp.Inlines.Add(run);
 
-            Uri u;
-            if (path != null && Uri.TryCreate(path, UriKind.Absolute, out u))
-            {
-                run = new Run(System.IO.Path.GetFileName(path));
-                run.Foreground = bsh;
-                Hyperlink link = new Hyperlink(run);
-                link.ToolTip = u.LocalPath;
-                link.NavigateUri = u;
-                link.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(link_RequestNavigate);
-                ToolTipService.SetInitialShowDelay(link, 2000);
-                pgp.Inlines.Add(link);
-            }
-
             LineBreak br = new LineBreak();
             pgp.Inlines.Add(br);
             rtb.ScrollToEnd();
         }
-        private void LogMsg(int port, bool isOK, string msg, string path = null)
+        private void LogMsg(string trace, string path, List<ErrorCode> errors)
         {
-            Brush bsh = isOK ? Brushes.Blue : Brushes.Red;
-            LogMsg(port, bsh, msg, path);
-        }
-        private void LogMsg(string trace, bool isOK, string msg, string path = null)
-        {
-            Brush bsh = isOK ? Brushes.Blue : Brushes.Red;
             int port = int.Parse(trace.Last().ToString());
+            bool isOK = errors == null || errors.Count == 0;
+            Brush bsh = isOK ? Brushes.Blue : Brushes.Red;
+            string pass = isOK ? "Pass" : "Fail";
             btnStart1.Dispatcher.BeginInvoke(new Action(delegate
             {
-                LogMsg(port, bsh, msg, path);
+                Paragraph pgp = pgp1;
+                RichTextBox rtb = rtb1;
+                switch (port)
+                {
+                    case 1:
+                        pgp = pgp1;
+                        rtb = rtb1;
+                        break;
+                    case 2:
+                        pgp = pgp2;
+                        rtb = rtb2;
+                        break;
+                    case 3:
+                        pgp = pgp3;
+                        rtb = rtb3;
+                        break;
+                    case 4:
+                        pgp = pgp4;
+                        rtb = rtb4;
+                        break;
+                }
+                if (pgp.Inlines.Count > 1000)
+                {
+                    pgp.Inlines.Clear();
+                }
+                Run run = new Run(DateTime.Now.ToString("HH:mm:ss >> "));
+                run.Foreground = Brushes.Purple;
+                run.FontFamily = new FontFamily("Batang,Arial");
+                pgp.Inlines.Add(run);
+
+                run = new Run(pass);
+                run.Foreground = bsh;
+
+                Uri u;
+                if (path != null && Uri.TryCreate(path, UriKind.Absolute, out u))
+                {
+                    Hyperlink link = new Hyperlink(run);
+                    link.ToolTip = u.LocalPath;
+                    link.NavigateUri = u;
+                    link.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(link_RequestNavigate);
+                    ToolTipService.SetInitialShowDelay(link, 2000);
+                    pgp.Inlines.Add(link);
+                }
+                StringBuilder errStr = new StringBuilder();
+                foreach (ErrorCode e in errors)
+                {
+                    errStr.Append(" | " + Helper.GetEnumDescription(e));
+                }
+                run = new Run(errStr.ToString());
+                run.Foreground = bsh;
+                pgp.Inlines.Add(run);
+
+                LineBreak br = new LineBreak();
+                pgp.Inlines.Add(br);
+                rtb.ScrollToEnd();
             }));
         }
         #endregion

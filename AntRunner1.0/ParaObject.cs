@@ -249,6 +249,29 @@ namespace AntRunner
                 OnPropertyChanged("DiffPower");
             }
         }
+        private double _diffFreq_Bad = 100;
+
+        public double DiffFreq_Bad
+        {
+            get { return _diffFreq_Bad; }
+            set
+            {
+                _diffFreq_Bad = value;
+                OnPropertyChanged("DiffFreq_Bad");
+            }
+        }
+        private double _diffPower_Bad = 10;
+
+        public double DiffPower_Bad
+        {
+            get { return _diffPower_Bad; }
+            set
+            {
+                _diffPower_Bad = value;
+                OnPropertyChanged("DiffPower_Bad");
+            }
+        }
+
         private object _markers;
         public object Markers
         {
