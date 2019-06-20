@@ -45,7 +45,7 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="TraceFormat" Type="System.String" Scope="User">
-      <Value Profile="(Default)">LOG</Value>
+      <Value Profile="(Default)">SWR</Value>
     </Setting>
     <Setting Name="Trace" Type="System.String" Scope="User">
       <Value Profile="(Default)">S11</Value>

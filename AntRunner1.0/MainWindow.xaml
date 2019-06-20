@@ -12,9 +12,9 @@
             <RowDefinition Height="259*" />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
-        <Menu Name="menu1" Margin="0,0,0,0" >
+        <Menu Name="menu1" Margin="0,0,0,0">
             <Menu.Items>
-                <MenuItem Header="文件">
+                <MenuItem Header="文件" >
                     <MenuItem Header="设置参数" Click="MenuItem_Click"/>
                     <MenuItem Header="导出报告" Click="MenuItem_Click_1"></MenuItem>
                     <!--<MenuItem Header="重置" Click="MenuItem_Click_4"></MenuItem>-->

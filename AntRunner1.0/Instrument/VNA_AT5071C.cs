@@ -79,9 +79,9 @@ namespace AntRunner
         //        return list;
         //    }
         //}
-     
 
-        public override SortedList<double, double> ReadTrace(ParaObject para)
+
+        public override SortedList<double, double> ReadTrace(ParaObject para, int a = 1)
         {
             if (MainWindow.IsSkip)
             {
@@ -93,11 +93,11 @@ namespace AntRunner
                 return list2;
             }
             int dimCnt = 2;
-            string[] arr = ReadTrace(para, dimCnt);
-            SortedList<double, double> list = GetTrace(para, arr, dimCnt, 1);
+            string[] arr = ReadInsTrace(para, dimCnt);
+            SortedList<double, double> list = FixTrace(para, arr, dimCnt, 1);
             return list;
         }
-        private string[] ReadTrace(ParaObject para, int dimCnt = 1)
+        private string[] ReadInsTrace(ParaObject para, int dimCnt = 1)
         {
             int ch = int.Parse(para.Trace.Last().ToString());
             Write(string.Format("DISP:WIND{0}:TRAC1:Y:AUTO", ch));
@@ -110,15 +110,6 @@ namespace AntRunner
                 arrCur = cur.Split(',');
             } while (arrCur.Length < para.Points * dimCnt);
             return arrCur;
-        }
-        private SortedList<double, double> GetTrace(ParaObject para, string[] arrCur, int dimCnt = 1, int dim = 1)
-        {
-            SortedList<double, double> list = new SortedList<double, double>();
-            double freq = para.FreqStart;
-            double step = (para.FreqStop - para.FreqStart) / (para.Points - 1);
-            for (int i = 0; i < para.Points; i++, freq += step)
-                list.Add(freq, double.Parse(arrCur[i * dimCnt + dim - 1]));
-            return list;
         }
     }
 }

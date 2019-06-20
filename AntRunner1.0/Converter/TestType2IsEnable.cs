@@ -5,19 +5,24 @@ using System.Text;
 using System.Windows;
 using System.Globalization;
 using System.Windows.Data;
+using AntRunner.Properties;
 
 namespace AntRunner
 {
-    public class TestType2IsEnable1 : IValueConverter
+    public class TestType2IsEnable : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch (value.ToString())
+            if (parameter == null)
             {
-                case "LOG":
-                    return false;
-                default:
-                    return true;
+                return Visibility.Collapsed;
+            }
+            else
+            {
+                string[] arr = parameter.ToString().Split(',');
+                if (arr.Contains(Settings.Default.TraceFormat))
+                    return Visibility.Visible;
+                return Visibility.Collapsed;
             }
         }
 

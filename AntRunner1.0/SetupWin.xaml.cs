@@ -69,8 +69,7 @@ namespace AntRunner
                 cbGPIB.Items.Clear();
                 cbGPIB.Foreground = Brushes.Black;
                 string pre = cbGPIB.Text;
-                ResourceManager manager = ResourceManager.GetLocalManager();
-                string[] listGPIB = manager.FindResources("GPIB?*INSTR");
+                string[] listGPIB = VNA.ScanGPIB();
                 cbGPIB.ItemsSource = listGPIB;
                 if (listGPIB != null && listGPIB.Length > 0)
                 {
@@ -87,6 +86,7 @@ namespace AntRunner
             }
             catch (Exception ex)
             {
+                AppLog.Error("RefreshGPIB has error.", ex);
                 cbGPIB.Foreground = Brushes.Red;
                 cbGPIB.Items.Add("No Instrument");
                 cbGPIB.SelectedIndex = 0;
@@ -95,7 +95,7 @@ namespace AntRunner
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.Para2.Power = Settings.Default.Para1.Power; 
+            Settings.Default.Para2.Power = Settings.Default.Para1.Power;
             Settings.Default.Para2.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para2.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para2.FreqStop = Settings.Default.Para1.FreqStop;
@@ -112,7 +112,7 @@ namespace AntRunner
             Settings.Default.Para2.DiffFreq_Bad = Settings.Default.Para1.DiffFreq_Bad;
             Settings.Default.Para2.DiffPower_Bad = Settings.Default.Para1.DiffPower_Bad;
 
-            Settings.Default.Para3.Power = Settings.Default.Para1.Power; 
+            Settings.Default.Para3.Power = Settings.Default.Para1.Power;
             Settings.Default.Para3.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para3.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para3.FreqStop = Settings.Default.Para1.FreqStop;
@@ -129,7 +129,7 @@ namespace AntRunner
             Settings.Default.Para3.DiffFreq_Bad = Settings.Default.Para1.DiffFreq_Bad;
             Settings.Default.Para3.DiffPower_Bad = Settings.Default.Para1.DiffPower_Bad;
 
-            Settings.Default.Para4.Power = Settings.Default.Para1.Power; 
+            Settings.Default.Para4.Power = Settings.Default.Para1.Power;
             Settings.Default.Para4.Bandwidth = Settings.Default.Para1.Bandwidth;
             Settings.Default.Para4.FreqStart = Settings.Default.Para1.FreqStart;
             Settings.Default.Para4.FreqStop = Settings.Default.Para1.FreqStop;
@@ -166,8 +166,9 @@ namespace AntRunner
                 }
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                AppLog.Error("OutputRefer has error.", ex);
                 if (writer != null)
                 {
                     writer.Flush();
@@ -283,51 +284,71 @@ namespace AntRunner
             }
         }
 
-            //private void InitCOM()
-            //{
-            //    string[] ports = SerialPort.GetPortNames();
-            //    cbPort1.ItemsSource = ports;
-            //    cbPort2.ItemsSource = ports;
-            //    cbPort3.ItemsSource = ports;
-            //    cbPort4.ItemsSource = ports;
-
-            //}
-            //private void Button_Click(object sender, RoutedEventArgs e)
-            //{
-            //    string[] ports = SerialPort.GetPortNames();
-            //    string pre;
-            //    int tag = int.Parse((sender as System.Windows.Controls.Button).Tag.ToString());
-            //    switch (tag)
-            //    {
-            //        case 1:
-            //            pre = cbPort1.Text;
-            //            cbPort1.ItemsSource = null;
-            //            cbPort1.Items.Clear();
-            //            cbPort1.ItemsSource = ports;
-            //            cbPort1.Text = pre;
-            //            break;
-            //        case 2:
-            //            pre = cbPort2.Text;
-            //            cbPort2.ItemsSource = null;
-            //            cbPort2.Items.Clear();
-            //            cbPort2.ItemsSource = ports;
-            //            cbPort2.Text = pre;
-            //            break;
-            //        case 3:
-            //            pre = cbPort3.Text;
-            //            cbPort3.ItemsSource = null;
-            //            cbPort3.Items.Clear();
-            //            cbPort3.ItemsSource = ports;
-            //            cbPort3.Text = pre;
-            //            break;
-            //        case 4:
-            //            pre = cbPort4.Text;
-            //            cbPort4.ItemsSource = null;
-            //            cbPort4.Items.Clear();
-            //            cbPort4.ItemsSource = ports;
-            //            cbPort4.Text = pre;
-            //            break;
-            //    }
-            //}
+        private void btnIdf_Click(object sender, RoutedEventArgs e)
+        {
+            string str = VNA.ReadIDN(Settings.Default.GPIB);
+            System.Windows.MessageBox.Show(str);
         }
+
+        private void cbGPIB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string idn = VNA.ReadIDN(Settings.Default.GPIB);
+            if (idn == null) return;
+            if (idn.Contains("5071"))
+            {
+                Settings.Default.Instrument = Instrument.Agilent_5071C.ToString();
+            }
+            else if (idn.Contains("8753"))
+            {
+                Settings.Default.Instrument = Instrument.Agilent_8753ES.ToString();
+            }
+        }
+
+        //private void InitCOM()
+        //{
+        //    string[] ports = SerialPort.GetPortNames();
+        //    cbPort1.ItemsSource = ports;
+        //    cbPort2.ItemsSource = ports;
+        //    cbPort3.ItemsSource = ports;
+        //    cbPort4.ItemsSource = ports;
+
+        //}
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    string[] ports = SerialPort.GetPortNames();
+        //    string pre;
+        //    int tag = int.Parse((sender as System.Windows.Controls.Button).Tag.ToString());
+        //    switch (tag)
+        //    {
+        //        case 1:
+        //            pre = cbPort1.Text;
+        //            cbPort1.ItemsSource = null;
+        //            cbPort1.Items.Clear();
+        //            cbPort1.ItemsSource = ports;
+        //            cbPort1.Text = pre;
+        //            break;
+        //        case 2:
+        //            pre = cbPort2.Text;
+        //            cbPort2.ItemsSource = null;
+        //            cbPort2.Items.Clear();
+        //            cbPort2.ItemsSource = ports;
+        //            cbPort2.Text = pre;
+        //            break;
+        //        case 3:
+        //            pre = cbPort3.Text;
+        //            cbPort3.ItemsSource = null;
+        //            cbPort3.Items.Clear();
+        //            cbPort3.ItemsSource = ports;
+        //            cbPort3.Text = pre;
+        //            break;
+        //        case 4:
+        //            pre = cbPort4.Text;
+        //            cbPort4.ItemsSource = null;
+        //            cbPort4.Items.Clear();
+        //            cbPort4.ItemsSource = ports;
+        //            cbPort4.Text = pre;
+        //            break;
+        //    }
+        //}
     }
+}

@@ -1,24 +1,22 @@
-﻿using System;
+﻿//#define FUN1//结果图标闪动提示
+
+using AntRunner.Properties;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Xceed.Wpf.AvalonDock.Layout;
-using System.Threading;
-using AntRunner.Properties;
-using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.IO.Ports;
-using System.Globalization;
-using System.ComponentModel;
 
 namespace AntRunner
 {
@@ -27,7 +25,7 @@ namespace AntRunner
     /// </summary>
     public partial class MainWindow : Window
     {
-        public const bool IsSkip = true;
+        public static bool IsSkip = false;
         volatile int Count1, Count2, Count3, Count4;
         volatile int Pass1, Pass2, Pass3, Pass4;
         string code1, code2, code3, code4;
@@ -43,6 +41,7 @@ namespace AntRunner
         Brush bshTgr = Brushes.ForestGreen;
         private State state = State.Stoped;
         public DateTime expireTime;
+        Storyboard sb1, sb2, sb3, sb4;
 
         public State State
         {
@@ -57,6 +56,11 @@ namespace AntRunner
             BrushConverter brushConverter = new BrushConverter();
             bshPass = (Brush)brushConverter.ConvertFromString("#FF3092FC");
             bshTgr = (Brush)brushConverter.ConvertFromString("#FF28F31B");
+
+            sb1 = CreateStoryboard(ellipse1);
+            sb2 = CreateStoryboard(ellipse2);
+            sb3 = CreateStoryboard(ellipse3);
+            sb4 = CreateStoryboard(ellipse4);
 
             //string unique = MyMD5.GetComputerId();
 
@@ -99,6 +103,19 @@ namespace AntRunner
             InitCount();
         }
 
+        private Storyboard CreateStoryboard(Ellipse ele)
+        {
+            DoubleAnimation ani = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(300)));
+            //ani.AutoReverse = true;
+            ani.RepeatBehavior = new RepeatBehavior(TimeSpan.FromSeconds(3));
+            Storyboard sb = new Storyboard();
+#if FUN1
+            sb.Children.Add(ani);
+#endif
+            Storyboard.SetTarget(ani, ele);
+            Storyboard.SetTargetProperty(ani, new PropertyPath(Ellipse.OpacityProperty.ToString()));
+            return sb;
+        }
         private bool HasExpired()
         {
             FileStream fs = new FileStream("license.config", FileMode.Open, FileAccess.Read);
@@ -134,21 +151,28 @@ namespace AntRunner
         }
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-            if (State == State.Running)
+            try
             {
-                MessageBox.Show(this, "正在测试...", "Tips", MessageBoxButton.OK);
-                return;
+                if (State == State.Running)
+                {
+                    MessageBox.Show(this, "正在测试...", "Tips", MessageBoxButton.OK);
+                    return;
+                }
+                if (!InitVNA())
+                    return;
+
+                if (Settings.Default.MatchCnt < 2)
+                    Settings.Default.MatchCnt = 2;
+
+                Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
+                Start(Settings.Default.Para2, ref refer2, ref ellipse2, ref btnStart2, ref t2);
+                Start(Settings.Default.Para3, ref refer3, ref ellipse3, ref btnStart3, ref t3);
+                Start(Settings.Default.Para4, ref refer4, ref ellipse4, ref btnStart4, ref t4);
             }
-            if (!InitVNA())
-                return;
-
-            if (Settings.Default.MatchCnt < 2)
-                Settings.Default.MatchCnt = 2;
-
-            Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
-            Start(Settings.Default.Para2, ref refer2, ref ellipse2, ref btnStart2, ref t2);
-            Start(Settings.Default.Para3, ref refer3, ref ellipse3, ref btnStart3, ref t3);
-            Start(Settings.Default.Para4, ref refer4, ref ellipse4, ref btnStart4, ref t4);
+            catch (Exception ex)
+            {
+                AppLog.Error("MenuItem_Click_3 has error.", ex);
+            }
         }
         private void StartCOM1(string name)
         {
@@ -163,10 +187,20 @@ namespace AntRunner
         }
         private bool InitVNA()
         {
-
             if (vna == null || !vna.IsOK)
             {
                 vna = VNA.CreateVNA();
+
+                try
+                {
+                    VNA.ScanGPIB();
+                    MainWindow.IsSkip = false;
+                }
+                catch (Exception ex)
+                {
+                    AppLog.Error("ScanGPIB has error.", ex);
+                    MainWindow.IsSkip = true;
+                }
 
                 if (IsSkip) return true;
                 if (!vna.Init(Settings.Default.GPIB))
@@ -298,8 +332,8 @@ namespace AntRunner
         private void Run1()
         {
             bool pass;
+            string path;
             List<ErrorCode> errors;
-            SortedList<double, double> list = null;
             btnStart1.Dispatcher.BeginInvoke(new Action(delegate
             {
                 btnStart1.IsEnabled = false;
@@ -307,8 +341,8 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                pass = CheckPass(ref list, Settings.Default.Para1, out errors);
-                string path = DataAccess.Output(Settings.Default.Para1, list, errors);
+                path = CheckPass(Settings.Default.Para1, out errors);
+                pass = errors.Count == 0;
                 LogMsg(Settings.Default.Para1.Trace, path, errors);
                 Count1++;
             }
@@ -316,6 +350,7 @@ namespace AntRunner
             {
                 if (pass) Pass1++;
                 ellipse1.Fill = pass ? bshPass : bshFail;
+                sb1.Begin(ellipse1, true);
                 blk1.Text = pass ? "合格" : "不合格";
                 tb1.Text = GetPercentStr(Count1, Pass1);
                 UpdateAll();
@@ -325,8 +360,8 @@ namespace AntRunner
         private void Run2()
         {
             bool pass;
+            string path;
             List<ErrorCode> errors;
-            SortedList<double, double> list = null;
             btnStart2.Dispatcher.BeginInvoke(new Action(delegate
             {
                 btnStart2.IsEnabled = false;
@@ -334,8 +369,8 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                pass = CheckPass(ref list, Settings.Default.Para2, out errors);
-                string path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                path = CheckPass(Settings.Default.Para2, out errors);
+                pass = errors.Count == 0;
                 LogMsg(Settings.Default.Para2.Trace, path, errors);
                 Count2++;
             }
@@ -343,6 +378,7 @@ namespace AntRunner
             {
                 if (pass) Pass2++;
                 ellipse2.Fill = pass ? bshPass : bshFail;
+                sb2.Begin(ellipse2, true);
                 blk2.Text = pass ? "合格" : "不合格";
                 tb2.Text = GetPercentStr(Count2, Pass2);
                 UpdateAll();
@@ -352,8 +388,8 @@ namespace AntRunner
         private void Run3()
         {
             bool pass;
+            string path;
             List<ErrorCode> errors;
-            SortedList<double, double> list = null;
             btnStart3.Dispatcher.BeginInvoke(new Action(delegate
             {
                 btnStart3.IsEnabled = false;
@@ -361,8 +397,8 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                pass = CheckPass(ref list, Settings.Default.Para3, out errors);
-                string path = DataAccess.Output(Settings.Default.Para3, list, errors);
+                path = CheckPass(Settings.Default.Para3, out errors);
+                pass = errors.Count == 0;
                 LogMsg(Settings.Default.Para3.Trace, path, errors);
                 Count3++;
             }
@@ -370,6 +406,7 @@ namespace AntRunner
             {
                 if (pass) Pass3++;
                 ellipse3.Fill = pass ? bshPass : bshFail;
+                sb3.Begin(ellipse3, true);
                 blk3.Text = pass ? "合格" : "不合格";
                 tb3.Text = GetPercentStr(Count3, Pass3);
                 UpdateAll();
@@ -379,8 +416,8 @@ namespace AntRunner
         private void Run4()
         {
             bool pass;
+            string path;
             List<ErrorCode> errors;
-            SortedList<double, double> list = null;
             btnStart4.Dispatcher.BeginInvoke(new Action(delegate
             {
                 btnStart4.IsEnabled = false;
@@ -388,8 +425,8 @@ namespace AntRunner
             }));
             lock (vna)
             {
-                pass = CheckPass(ref list, Settings.Default.Para4, out errors);
-                string path = DataAccess.Output(Settings.Default.Para4, list, errors);
+                path = CheckPass(Settings.Default.Para4, out errors);
+                pass = errors.Count == 0;
                 LogMsg(Settings.Default.Para4.Trace, path, errors);
                 Count4++;
             }
@@ -397,6 +434,7 @@ namespace AntRunner
             {
                 if (pass) Pass4++;
                 ellipse4.Fill = pass ? bshPass : bshFail;
+                sb4.Begin(ellipse4, true);
                 blk4.Text = pass ? "合格" : "不合格";
                 tb4.Text = GetPercentStr(Count4, Pass4);
                 UpdateAll();
@@ -441,18 +479,22 @@ namespace AntRunner
                     {
                         case Trace.S11:
                             ellipse1.Fill = bshTgr;
+                            sb1.Pause(ellipse1);
                             blk1.Text = "正在触发 . . .";
                             break;
                         case Trace.S22:
                             ellipse2.Fill = bshTgr;
+                            sb2.Pause(ellipse2);
                             blk2.Text = "正在触发 . . .";
                             break;
                         case Trace.S33:
                             ellipse3.Fill = bshTgr;
+                            sb3.Pause(ellipse3);
                             blk3.Text = "正在触发 . . .";
                             break;
                         case Trace.S44:
                             ellipse4.Fill = bshTgr;
+                            sb4.Pause(ellipse4);
                             blk4.Text = "正在触发 . . .";
                             break;
                     }
@@ -472,21 +514,6 @@ namespace AntRunner
                 }
             }
         }
-        //private bool MatchTrace(SortedList<double, double> trace1, SortedList<double, double> trace2, double diff)
-        //{
-        //    if (trace1.Count() != trace2.Count())
-        //        return false;
-        //    else
-        //    {
-        //        diff = Math.Abs(diff);
-        //        for (int i = 0; i < trace1.Count(); i++)
-        //        {
-        //            if (Math.Abs(trace1.Values[i] - trace2.Values[i]) > diff)
-        //                return false;
-        //        }
-        //        return true;
-        //    }
-        //}
         private bool MatchTrace(List<SortedList<double, double>> lists, double diff)
         {
             if (lists.Count() <= 1)
@@ -536,34 +563,48 @@ namespace AntRunner
             return list;
         }
         #region Check
-        private bool CheckPass(ref SortedList<double, double> list, ParaObject para, out List<ErrorCode> errors)
+        private string CheckPass(ParaObject para, out List<ErrorCode> errors)
         {
-            if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
-            {
-                list = vna.ReadTrace(para);
-                return CheckPass_LOG(list, para, out errors);
-            }
-            else if (Settings.Default.TraceFormat == TraceFormat.SWR.ToString())
+            bool pass;
+            string path = null;
+            if (Settings.Default.TraceFormat == TraceFormat.SWR.ToString())
             {
                 SortedList<double, double> raw = vna.ReadTrace(para);
-                list = new SortedList<double, double>();
+                SortedList<double, double> list = new SortedList<double, double>();
                 List<double> markers = GetMarker(para.MarkerText);
                 foreach (double marker in markers)
                 {
                     list.Add(marker, GetPointByTrace(raw, marker));
                 }
-                errors = new List<ErrorCode>();
-                return CheckPass_SWR(list, para);
+                pass = CheckPass_SWR(list, para, out errors);
+                path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                return path;
+            }
+            else if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
+            {
+                SortedList<double, double> list = vna.ReadTrace(para);
+                pass = CheckPass_LOG(list, para, out errors);
+                path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                return path;
+            }
+            else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+            {
+                SortedList<double, double> list1 = vna.ReadTrace(para, 1);
+                SortedList<double, double> list2 = vna.ReadTrace(para, 2);
+                pass = CheckPass_LOG8SWR(list1, list2, para, out errors);
+                //path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                return path;
             }
             else
             {
                 errors = new List<ErrorCode>();
-                return true;
+                return null;
             }
         }
 
-        private bool CheckPass_SWR(SortedList<double, double> list, ParaObject para)
+        private bool CheckPass_SWR(SortedList<double, double> list, ParaObject para, out List<ErrorCode> errorCode)
         {
+            errorCode = new List<ErrorCode>();
             SortedList<double, double> referTrace = GetReferTrace(para);
             double refer, min, max;
             foreach (KeyValuePair<double, double> item in list)
@@ -571,10 +612,16 @@ namespace AntRunner
                 refer = GetPointByTrace(referTrace, item.Key);
                 min = refer - para.ReferDiff;
                 max = refer + para.ReferDiff;
-                if (item.Value < min || item.Value > max)
-                    return false;
+                if (item.Value < min)
+                {
+                    errorCode.Add(ErrorCode.PowL);
+                }
+                if (item.Value > max)
+                {
+                    errorCode.Add(ErrorCode.PowH);
+                }
             }
-            return true;
+            return errorCode.Count == 0;
         }
 
         private bool CheckPass_LOG(SortedList<double, double> trace, ParaObject para, out List<ErrorCode> errorCode)
@@ -632,6 +679,63 @@ namespace AntRunner
             }
             return errorCode.Count == 0;
         }
+
+        private bool CheckPass_LOG8SWR(SortedList<double, double> logList, SortedList<double, double> swrList, ParaObject para, out List<ErrorCode> errorCode)
+        {
+            errorCode = new List<ErrorCode>();
+            double powRef, fqRef, powMin, fqMin;
+            SortedList<double, double> referTrace = GetReferTrace(para);
+            GetTraceMin(referTrace, out fqRef, out powRef);
+            GetTraceMin(logList, out fqMin, out powMin);
+            double diffFreq = Math.Abs(para.DiffFreq);
+            double diffPower = Math.Abs(para.DiffPower);
+            double diffFreqBad = Math.Abs(para.DiffFreq_Bad);
+            double diffPowerBad = Math.Abs(para.DiffPower_Bad);
+            //errorCode.Add(ErrorCode.FreqL);
+            //errorCode.Add(ErrorCode.PowH);
+            //检查最低点的频率偏差(横向比较)
+            if (fqMin < fqRef - diffFreq)
+            {
+                errorCode.Add(ErrorCode.FreqL);
+            }
+            if (fqMin > fqRef + diffFreq)
+            {
+                errorCode.Add(ErrorCode.FreqH);
+            }
+
+            //检查最低点的功能偏差（纵向比较）
+            if (powMin < powRef - diffPower)
+            {
+                errorCode.Add(ErrorCode.PowL);
+            }
+            if (powMin > powRef + diffPower)
+            {
+                errorCode.Add(ErrorCode.PowH);
+            }
+
+            //检查功率切线的频宽（频宽比较）
+            ParaObject para2 = new ParaObject();
+            para2.CutPow = para.CutPow;
+            para.Markers = GetMarkersInTrace(logList, para2);
+            double diffBW = Math.Abs(para.DiffBW);
+            if (para2.CutBW < para.CutBW - diffBW)
+            {
+                errorCode.Add(ErrorCode.FreqBandWidthL);
+            }
+            if (para2.CutBW > para.CutBW + diffBW)
+            {
+                errorCode.Add(ErrorCode.FreqBandWidthH);
+            }
+
+            //检查短路
+            if (powMin < powRef - diffPowerBad || powMin > powRef + diffPowerBad
+                || fqMin < fqRef - diffFreqBad || fqMin > fqRef + diffFreqBad)
+            {
+                errorCode.Add(ErrorCode.Bad);
+            }
+            return errorCode.Count == 0;
+        }
+
         #endregion
 
         /// <summary>
@@ -810,6 +914,15 @@ namespace AntRunner
 
         private SortedList<double, double> GetRefer(ParaObject para)
         {
+            if (IsSkip)
+            {
+                SortedList<double, double> list2 = new SortedList<double, double>();
+                double freq = para.FreqStart;
+                double step = (para.FreqStop - para.FreqStart) / (para.Points - 1);
+                for (int i = 0; i < para.Points; i++, freq += step)
+                    list2.Add(freq, 10);
+                return list2;
+            }
             int port = int.Parse(para.Trace.ToString().Last().ToString());
             string path = para.ReferTracePath;
             if (!File.Exists(path))
@@ -847,6 +960,7 @@ namespace AntRunner
                         sr.Close();
                         sr = null;
                     }
+                    AppLog.Error("GetRefer has error.", ex);
                     LogMsg(port, Brushes.Red, string.Format("Failed reading Cal File({0}), caused by: {1}", path, ex.Message));
                     return null;
                 }
@@ -1229,6 +1343,7 @@ namespace AntRunner
                     writer.Close();
                     writer = null;
                 }
+                AppLog.Error("Report2 has error.", ex);
                 MessageBox.Show("Report error! \n\n\n" + ex.Message);
             }
             finally

@@ -26,8 +26,9 @@ namespace AntRunner
             {
                 return (TEnum)Enum.Parse(typeof(TEnum), str);
             }
-            catch
+            catch(Exception ex)
             {
+                AppLog.Error("GetEnumDescription has error.", ex);
                 return default(TEnum);
             }
         }

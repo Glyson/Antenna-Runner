@@ -78,8 +78,9 @@ namespace AntRunner
                             result = mo[wmiProperty].ToString();
                             break;
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            AppLog.Error("identifier has error.", ex);
                         }
                     }
                 }

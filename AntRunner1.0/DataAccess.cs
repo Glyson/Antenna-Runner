@@ -56,11 +56,7 @@ namespace AntRunner
             }
             catch (Exception ex)
             {
-                if (writer != null)
-                {
-                    writer.Flush();
-                    writer.Close();
-                }
+                AppLog.Error("Output has error.", ex);
                 return null;
             }
         }
@@ -189,7 +185,7 @@ namespace AntRunner
                     sh.Cells[r, 2] = string.Format("{0} dBm", tempPara.CutPow);
                     r++;
                     sh.Cells[r, 1] = "Frequency Width";
-                    sh.Cells[r, 2] = string.Format("{0} MHz", tempPara.CutBW);
+                    sh.Cells[r, 2] = string.Format("{0:N2} MHz", tempPara.CutBW);
                     r++;
                     sh.Cells[r, 1] = "Frequency Width Difference";
                     sh.Cells[r, 2] = string.Format("{0} MHz", tempPara.DiffBW);
@@ -257,6 +253,7 @@ namespace AntRunner
             }
             catch (Exception ex)
             {
+                AppLog.Error("Report_LOG has error.", ex);
                 MessageBox.Show("Report error! \n\n\n" + ex.Message);
             }
             finally
@@ -281,13 +278,13 @@ namespace AntRunner
                 sh.Cells[r, ++c] = string.Format("Data File ( {0} )", listData[0].TraceType);
                 sh.Cells[r, ++c] = "Code";
                 sh.Cells[r, ++c] = "Result";
-                c++;
+                //c++;
                 sh.Cells[r, ++c] = "频率偏差";
                 ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 20;
                 sh.Cells[r, ++c] = "功率偏差";
                 ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 20;
                 sh.Cells[r, ++c] = "频宽偏差";
-                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 30;
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 40;
                 sh.Cells[r, ++c] = "短路";
                 foreach (SingleData data in listData)
                 {
@@ -306,60 +303,60 @@ namespace AntRunner
                         ((Excel.Range)sh.Rows[r, Type.Missing]).Font.ColorIndex = 1;
                     }
 
-                    c++;
+                    //c++;
                     string tag = "正常";
-                    ((Excel.Range)sh.Cells[r, 5]).Font.ColorIndex = 1;
+                    ((Excel.Range)sh.Cells[r, 4]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.FreqL.ToString()))
                     {
                         tag = "偏低";
-                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 6;
+                        ((Excel.Range)sh.Cells[r, 4]).Interior.ColorIndex = 6;
                     }
                     else if (data.Errors.Contains(ErrorCode.FreqH.ToString()))
                     {
                         tag = "偏高";
-                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, 4]).Interior.ColorIndex = 3;
                     }
                     string str = string.Format("{0:N2} MHz | {1}", data.ListData.Keys[1], tag);
                     sh.Cells[r, ++c] = str;
 
                     tag = "正常";
-                    ((Excel.Range)sh.Cells[r, 6]).Font.ColorIndex = 1;
+                    ((Excel.Range)sh.Cells[r, 5]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.PowL.ToString()))
                     {
                         tag = "偏低";
-                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 6;
+                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 6;
                     }
                     else if (data.Errors.Contains(ErrorCode.PowH.ToString()))
                     {
                         tag = "偏高";
-                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 3;
                     }
                     str = string.Format("{0:N2} MHz | {1}", data.ListData.Values[1], tag);
                     sh.Cells[r, ++c] = str;
 
                     tag = "正常";
-                    ((Excel.Range)sh.Cells[r, 7]).Font.ColorIndex = 1;
+                    ((Excel.Range)sh.Cells[r, 6]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.FreqBandWidthL.ToString()))
                     {
                         tag = "偏低";
-                        ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 6;
+                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 6;
                     }
                     else if (data.Errors.Contains(ErrorCode.FreqBandWidthH.ToString()))
                     {
                         tag = "偏高";
-                        ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 3;
                     }
                     str = string.Format("{0:N2} - {1:N2} = {2:N2}MHz | {3}",
-                        data.ListData.Values.Last(), data.ListData.Values.First(),
-                        data.ListData.Values.Last() - data.ListData.Values.First(), tag);
+                        data.ListData.Keys.Last(), data.ListData.Keys.First(),
+                        data.ListData.Keys.Last() - data.ListData.Keys.First(), tag);
                     sh.Cells[r, ++c] = str;
 
                     tag = "否";
-                    ((Excel.Range)sh.Cells[r, 8]).Font.ColorIndex = 1;
+                    ((Excel.Range)sh.Cells[r, 7]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.Bad.ToString()))
                     {
                         tag = "是";
-                        ((Excel.Range)sh.Cells[r, 8]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 3;
                     }
                     sh.Cells[r, ++c] = tag;
 
@@ -436,6 +433,7 @@ namespace AntRunner
             }
             catch (Exception ex)
             {
+                AppLog.Error("GetSingleData has error.", ex);
                 if (sr != null)
                 {
                     sr.Close();
@@ -469,7 +467,7 @@ namespace AntRunner
             }
             catch (Exception ex)
             {
-
+                AppLog.Error("GetCount8Pass has error.", ex);
             }
         }
 

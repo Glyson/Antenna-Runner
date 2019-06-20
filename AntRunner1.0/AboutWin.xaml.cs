@@ -16,5 +16,10 @@ namespace AntRunner
             ToolTipService.SetShowDuration(tipTime, 2000);
             ToolTipService.SetInitialShowDelay(tipTime, 10000);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -35,6 +35,7 @@ namespace AntRunner
     {
         SWR,
         LOG,
+        LOG_SWR,
     }
     public enum TriggerType
     {

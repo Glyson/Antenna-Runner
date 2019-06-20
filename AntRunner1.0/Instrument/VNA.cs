@@ -38,19 +38,26 @@ namespace AntRunner
                 }
             }
         }
-        public bool Init(string gpib)
+        public static string[] ScanGPIB()
+        {
+            ResourceManager manager = ResourceManager.GetLocalManager();
+            string[] listGPIB = manager.FindResources("GPIB?*INSTR");
+            return listGPIB;
+        }
+        public bool Init(string gpib, int timeout = 60000)
         {
             try
             {
                 rm = ResourceManager.GetLocalManager();
                 Session s = rm.Open(gpib);
-                s.Timeout = 60000;//1 mins
+                s.Timeout = timeout;//1 mins
                 ses = s as IMessageBasedSession;
                 IsOK = true;
                 return true;
             }
             catch (Exception ex)
             {
+                AppLog.Error("Init has error.", ex);
                 MainWindow.Self.Dispatcher.Invoke(new Action(delegate
                 {
                     MessageBox.Show(MainWindow.Self, ex.Message, "Error");
@@ -61,7 +68,7 @@ namespace AntRunner
         }
         public virtual void Config() { }
         public virtual void Setup(ParaObject para) { }
-        public virtual SortedList<double, double> ReadTrace(ParaObject para) { return null; }
+        public virtual SortedList<double, double> ReadTrace(ParaObject para, int traceNum = 1) { return null; }
         #endregion
 
 
@@ -77,13 +84,47 @@ namespace AntRunner
             if (Settings.Default.Para4.Enable)
                 portList.Add(4);
         }
-        protected void Write(string cmd, params object[] paras)
+
+        protected SortedList<double, double> FixTrace(ParaObject para, string[] arrCur, int dimCnt = 1, int dim = 1)
+        {
+            SortedList<double, double> list = new SortedList<double, double>();
+            double freq = para.FreqStart;
+            double step = (para.FreqStop - para.FreqStart) / (para.Points - 1);
+            for (int i = 0; i < para.Points; i++, freq += step)
+                list.Add(freq, double.Parse(arrCur[i * dimCnt + dim - 1]));
+            return list;
+        }
+        public void Write(string cmd, params object[] paras)
         {
             if (paras != null && paras.Length > 0)
             {
                 cmd = string.Format(cmd, paras);
             }
             ses.Write(cmd);
+        }
+        public string Read(string cmd, params object[] paras)
+        {
+            if (paras != null && paras.Length > 0)
+            {
+                cmd = string.Format(cmd, paras);
+            }
+            return ses.Query(cmd);
+        }
+        public static string ReadIDN(string gpib)
+        {
+            try
+            {
+                ResourceManager r = ResourceManager.GetLocalManager();
+                Session session = r.Open(gpib);
+                session.Timeout = 1000;//1 mins
+                IMessageBasedSession ises = session as IMessageBasedSession;
+                return ises.Query("*IDN?");
+            }
+            catch (Exception ex)
+            {
+                AppLog.Error("ReadIDN has error.", ex);
+                return ex.Message;
+            }
         }
 
         ~VNA()

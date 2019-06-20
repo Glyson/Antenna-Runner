@@ -267,6 +267,6 @@ E:\AntRunner1.0\bin\Debug\AntRunner.pdb
 E:\AntRunner1.0\obj\x86\Debug\AntRunner.g.resources
 E:\AntRunner1.0\obj\x86\Debug\AntRunner.Properties.Resources.resources
 E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.GenerateResource.cache
-E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.CoreCompileInputs.cache
-E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.CopyComplete
-E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csprojAssemblyReference.cache
+E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csprojResolveAssemblyReference.cache
+D:\Glyson\projects\Test\AntRunner1.0\bin\Debug\log4net.config
+D:\Glyson\projects\Test\AntRunner1.0\bin\Debug\Microsoft.Windows.Shell.dll

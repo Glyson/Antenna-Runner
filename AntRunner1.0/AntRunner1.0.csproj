@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -46,8 +46,15 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>C:\Users\glyso\source\repos\FileComparison\FileComparison\bin\Debug\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="NationalInstruments.Common, Version=9.0.40.362, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -85,19 +92,20 @@
     <Compile Include="AboutWin.xaml.cs">
       <DependentUpon>AboutWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\Instrument2IsEnable.cs" />
+    <Compile Include="Converter\TestType2IsEnable.cs" />
     <Compile Include="Converter\TriggerType2IsEnable.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="EnumList.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="AppLog.cs" />
     <Compile Include="MyComputer.cs" />
     <Compile Include="ParaObject.cs" />
-    <Compile Include="Converter\TestType2IsEnable2.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SetupWin.xaml.cs">
       <DependentUpon>SetupWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="SingleData.cs" />
-    <Compile Include="Converter\TestType2IsEnable1.cs" />
     <Compile Include="Instrument\VNA.cs" />
     <Compile Include="Instrument\VNA_AT5071C.cs" />
     <Compile Include="Instrument\VNA_AT8753ES.cs" />
@@ -155,6 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="support.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,12 +6,12 @@
         xmlns:my="clr-namespace:AntRunner" 
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Closing="Window_Closing" 
-        Title="设置参数" Height="582.4" Width="604">
+        Title="设置参数" Height="582.4" Width="624">
     <Window.Resources>
         <my:StringToVisibility x:Key="s2v"/>
         <my:TriggerType2IsEnable x:Key="t2v"/>
-        <my:TestType2IsEnable1 x:Key="s12v"/>
-        <my:TestType2IsEnable2 x:Key="s22v"/>
+        <my:TestType2IsEnable x:Key="tType2v"/>
+        <my:Instrument2IsEnable x:Key="i2v"/>
         <Style TargetType="TextBox">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="23"/>
@@ -32,7 +32,7 @@
             <Setter Property="Height" Value="22"></Setter>
         </Style>
     </Window.Resources>
-    <TabControl >
+    <TabControl>
         <TabControl.Items>
             <TabItem Header="配置">
                 <Grid>
@@ -58,7 +58,7 @@
                     <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="仪表地址 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="结果输出目录 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="端口开关 : " VerticalAlignment="Center"/>
-                    <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="测量方式： " VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="测量方式: " VerticalAlignment="Center"/>
 
                     <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="触发方式 : " VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="自动触发等待时间 : " VerticalAlignment="Center"/>
@@ -73,8 +73,9 @@
                               SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=Instrument}" 
                               ItemsSource="{Binding Source={StaticResource EInstrument}}"/>
                     <ComboBox HorizontalAlignment="Left" Name="cbGPIB" VerticalAlignment="Center" Width="270" Grid.Row="2" Grid.Column="1"
-                              SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=GPIB}" />
+                              SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=GPIB}" SelectionChanged="cbGPIB_SelectionChanged" />
                     <Button Content="Refresh" HorizontalAlignment="Left" Margin="275.6,0,0,0" Name="btnIns" VerticalAlignment="Center" Width="75" Grid.Column="1" Click="btnIns_Click" Grid.Row="2" />
+                    <Button Content="Identify" HorizontalAlignment="Left" Margin="355.6,0,0,0" Name="btnIdf" VerticalAlignment="Center" Width="75" Grid.Column="1" Click="btnIdf_Click" Grid.Row="2" />
                     <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="270" 
                              Text="{Binding Source={x:Static prop:Settings.Default}, Path=OutputDir, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
                     <Button Content="Select" Grid.Column="1" HorizontalAlignment="Left" Margin="275.6,0,0,0" Name="btnSelDir" VerticalAlignment="Center" Width="75" Click="btnSelDir_Click" Grid.Row="3" />
@@ -92,7 +93,6 @@
                               DisplayMemberPath="Value" SelectedValuePath="Value"  
                               ItemsSource="{Binding Source={my:Enumeration {x:Type my:TraceFormat}}}"
                               SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat}"/>
-
                     <ComboBox Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
                               DisplayMemberPath="Value" SelectedValuePath="Value"  
                               ItemsSource="{Binding Source={my:Enumeration {x:Type my:TriggerType}}}"
@@ -134,6 +134,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="8*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
@@ -147,35 +152,35 @@
                     <TextBlock Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="Hz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-
-                    <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="11" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="12" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="13" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="14" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="15" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="16" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
                     <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="校准曲线 : " VerticalAlignment="Center" />
-                    
+
+                    <Button Content="Mapping" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Margin="0,3.2,241.2,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
                     <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" IsReadOnly="True" 
-                              Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Trace}"
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Trace}"
                              IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Enable}"/>
-                    <TextBox Grid.Row="3"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Power, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox Grid.Row="4"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Bandwidth, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox Grid.Row="5"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.FreqStart, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.FreqStop, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox Grid.Row="7"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Points, UpdateSourceTrigger=PropertyChanged}" />
-                    
-                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal">
+                    <TextBox Grid.Row="3"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Power, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="4"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Bandwidth, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<ComboBox Grid.Row="4"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Bandwidth, UpdateSourceTrigger=PropertyChanged}"
+                             Visibility="{Binding Source={x:Static prop:Settings.Default},Path=Instrument, Converter={StaticResource i2v}, ConverterParameter=Agilent_8753ES }">
+                        <sys:Int32>10</sys:Int32>
+                        <sys:Int32>30</sys:Int32>
+                        <sys:Int32>100</sys:Int32>
+                        <sys:Int32>300</sys:Int32>
+                        <sys:Int32>1000</sys:Int32>
+                        <sys:Int32>3000</sys:Int32>
+                        <sys:Int32>3700</sys:Int32>
+                        <sys:Int32>6000</sys:Int32>
+                    </ComboBox>-->
+                    <TextBox Grid.Row="5"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.FreqStart, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.FreqStop, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="7"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Points, UpdateSourceTrigger=PropertyChanged}" />
+                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal" Margin="0,3,0,2">
                         <TextBox IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,5,0"  Width="245" 
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Trace}" 
@@ -183,48 +188,107 @@
                         <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
                                 Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.Trace}" />
                     </StackPanel>
-                    <StackPanel Height="30" Grid.Row="9"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.CutPow, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="10"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="11"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="12"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="13"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="14"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="15"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
-                                Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.ReferDiff, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-                    <Grid Grid.Column="1" Grid.Row="16"
-                          Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox TextBlock.LineHeight="18" VerticalContentAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
-                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3" Height="Auto" />
-                        <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+
+                    <!--1111111111111111111111111111111111-->
+                    <Grid Grid.Row="9" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default}, 
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal" >
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                                     Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.CutPow, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
+                        </StackPanel>
                     </Grid>
-                    <Button Content="Mapping" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Margin="0,3.2,241.2,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+                    <Grid Grid.Row="10" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="1"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="11" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="2"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="12" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="3"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="13" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="4"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="14" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="5"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--111111111111111111111111111111111111111111111111111111111111111111-->
+                    <Grid Grid.Row="15" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                                Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.ReferDiff, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="16" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
+                        <Grid Grid.Column="1" Grid.Row="1">
+                            <TextBox Height="150" TextBlock.LineHeight="18" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
+                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para1.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="端口2">
@@ -250,6 +314,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="8*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
@@ -263,23 +332,6 @@
                     <TextBlock Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="Hz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-
-                    <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="11" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="12" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="13" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="14" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="15" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="16" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
                     <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="校准曲线 : " VerticalAlignment="Center" />
 
                     <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" IsReadOnly="True" 
@@ -290,8 +342,7 @@
                     <TextBox Grid.Row="5"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.FreqStart, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.FreqStop, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="7"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Points, UpdateSourceTrigger=PropertyChanged}" />
-
-                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal" Margin="0,3,0,2">
                         <TextBox IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,5,0"  Width="245" 
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Trace}" 
@@ -299,46 +350,106 @@
                         <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
                                 Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.Trace}" />
                     </StackPanel>
-                    <StackPanel Height="30" Grid.Row="9"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.CutPow, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="10"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="11"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="12"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="13"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="14"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="15"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+
+                    <!--1111111111111111111111111111111111-->
+                    <Grid Grid.Row="9" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default}, 
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal" >
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                                     Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.CutPow, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="10" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="1"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="11" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="2"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="12" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="3"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="13" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="4"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="14" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="5"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--111111111111111111111111111111111111111111111111111111111111111111-->
+                    <Grid Grid.Row="15" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.ReferDiff, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-                    <Grid Grid.Column="1" Grid.Row="16"
-                          Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox TextBlock.LineHeight="18" VerticalContentAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
-                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3" Height="Auto" />
-                        <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="16" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
+                        <Grid Grid.Column="1" Grid.Row="1">
+                            <TextBox Height="150" TextBlock.LineHeight="18" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
+                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para2.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -365,6 +476,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="8*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
@@ -378,23 +494,6 @@
                     <TextBlock Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="Hz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-
-                    <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="11" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="12" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="13" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="14" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="15" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="16" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
                     <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="校准曲线 : " VerticalAlignment="Center" />
 
                     <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" IsReadOnly="True" 
@@ -405,8 +504,7 @@
                     <TextBox Grid.Row="5"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.FreqStart, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.FreqStop, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="7"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Points, UpdateSourceTrigger=PropertyChanged}" />
-
-                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal" Margin="0,3,0,2">
                         <TextBox IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,5,0"  Width="245" 
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Trace}" 
@@ -414,46 +512,106 @@
                         <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
                                 Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.Trace}" />
                     </StackPanel>
-                    <StackPanel Height="30" Grid.Row="9"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.CutPow, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="10"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="11"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="12"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="13"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="14"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="15"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+
+                    <!--1111111111111111111111111111111111-->
+                    <Grid Grid.Row="9" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default}, 
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal" >
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                                     Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.CutPow, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="10" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="1"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="11" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="2"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="12" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="3"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="13" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="4"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="14" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="5"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--111111111111111111111111111111111111111111111111111111111111111111-->
+                    <Grid Grid.Row="15" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.ReferDiff, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-                    <Grid Grid.Column="1" Grid.Row="16"
-                          Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox TextBlock.LineHeight="18" VerticalContentAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
-                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3" Height="Auto" />
-                        <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="16" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
+                        <Grid Grid.Column="1" Grid.Row="1">
+                            <TextBox Height="150" TextBlock.LineHeight="18" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
+                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para3.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -480,6 +638,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="8*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="曲线类型 : " VerticalAlignment="Center"/>
@@ -493,23 +656,6 @@
                     <TextBlock Grid.Column="1" Grid.Row="5"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="4"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="Hz" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Grid.Row="3"  HorizontalAlignment="Left" Margin="126,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-
-                    <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="11" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="12" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="13" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Grid.Row="14" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="15" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
-                    <TextBlock Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}"
-                               Grid.Row="16" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
                     <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="校准曲线 : " VerticalAlignment="Center" />
 
                     <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" IsReadOnly="True" 
@@ -520,8 +666,7 @@
                     <TextBox Grid.Row="5"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.FreqStart, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.FreqStop, UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="7"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Points, UpdateSourceTrigger=PropertyChanged}" />
-
-                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal">
+                    <StackPanel Grid.Row="8"  Grid.Column="1" Orientation="Horizontal" Margin="0,3,0,2">
                         <TextBox IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,5,0"  Width="245" 
                                  Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.ReferTracePath, UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="校准" Height="23" Width="75" Click="btnCali1_Click" Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Trace}" 
@@ -529,49 +674,110 @@
                         <Button Content="选择" Height="23" Width="75" Margin="5,0,0,0" Click="Button_Click" 
                                 Tag="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Trace}" />
                     </StackPanel>
-                    <StackPanel Height="30" Grid.Row="9"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.CutPow, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="10"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="11"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="12"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="13"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="14"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s22v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Grid.Row="15"  Grid.Column="1" Orientation="Horizontal" 
-                                Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+
+                    <!--1111111111111111111111111111111111-->
+                    <Grid Grid.Row="9" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default}, 
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="频宽切线功率 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal" >
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
+                                     Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.CutPow, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dBm" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="10" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频宽偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="1"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffBW, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="11" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="频率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="2"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffFreq, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="12" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="功率偏差 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="3"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffPower, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="13" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="频率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="4"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffFreq_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="MHz" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="14" Grid.ColumnSpan="2" Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=LOG }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="功率偏差(短路) : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="5"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.DiffPower_Bad, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBlock HorizontalAlignment="Left" Margin="5,0,0,0"  Text="dB" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                    <!--111111111111111111111111111111111111111111111111111111111111111111-->
+                    <Grid Grid.Row="15" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter='SWR,LOG8SWR' }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right" Text="标准范围 : " VerticalAlignment="Center"/>
+                        <StackPanel Height="30" Grid.Row="0"  Grid.Column="1" Orientation="Horizontal">
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center"  Width="120" 
                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.ReferDiff, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-                    <Grid Grid.Column="1" Grid.Row="16"
-                          Visibility="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat, Converter={StaticResource s12v}}">
-                        <TextBox TextBlock.LineHeight="18" VerticalContentAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
-                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3" Height="Auto" />
-                        <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="16" Grid.ColumnSpan="2"  Visibility="{Binding Source={x:Static prop:Settings.Default},
+                        Path=TraceFormat, Converter={StaticResource tType2v}, ConverterParameter=SWR }">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="457*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Text="频点 : " VerticalAlignment="Top" Margin="0,5" />
+                        <Grid Grid.Column="1" Grid.Row="1">
+                            <TextBox Height="150" TextBlock.LineHeight="18" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Left" AcceptsReturn="True" Width="120" VerticalScrollBarVisibility="Auto" 
+                                 Text="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.MarkerText, UpdateSourceTrigger=PropertyChanged}" AutoWordSelection="False" Margin="0,3,0,3"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="125,5,0,0" Text="MHz (Separate with Return)" VerticalAlignment="Top" Width="209" />
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
+
             <TabItem Header="被测件">
                 <Grid>
                     <Grid.ColumnDefinitions>
