@@ -3,6 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="windowOpacity" TargetType="{x:Type Window}">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard> 
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                            From="0.0" To="1" Duration="0:0:0.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

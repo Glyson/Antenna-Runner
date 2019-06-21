@@ -6,31 +6,24 @@
         xmlns:prop="clr-namespace:AntRunner.Properties"
         WindowStartupLocation="CenterScreen"
         Title="Antenna Runner 1.0" Height="468" Width="739">
+    <Window.Resources>
+        <XmlDataProvider x:Key="menudata" Source="menu.xml" XPath="MenuData/Operation"></XmlDataProvider> 
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="259*" />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
-        <Menu Name="menu1" Margin="0,0,0,0">
-            <Menu.Items>
-                <MenuItem Header="文件" >
-                    <MenuItem Header="设置参数" Click="MenuItem_Click"/>
-                    <MenuItem Header="导出报告" Click="MenuItem_Click_1"></MenuItem>
-                    <!--<MenuItem Header="重置" Click="MenuItem_Click_4"></MenuItem>-->
-                </MenuItem>
-                <MenuItem Header="操作">
-                    <MenuItem Header="开始测试" Click="MenuItem_Click_3"></MenuItem>
-                    <MenuItem Header="停止测试" Click="MenuItem_Click_2"></MenuItem>
-                </MenuItem>
-                <!--<MenuItem Header="Window">
-                    <MenuItem Header="1 Window"></MenuItem>
-                    <MenuItem Header="2 Windows"></MenuItem>
-                    <MenuItem Header="3 Windows"></MenuItem>
-                    <MenuItem Header="4 Windows"></MenuItem>
-                </MenuItem>-->
-                <MenuItem Header="关于" Click="MenuItem_Click_5"/>
-            </Menu.Items>
+        <Menu Height="22" ItemsSource="{Binding Source={StaticResource menudata}}" MenuItem.Click="StackPanel_Click_1">
+            <Menu.ItemTemplate>
+                <HierarchicalDataTemplate DataType="Operation" ItemsSource="{Binding XPath=Operation}">
+                    <StackPanel Orientation="Horizontal" Height="20">
+                        <TextBlock Text="{Binding XPath=@Name}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Text="{Binding XPath=@Gesture, StringFormat='({0})'}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </Menu.ItemTemplate>
         </Menu>
         <xcad:DockingManager Name="dockManager" Background="Transparent" 
                          AllowMixedOrientation="True" Grid.Row="1">

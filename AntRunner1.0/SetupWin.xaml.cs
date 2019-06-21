@@ -29,6 +29,7 @@ namespace AntRunner
 
         public SetupWin()
         {
+            Settings.Default.TraceFormat = TraceFormat.LOG.ToString ();
             InitializeComponent();
             Settings.Default.Para1.MarkerType = MarkerType.Markers.ToString();
             Settings.Default.Para2.MarkerType = MarkerType.Markers.ToString();

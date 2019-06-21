@@ -1,0 +1,20 @@
+﻿<Window x:Class="AntRunner.ReportWaitWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AntRunner" ResizeMode="NoResize" WindowStyle="ToolWindow"
+        mc:Ignorable="d" Title="ReportWaitWin" Height="319.39" Width="621.098"
+        xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome GlassFrameThickness="1" ResizeBorderThickness="1" CaptionHeight="30"/>
+    </shell:WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="26*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="290,61.707,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
+        <Button Content="取消" HorizontalAlignment="Left" Margin="270,151.707,0,0" VerticalAlignment="Top" Width="93" Height="37" Click="Button_Click" Grid.Row="1"/>
+    </Grid>
+</Window>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuData xmlns="">
+  <Operation  Name="设置" Gesture="C">
+  </Operation>
+  <Operation Name="开始测试" Gesture="S">
+  </Operation>
+  <Operation Name="停止测试" Gesture="T">
+  </Operation>
+  <Operation Name="导出报告" Gesture="E">
+  </Operation>
+  <Operation  Name="关于" Gesture="A">
+  </Operation>
+</MenuData>

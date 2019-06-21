@@ -1,4 +1,4 @@
-﻿//#define FUN1//结果图标闪动提示
+﻿#define FUN1//结果图标闪动提示
 
 using AntRunner.Properties;
 using System;
@@ -8,6 +8,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace AntRunner
@@ -42,6 +44,8 @@ namespace AntRunner
         private State state = State.Stoped;
         public DateTime expireTime;
         Storyboard sb1, sb2, sb3, sb4;
+        ReportWaitWin wReport;
+        Thread tReport;
 
         public State State
         {
@@ -105,9 +109,9 @@ namespace AntRunner
 
         private Storyboard CreateStoryboard(Ellipse ele)
         {
-            DoubleAnimation ani = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(300)));
+            DoubleAnimation ani = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(300)));
             //ani.AutoReverse = true;
-            ani.RepeatBehavior = new RepeatBehavior(TimeSpan.FromSeconds(3));
+            ani.RepeatBehavior = new RepeatBehavior(TimeSpan.FromSeconds(5));
             Storyboard sb = new Storyboard();
 #if FUN1
             sb.Children.Add(ani);
@@ -138,42 +142,6 @@ namespace AntRunner
             tbAll.Text = GetPercentStr(Count1 + Count2 + Count3 + Count4, Pass1 + Pass2 + Pass3 + Pass4);
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (State == State.Running)
-            {
-                MessageBox.Show("正在测试...");
-                return;
-            }
-            SetupWin win = new SetupWin();
-            win.Owner = this;
-            win.ShowDialog();
-        }
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (State == State.Running)
-                {
-                    MessageBox.Show(this, "正在测试...", "Tips", MessageBoxButton.OK);
-                    return;
-                }
-                if (!InitVNA())
-                    return;
-
-                if (Settings.Default.MatchCnt < 2)
-                    Settings.Default.MatchCnt = 2;
-
-                Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
-                Start(Settings.Default.Para2, ref refer2, ref ellipse2, ref btnStart2, ref t2);
-                Start(Settings.Default.Para3, ref refer3, ref ellipse3, ref btnStart3, ref t3);
-                Start(Settings.Default.Para4, ref refer4, ref ellipse4, ref btnStart4, ref t4);
-            }
-            catch (Exception ex)
-            {
-                AppLog.Error("MenuItem_Click_3 has error.", ex);
-            }
-        }
         private void StartCOM1(string name)
         {
             SerialPort com = new SerialPort(name);
@@ -210,6 +178,31 @@ namespace AntRunner
             }
             vna.Config();
             return true;
+        }
+        private void Start()
+        {
+            try
+            {
+                if (State == State.Running)
+                {
+                    MessageBox.Show(this, "正在测试...", "Tips", MessageBoxButton.OK);
+                    return;
+                }
+                if (!InitVNA())
+                    return;
+
+                if (Settings.Default.MatchCnt < 2)
+                    Settings.Default.MatchCnt = 2;
+
+                Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
+                Start(Settings.Default.Para2, ref refer2, ref ellipse2, ref btnStart2, ref t2);
+                Start(Settings.Default.Para3, ref refer3, ref ellipse3, ref btnStart3, ref t3);
+                Start(Settings.Default.Para4, ref refer4, ref ellipse4, ref btnStart4, ref t4);
+            }
+            catch (Exception ex)
+            {
+                AppLog.Error("Test has error.", ex);
+            }
         }
         private void Start(ParaObject para, ref SortedList<double, double> refer, ref Ellipse elli, ref Button btn, ref Thread td)
         {
@@ -466,39 +459,42 @@ namespace AntRunner
                 {
                     triggerDeep = true;
                     all.Clear();
+
+
+                    //如果触发过底噪（说明重新拎过天线），且数据不是底噪，这个数据才是可用的
+                    btnStart1.Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        switch (type)
+                        {
+                            case Trace.S11:
+                                ellipse1.Fill = bshTgr;
+                                sb1.Pause(ellipse1);
+                                blk1.Text = "正在触发 . . .";
+                                break;
+                            case Trace.S22:
+                                ellipse2.Fill = bshTgr;
+                                sb2.Pause(ellipse2);
+                                blk2.Text = "正在触发 . . .";
+                                break;
+                            case Trace.S33:
+                                ellipse3.Fill = bshTgr;
+                                sb3.Pause(ellipse3);
+                                blk3.Text = "正在触发 . . .";
+                                break;
+                            case Trace.S44:
+                                ellipse4.Fill = bshTgr;
+                                sb4.Pause(ellipse4);
+                                blk4.Text = "正在触发 . . .";
+                                break;
+                        }
+                    }));
                     continue;
                 }
 
                 if (!triggerDeep && !IsSkip)//如果没有触发过底噪，跳过
-                    continue;
-
-                //如果触发过底噪（说明重新拎过天线），且数据不是底噪，这个数据才是可用的
-                btnStart1.Dispatcher.BeginInvoke(new Action(delegate
                 {
-                    switch (type)
-                    {
-                        case Trace.S11:
-                            ellipse1.Fill = bshTgr;
-                            sb1.Pause(ellipse1);
-                            blk1.Text = "正在触发 . . .";
-                            break;
-                        case Trace.S22:
-                            ellipse2.Fill = bshTgr;
-                            sb2.Pause(ellipse2);
-                            blk2.Text = "正在触发 . . .";
-                            break;
-                        case Trace.S33:
-                            ellipse3.Fill = bshTgr;
-                            sb3.Pause(ellipse3);
-                            blk3.Text = "正在触发 . . .";
-                            break;
-                        case Trace.S44:
-                            ellipse4.Fill = bshTgr;
-                            sb4.Pause(ellipse4);
-                            blk4.Text = "正在触发 . . .";
-                            break;
-                    }
-                }));
+                    continue;
+                }
                 all.Add(list);
                 if (all.Count >= Settings.Default.MatchCnt)
                 {
@@ -562,6 +558,81 @@ namespace AntRunner
             }
             return list;
         }
+        private void Setup()
+        {
+            if (State == State.Running)
+            {
+                MessageBox.Show("正在测试...");
+                return;
+            }
+            SetupWin win = new SetupWin();
+            win.Owner = this;
+            win.ShowDialog();
+        }
+        private void Report()
+        {
+            if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
+            {
+                DataAccess.Report_LOG();
+            }
+            else
+            {
+                Report2();
+            }
+            wReport.Dispatcher.Invoke(new Action(delegate
+            {
+                wReport.Close();
+            }));
+        }
+        private void About()
+        {
+            AboutWin about = new AboutWin();
+            about.Owner = this;
+            about.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            about.ShowDialog();
+        }
+        private void StackPanel_Click_1(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = e.OriginalSource as MenuItem;
+            XmlElement xe = mi.Header as XmlElement;
+            string name = xe.Attributes["Name"].Value;
+
+            if (name == "设置")
+            {
+                Setup();
+            }
+            else if (name == "导出报告")
+            {
+                tReport = new Thread(new ThreadStart(new Action(delegate
+                {
+                    Report();
+                })));
+                tReport.Start();
+
+                wReport = new ReportWaitWin();
+                wReport.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                wReport.Closing += Win_Closing;
+                wReport.Owner = this;
+                wReport.ShowDialog();
+            }
+            else if (name == "开始测试")
+            {
+                Start();
+            }
+            else if (name == "停止测试")
+            {
+                Stop();
+            }
+            else if (name == "关于")
+            {
+                About();
+            }
+        }
+
+        private void Win_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            tReport.Abort();
+        }
         #region Check
         private string CheckPass(ParaObject para, out List<ErrorCode> errors)
         {
@@ -577,14 +648,14 @@ namespace AntRunner
                     list.Add(marker, GetPointByTrace(raw, marker));
                 }
                 pass = CheckPass_SWR(list, para, out errors);
-                path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                path = DataAccess.Output(para, list, errors);
                 return path;
             }
             else if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
             {
                 SortedList<double, double> list = vna.ReadTrace(para);
                 pass = CheckPass_LOG(list, para, out errors);
-                path = DataAccess.Output(Settings.Default.Para2, list, errors);
+                path = DataAccess.Output(para, list, errors);
                 return path;
             }
             else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
@@ -765,35 +836,42 @@ namespace AntRunner
                 }
             }
             double cutPower = para.CutPow;
-            double cutF1, cutF2;
+            double cutF1 = 0;
+            double cutF2 = 0;
             double[] values = trace1.Values.ToArray<double>();
             int index = LocateTrace(values, cutPower);
-            if (index <= 0)
+            if (values.Count() > 0)
             {
-                cutF1 = trace1.Keys[index];
-            }
-            else
-            {
-                double gt = values[index];
-                double lt = values[index - 1];
-                double gtF = trace1.Keys[index];
-                double ltF = trace1.Keys[index - 1];
-                cutF1 = gtF - (gtF - ltF) * (gt - cutPower) / (gt - lt);
+                if (index == 0)
+                {
+                    cutF1 = trace1.Keys[index];
+                }
+                else
+                {
+                    double gt = values[index];
+                    double lt = values[index - 1];
+                    double gtF = trace1.Keys[index];
+                    double ltF = trace1.Keys[index - 1];
+                    cutF1 = gtF - (gtF - ltF) * (gt - cutPower) / (gt - lt);
+                }
             }
 
             values = trace2.Values.ToArray<double>();
             index = LocateTrace(values, cutPower);
-            if (index <= 0)
+            if (values.Count() > 0)
             {
-                cutF2 = trace2.Keys[index];
-            }
-            else
-            {
-                double gt = values[index];
-                double lt = values[index - 1];
-                double gtF = trace2.Keys[index];
-                double ltF = trace2.Keys[index - 1];
-                cutF2 = gtF - (gtF - ltF) * (gt - cutPower) / (gt - lt);
+                if (index == 0)
+                {
+                    cutF2 = trace2.Keys[index];
+                }
+                else
+                {
+                    double gt = values[index];
+                    double lt = values[index - 1];
+                    double gtF = trace2.Keys[index];
+                    double ltF = trace2.Keys[index - 1];
+                    cutF2 = gtF - (gtF - ltF) * (gt - cutPower) / (gt - lt);
+                }
             }
             if (cutF2 < cutF1)
             {
@@ -1062,10 +1140,6 @@ namespace AntRunner
             Application.Current.Shutdown();
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            Stop();
-        }
         private void Stop()
         {
             Stop(1);
@@ -1186,21 +1260,6 @@ namespace AntRunner
             }));
         }
         #endregion
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Cursor = Cursors.Wait;
-            if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
-            {
-                DataAccess.Report_LOG();
-            }
-            else
-            {
-                Report2();
-            }
-
-            this.Cursor = Cursors.Arrow;
-        }
 
         //LOG Report
 
@@ -1389,39 +1448,31 @@ namespace AntRunner
                 }
             }
         }
-        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
-        {
-            if (State == State.Running)
-            {
-                MessageBox.Show("正在测试...", "Tips", MessageBoxButton.OK);
-            }
-            else
-            {
-                if (MessageBox.Show("Are you sure to reset?", "Tips", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    Settings.Default.Reset();
-                    Settings.Default.Para1 = new ParaObject();
-                    Settings.Default.Para2 = new ParaObject();
-                    Settings.Default.Para3 = new ParaObject();
-                    Settings.Default.Para4 = new ParaObject();
-                    Settings.Default.Para1.Trace = Trace.S11.ToString();
-                    Settings.Default.Para2.Trace = Trace.S22.ToString();
-                    Settings.Default.Para3.Trace = Trace.S33.ToString();
-                    Settings.Default.Para4.Trace = Trace.S44.ToString();
+        //private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        //{
+        //    if (State == State.Running)
+        //    {
+        //        MessageBox.Show("正在测试...", "Tips", MessageBoxButton.OK);
+        //    }
+        //    else
+        //    {
+        //        if (MessageBox.Show("Are you sure to reset?", "Tips", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        //        {
+        //            Settings.Default.Reset();
+        //            Settings.Default.Para1 = new ParaObject();
+        //            Settings.Default.Para2 = new ParaObject();
+        //            Settings.Default.Para3 = new ParaObject();
+        //            Settings.Default.Para4 = new ParaObject();
+        //            Settings.Default.Para1.Trace = Trace.S11.ToString();
+        //            Settings.Default.Para2.Trace = Trace.S22.ToString();
+        //            Settings.Default.Para3.Trace = Trace.S33.ToString();
+        //            Settings.Default.Para4.Trace = Trace.S44.ToString();
 
-                    Settings.Default.Save();
-                }
-            }
+        //            Settings.Default.Save();
+        //        }
+        //    }
 
-        }
-
-        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
-        {
-            AboutWin about = new AboutWin();
-            about.Owner = this;
-            about.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
-            about.ShowDialog();
-        }
+        //} 
 
     }
 }

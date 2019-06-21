@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("log4net.config.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("menu.xml")]
 
 

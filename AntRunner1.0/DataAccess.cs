@@ -114,10 +114,14 @@ namespace AntRunner
                 sh.Cells[++r, 1] = "Port1(S11)";
                 sh.Cells[r, 2] = pass1 + "/" + count1;
                 sh.Cells[r, 3] = (count1 == 0 ? 0 : Math.Round(pass1 / (double)count1 * 100, 4)) + "%";
+                sh.Cells[r, 6] = "偏低：";
+                ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 6;
 
                 sh.Cells[++r, 1] = "Port2(S22)";
                 sh.Cells[r, 2] = pass2 + "/" + count2;
                 sh.Cells[r, 3] = (count2 == 0 ? 0 : Math.Round(pass2 / (double)count2 * 100, 4)) + "%";
+                sh.Cells[r, 6] = "偏高：";
+                ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 3;
 
                 sh.Cells[++r, 1] = "Port3(S33)";
                 sh.Cells[r, 2] = pass3 + "/" + count3;
@@ -250,11 +254,10 @@ namespace AntRunner
                 app.Quit();
 
                 System.Diagnostics.Process.Start(path);
-            }
+            } 
             catch (Exception ex)
             {
-                AppLog.Error("Report_LOG has error.", ex);
-                MessageBox.Show("Report error! \n\n\n" + ex.Message);
+                AppLog.Error("Report_LOG has error.", ex); 
             }
             finally
             {
@@ -279,13 +282,17 @@ namespace AntRunner
                 sh.Cells[r, ++c] = "Code";
                 sh.Cells[r, ++c] = "Result";
                 //c++;
-                sh.Cells[r, ++c] = "频率偏差";
-                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 20;
-                sh.Cells[r, ++c] = "功率偏差";
-                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 20;
-                sh.Cells[r, ++c] = "频宽偏差";
-                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 40;
-                sh.Cells[r, ++c] = "短路";
+                sh.Cells[r, ++c] = "频率偏差(MHz)";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                sh.Cells[r, ++c] = "功率偏差(dBm)";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                sh.Cells[r, ++c] = "Marker1(MHz)";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                sh.Cells[r, ++c] = "Marker2(MHz)";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                sh.Cells[r, ++c] = "频宽偏差[Marker2-Marker1](MHz)";
+                ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 36;
+                sh.Cells[r, ++c] = "短路(是/否)";
                 foreach (SingleData data in listData)
                 {
                     r++;
@@ -316,49 +323,58 @@ namespace AntRunner
                         tag = "偏高";
                         ((Excel.Range)sh.Cells[r, 4]).Interior.ColorIndex = 3;
                     }
-                    string str = string.Format("{0:N2} MHz | {1}", data.ListData.Keys[1], tag);
+                    string str = string.Format("{0:N2}", data.ListData.Keys[1]);
                     sh.Cells[r, ++c] = str;
 
+                    ++c;
                     tag = "正常";
-                    ((Excel.Range)sh.Cells[r, 5]).Font.ColorIndex = 1;
+                    ((Excel.Range)sh.Cells[r, c]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.PowL.ToString()))
                     {
                         tag = "偏低";
-                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 6;
+                        ((Excel.Range)sh.Cells[r, c]).Interior.ColorIndex = 6;
                     }
                     else if (data.Errors.Contains(ErrorCode.PowH.ToString()))
                     {
                         tag = "偏高";
-                        ((Excel.Range)sh.Cells[r, 5]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, c]).Interior.ColorIndex = 3;
                     }
-                    str = string.Format("{0:N2} MHz | {1}", data.ListData.Values[1], tag);
-                    sh.Cells[r, ++c] = str;
+                    str = string.Format("{0:N2}", data.ListData.Values[1]);
+                    sh.Cells[r, c] = str;
 
+                    ++c;
+                    sh.Cells[r, c] = string.Format("{0:N2}", data.ListData.Keys.First());
+                    ((Excel.Range)sh.Cells[r, c]).Font.ColorIndex = 1;
+
+                    ++c;
+                    sh.Cells[r, c] = string.Format("{0:N2}", data.ListData.Keys.Last());
+                    ((Excel.Range)sh.Cells[r, c]).Font.ColorIndex = 1;
+
+                    ++c;
                     tag = "正常";
-                    ((Excel.Range)sh.Cells[r, 6]).Font.ColorIndex = 1;
+                    ((Excel.Range)sh.Cells[r, c]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.FreqBandWidthL.ToString()))
                     {
                         tag = "偏低";
-                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 6;
+                        ((Excel.Range)sh.Cells[r, c]).Interior.ColorIndex = 6;
                     }
                     else if (data.Errors.Contains(ErrorCode.FreqBandWidthH.ToString()))
                     {
                         tag = "偏高";
-                        ((Excel.Range)sh.Cells[r, 6]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, c]).Interior.ColorIndex = 3;
                     }
-                    str = string.Format("{0:N2} - {1:N2} = {2:N2}MHz | {3}",
-                        data.ListData.Keys.Last(), data.ListData.Keys.First(),
-                        data.ListData.Keys.Last() - data.ListData.Keys.First(), tag);
-                    sh.Cells[r, ++c] = str;
+                    str = string.Format("{0:N2}", data.ListData.Keys.Last() - data.ListData.Keys.First());
+                    sh.Cells[r, c] = str;
 
                     tag = "否";
-                    ((Excel.Range)sh.Cells[r, 7]).Font.ColorIndex = 1;
+                    ++c;
+                    ((Excel.Range)sh.Cells[r, c]).Font.ColorIndex = 1;
                     if (data.Errors.Contains(ErrorCode.Bad.ToString()))
                     {
                         tag = "是";
-                        ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 3;
+                        ((Excel.Range)sh.Cells[r, c]).Interior.ColorIndex = 3;
                     }
-                    sh.Cells[r, ++c] = tag;
+                    sh.Cells[r, c] = tag;
 
 
                 }

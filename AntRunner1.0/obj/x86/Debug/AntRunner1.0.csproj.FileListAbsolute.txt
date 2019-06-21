@@ -270,3 +270,7 @@ E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.GenerateResource.cache
 E:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csprojResolveAssemblyReference.cache
 D:\Glyson\projects\Test\AntRunner1.0\bin\Debug\log4net.config
 D:\Glyson\projects\Test\AntRunner1.0\bin\Debug\Microsoft.Windows.Shell.dll
+E:\AntRunner1.0\bin\Debug\log4net.config
+D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\App.baml
+D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
+D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml

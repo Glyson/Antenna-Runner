@@ -101,6 +101,9 @@
     <Compile Include="AppLog.cs" />
     <Compile Include="MyComputer.cs" />
     <Compile Include="ParaObject.cs" />
+    <Compile Include="ReportWaitWin.xaml.cs">
+      <DependentUpon>ReportWaitWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="SetupWin.xaml.cs">
       <DependentUpon>SetupWin.xaml</DependentUpon>
@@ -125,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ReportWaitWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SetupWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +175,9 @@
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="menu.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

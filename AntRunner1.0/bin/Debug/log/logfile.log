@@ -1,137 +1,4 @@
-2019-06-20 09:33:54,987 [1] ERROR AntRunner.AppLog [(null)] - GetEnumDescription has error.
-System.ArgumentException: 要在此字符串中进行分析，必须指定有效信息。
-   在 System.Enum.TryParseEnum(Type enumType, String value, Boolean ignoreCase, EnumResult& parseResult)
-   在 System.Enum.Parse(Type enumType, String value, Boolean ignoreCase)
-   在 System.Enum.Parse(Type enumType, String value)
-   在 AntRunner.Helper.String2Enum[TEnum](String str) 位置 D:\Glyson\projects\Test\AntRunner1.0\Helper.cs:行号 27
-2019-06-20 09:33:55,129 [1] ERROR AntRunner.AppLog [(null)] - ScanGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\projects\Test\AntRunner1.0\MainWindow.xaml.cs:行号 197
-2019-06-20 09:33:57,202 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:33:59,216 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:01,227 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:03,252 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:05,263 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:07,276 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:09,287 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:11,299 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:13,308 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:15,323 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:17,333 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:19,345 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:21,357 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:23,366 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:25,379 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:27,421 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:29,437 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:31,455 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:33,470 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:35,494 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:37,518 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:39,529 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:41,540 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:43,550 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:45,562 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:47,576 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:49,585 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:51,604 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:53,614 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:55,624 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:57,635 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:34:59,643 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:35:01,666 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:35:03,687 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 09:35:05,707 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
-System.NullReferenceException: 未将对象引用设置到对象的实例。
-   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
-2019-06-20 10:07:17,747 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 10:26:18,185 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 09:12:57,842 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -142,7 +9,26 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
    在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
-2019-06-20 10:39:35,888 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 09:12:57,963 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
+2019-06-21 09:20:48,200 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 394
+2019-06-21 09:20:48,274 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 394
+2019-06-21 09:24:24,696 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -153,84 +39,7 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
    在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
-2019-06-20 10:41:51,634 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 10:43:12,396 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 10:53:02,112 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 10:55:59,391 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 11:00:56,589 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 11:09:38,035 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 13:57:02,175 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 13:57:04,508 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+2019-06-21 09:24:24,788 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -243,44 +52,37 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 13:57:20,962 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 13:58:25,162 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 13:58:25,265 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:00:59,759 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 09:24:37,414 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 394
+2019-06-21 09:24:37,439 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 394
+2019-06-21 09:30:58,986 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 397
+2019-06-21 09:30:59,065 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 397
+2019-06-21 09:34:23,746 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 401
+2019-06-21 09:34:23,817 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 401
+2019-06-21 09:40:43,867 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 401
+2019-06-21 09:40:43,954 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 401
+2019-06-21 09:49:29,892 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 09:49:29,977 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 11:13:46,770 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -290,8 +92,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 14:00:59,858 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 11:13:46,857 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -304,26 +106,7 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:01:14,463 [1] ERROR AntRunner.AppLog [(null)] - GetEnumDescription has error.
-System.ArgumentException: 要在此字符串中进行分析，必须指定有效信息。
-   在 System.Enum.TryParseEnum(Type enumType, String value, Boolean ignoreCase, EnumResult& parseResult)
-   在 System.Enum.Parse(Type enumType, String value, Boolean ignoreCase)
-   在 System.Enum.Parse(Type enumType, String value)
-   在 AntRunner.Helper.String2Enum[TEnum](String str) 位置 D:\Glyson\projects\Test\AntRunner1.0\Helper.cs:行号 27
-2019-06-20 14:01:14,506 [1] ERROR AntRunner.AppLog [(null)] - Init has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.Init(String gpib, Int32 timeout) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 52
-2019-06-20 14:02:28,203 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 11:14:40,471 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -333,8 +116,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 14:02:28,296 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 11:14:40,581 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -347,33 +130,13 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:02:29,396 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:02:31,661 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:03:04,031 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 11:14:45,353 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 11:14:45,382 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 11:24:22,702 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -383,8 +146,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 14:03:04,133 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 11:24:22,788 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -397,33 +160,7 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:03:05,300 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:03:07,157 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:03:13,253 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 11:24:36,893 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -433,8 +170,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 14:03:13,283 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 11:24:36,928 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -447,7 +184,7 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:04:43,290 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 11:24:39,860 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -457,8 +194,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 14:04:43,383 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 11:24:39,890 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -471,7 +208,7 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 14:05:14,649 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 15:55:38,156 [1] ERROR AntRunner.AppLog [(null)] - ScanGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -481,21 +218,11 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 14:05:14,737 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:08:43,535 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\projects\Test\AntRunner1.0\MainWindow.xaml.cs:行号 161
+2019-06-21 15:55:40,250 [15] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 15:55:44,474 [1] ERROR AntRunner.AppLog [(null)] - ScanGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -505,21 +232,14 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:08:43,626 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:28:20,172 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\projects\Test\AntRunner1.0\MainWindow.xaml.cs:行号 161
+2019-06-21 15:55:46,498 [15] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 15:55:48,529 [15] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 15:55:59,409 [1] ERROR AntRunner.AppLog [(null)] - ScanGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -529,21 +249,14 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:28:20,293 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:31:44,455 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\projects\Test\AntRunner1.0\MainWindow.xaml.cs:行号 161
+2019-06-21 15:56:01,442 [15] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 15:56:03,463 [15] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 15:56:10,559 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -553,8 +266,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:31:44,552 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 15:56:10,598 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -567,7 +280,7 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:34:57,836 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 16:09:05,145 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -577,8 +290,8 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:34:57,944 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 73
+2019-06-21 16:09:05,248 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -591,7 +304,13 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
    在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
    在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:35:39,873 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+2019-06-21 16:16:25,027 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:16:25,098 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:28:47,246 [1] ERROR AntRunner.AppLog [(null)] - ScanGPIB has error.
 System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
    在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
@@ -601,65 +320,157 @@ System.DllNotFoundException: The VISA driver library cannot be found.  Either VI
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
    在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
    在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:35:39,905 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:38:05,150 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:38:05,256 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
-2019-06-20 16:40:33,607 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
-   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
-   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
-   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\SetupWin.xaml.cs:行号 72
-2019-06-20 16:40:33,709 [1] ERROR AntRunner.AppLog [(null)] - ReadIDN has error.
-System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   --- 内部异常堆栈跟踪的结尾 ---
-   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
-   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
-   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
-   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
-   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 118
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\projects\Test\AntRunner1.0\MainWindow.xaml.cs:行号 161
+2019-06-21 16:28:50,293 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:28:51,895 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:28:51,916 [1] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:28:52,306 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:28:54,315 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:28:56,328 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:28:58,338 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:29:00,347 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:29:02,357 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:29:04,365 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:29:06,375 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:29:08,386 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 39
+2019-06-21 16:49:27,761 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:49:27,843 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:51:29,887 [4] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 16:51:29,952 [4] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:03:58,003 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:03:58,069 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:04:38,814 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:04:38,883 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:09:07,036 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:09:07,108 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:11:55,607 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:11:55,672 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:16:26,147 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:16:26,235 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:22:54,363 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:22:54,431 [3] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:30:03,245 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:30:03,309 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:30:08,948 [10] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:30:08,966 [10] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:30:45,869 [9] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list)
+2019-06-21 17:30:45,943 [9] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list)
+2019-06-21 17:32:12,821 [7] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:32:12,899 [7] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:32:17,185 [7] ERROR AntRunner.AppLog [(null)] - Report_LOG has error.
+System.Threading.ThreadAbortException: 正在中止线程。
+   在 AntRunner.DataAccess.Report_LOG() 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 98
+2019-06-21 17:32:24,124 [9] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:32:24,164 [9] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:32:28,389 [9] ERROR AntRunner.AppLog [(null)] - Report_LOG has error.
+System.Threading.ThreadAbortException: 正在中止线程。
+   在 AntRunner.DataAccess.Report_LOG() 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 98
+2019-06-21 17:33:39,020 [10] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:33:39,089 [10] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 405
+2019-06-21 17:35:57,888 [9] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:35:57,968 [9] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:36:02,388 [9] ERROR AntRunner.AppLog [(null)] - Report_LOG has error.
+System.Threading.ThreadAbortException: 正在中止线程。
+   在 AntRunner.DataAccess.Report_LOG() 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 98
+2019-06-21 17:36:03,891 [11] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:36:03,910 [11] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:38:25,062 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:38:25,122 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:42:11,526 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
+2019-06-21 17:42:11,591 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataAccess.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) 位置 D:\Glyson\projects\Test\AntRunner1.0\DataAccess.cs:行号 404
