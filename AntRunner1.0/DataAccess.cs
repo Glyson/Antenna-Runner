@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Threading;
 
 namespace AntRunner
 {
@@ -60,6 +61,52 @@ namespace AntRunner
                 return null;
             }
         }
+
+        public static string OutputLOG8SWR(ParaObject para, List<ErrorCode> errors)
+        {
+            StreamWriter writer = null;
+            try
+            {
+                bool pass = !(errors != null && errors.Count > 0);
+                string path = GetFilePath(para, pass);
+                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+                {
+                    writer = new StreamWriter(fs);
+                    writer.WriteLine("Result," + (pass ? "Pass" : "Fail"));
+                    writer.WriteLine("Error Code," + string.Join("|", errors));
+                    writer.WriteLine("DUT Code," + Settings.Default.Code);
+                    writer.WriteLine("S21 Min," + para.S21Min);
+                    writer.WriteLine("S21 Max ," + para.S21Max);
+                    writer.WriteLine("S22 Max," + para.S22Max);
+                    writer.WriteLine("Memo," + Settings.Default.Memo);
+
+
+                    writer.WriteLine();
+                    writer.WriteLine("Calibration,Frequency,Data");
+                    foreach (KeyValuePair<double, double> item in (Dictionary<double, double>)para.MarkersCal)
+                    {
+                        writer.WriteLine(" ,{0},{1}", item.Key, item.Value);
+                    }
+
+                    writer.WriteLine();
+                    writer.WriteLine("Test,Frequency,Data");
+                    foreach (KeyValuePair<double, double> item in (Dictionary<double, double>)para.Markers)
+                    {
+                        writer.WriteLine(" ,{0},{1}", item.Key, item.Value);
+                    }
+                    writer.Flush();
+                    writer.Close();
+                    writer = null;
+                    fs.Close();
+                    return path;
+                }
+            }
+            catch (Exception ex)
+            {
+                AppLog.Error("Output has error.", ex);
+                return null;
+            }
+        }
         private static string GetFilePath(ParaObject para, bool pass)
         {
             string root = string.Format("{0}\\{1}",
@@ -78,6 +125,7 @@ namespace AntRunner
         #endregion
 
         #region Report
+        public volatile static int Progress = 0;
         public static void Report_LOG()
         {
             int count1, count2, count3, count4;
@@ -254,10 +302,10 @@ namespace AntRunner
                 app.Quit();
 
                 System.Diagnostics.Process.Start(path);
-            } 
+            }
             catch (Exception ex)
             {
-                AppLog.Error("Report_LOG has error.", ex); 
+                AppLog.Error("Report_LOG has error.", ex);
             }
             finally
             {
@@ -454,6 +502,148 @@ namespace AntRunner
                 {
                     sr.Close();
                     sr = null;
+                }
+            }
+        }
+
+
+        public static void Report_LOG8SWR()
+        {
+            Progress = 0;
+            int count1;
+            int pass1;
+            List<SingleData> list1;
+            GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para1.Trace,
+                out count1, out pass1, out list1);
+            Progress = 10;
+            StreamWriter writer = null;
+            try
+            {
+                Excel.Application app = new Excel.Application();
+                Excel.Workbooks bks = app.Workbooks;
+                Excel.Workbook bk = bks.Add(true);
+                Excel.Worksheet sh = (Excel.Worksheet)bk.Sheets[1];
+                sh.Name = "Report Data";
+                ((Excel.Range)sh.Columns[2, Type.Missing]).NumberFormat = "@";
+                sh.Columns.ColumnWidth = 12;
+                sh.Columns[1, Type.Missing].ColumnWidth = 28;
+                int r = 0;
+                r++;
+                ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
+                ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
+                sh.Cells[r, 1] = "Summary";
+                sh.Cells[r, 2] = "Pass/Sum";
+                sh.Cells[r, 3] = "Pass Rate";
+
+                sh.Cells[++r, 1] = "Port1";
+                sh.Cells[r, 2] = pass1 + "/" + count1;
+                sh.Cells[r, 3] = (count1 == 0 ? 0 : Math.Round(pass1 / (double)count1 * 100, 4)) + "%";
+                sh.Cells[r, 6] = "偏低：";
+                ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 6;
+
+                int pass = pass1;
+                int count = count1;
+                sh.Cells[++r, 1] = "Total";
+                sh.Cells[r, 2] = pass + "/" + count;
+                sh.Cells[r, 3] = (count == 0 ? 0 : Math.Round(pass / (double)count * 100, 4)) + "%";
+                sh.Cells[r, 6] = "偏高：";
+                ((Excel.Range)sh.Cells[r, 7]).Interior.ColorIndex = 3;
+
+
+                //DUT information
+                r++;
+                r++;
+                ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
+                ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
+                sh.Cells[r, 1] = "DUT Information";
+                r++;
+                sh.Cells[r, 1] = "Code";
+                sh.Cells[r, 2] = Settings.Default.Code;
+                r++;
+                sh.Cells[r, 1] = "Manufacturer";
+                sh.Cells[r, 2] = Settings.Default.Manufacture;
+                r++;
+                sh.Cells[r, 1] = "Memo";
+                sh.Cells[r, 2] = Settings.Default.Memo;
+
+                //Parameters
+                for (int i = 0; i < 1; i++)
+                {
+                    ParaObject tempPara = null;
+                    List<SingleData> listData = null;
+                    if (i == 0)
+                    {
+                        tempPara = Settings.Default.Para1;
+                        listData = list1;
+                    }
+
+                    r++;
+                    r++;
+                    ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
+                    ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
+                    sh.Cells[r, 1] = string.Format("Parameters");
+                    r++;
+                    sh.Cells[r, 1] = "S21 Min";
+                    sh.Cells[r, 2] = string.Format("{0} dBm", tempPara.S21Min);
+                    r++;
+                    sh.Cells[r, 1] = "S21 Max";
+                    sh.Cells[r, 2] = string.Format("{0} dBm", tempPara.S21Max);
+                    r++;
+                    sh.Cells[r, 1] = "S22 Max";
+                    sh.Cells[r, 2] = string.Format("{0} dBm", tempPara.S22Max);
+
+                    if (listData.Count > 0)
+                    {
+                        int j = 0;
+                        string tag = "Left";
+                        foreach (KeyValuePair<double, double> item in listData[0].ReferData)
+                        {
+                            r++;
+                            j++;
+                            if (j == 2)
+                            {
+                                tag = "Low";
+                            }
+                            else if (j == 3)
+                            {
+                                tag = "Right";
+                            }
+
+                            sh.Cells[r, 1] = string.Format("Marker ({0})", tag);
+                            sh.Cells[r, 2] = string.Format("{0,4} MHz", Math.Round(item.Key, 2));
+                            sh.Cells[r, 3] = string.Format("{0} dBm", Math.Round(item.Value, 2));
+                        }
+                    }
+                }
+                Progress = 20;
+                Thread.Sleep(2000);
+                //raw data
+                if (list1 != null && list1.Count > 0)
+                {
+                    InsertData(sh, ref r, list1, Settings.Default.Para1);
+                }
+
+                string root = string.Format("{0}\\{1}", Settings.Default.OutputDir, "Report");
+                if (!Directory.Exists(root))
+                    Directory.CreateDirectory(root);
+                string path = string.Format("{0}\\Report_{1}.xlsx", root, DateTime.Now.ToString("MMddHHmmss"));
+                app.AlertBeforeOverwriting = false;
+                bk.SaveAs(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+                    Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                app.Quit();
+
+                System.Diagnostics.Process.Start(path);
+            }
+            catch (Exception ex)
+            {
+                AppLog.Error("Report_LOG8SWR has error.", ex);
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                    writer = null;
                 }
             }
         }

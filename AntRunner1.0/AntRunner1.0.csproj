@@ -92,9 +92,11 @@
     <Compile Include="AboutWin.xaml.cs">
       <DependentUpon>AboutWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converter\Instrument2IsEnable.cs" />
-    <Compile Include="Converter\TestType2IsEnable.cs" />
-    <Compile Include="Converter\TriggerType2IsEnable.cs" />
+    <Compile Include="Converter\Instrument2IsVisibility.cs" />
+    <Compile Include="Converter\TestType2Visibility.cs" />
+    <Compile Include="Converter\TriggerType2Visibility.cs" />
+    <Compile Include="Converter\MarkerList2IsVisibility.cs" />
+    <Compile Include="Converter\MarkerPoints2Visibility.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="EnumList.cs" />
     <Compile Include="Helper.cs" />

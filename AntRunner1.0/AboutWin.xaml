@@ -21,11 +21,11 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Margin="7,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold">About Us</TextBlock>
                 <Button Name="bdr"  BorderBrush="LightGray" BorderThickness="0" 
-                    Height="30" Width="30" Grid.Column="1" Margin="0"  
+                    Height="30" Width="30" Grid.Column="1" Margin="0" ToolTip="关闭" ToolTipService.InitialShowDelay="2000"
                     shell:WindowChrome.IsHitTestVisibleInChrome="True" Click="Button_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Name="grid" Background="#FF116B61" Opacity="0.95" BorderThickness="1" Margin="0">
+                            <Border Name="grid" Background="#FF116B61" BorderThickness="0" Margin="0">
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0" 
                                        Foreground="Red" Name="label1" Text="×" FontSize="20" FontWeight="Bold" >
                                 </TextBlock>
@@ -91,7 +91,7 @@
             </Image>
             <TextBlock Name="blk1"  Text="Antenna Runner 1.0" Grid.Row="1" 
                    VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="168,182,167,0"/>
-            <Border Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0" Margin="7,0">
+            <Border Grid.Row="2" BorderBrush="LightGray" BorderThickness="0,1,0,0" Margin="0" Background="AliceBlue">
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <TextBlock Text="Copyright " Foreground="Gray"/>
                     <TextBlock Name="tipTime" Text="©" Foreground="Gray"/>

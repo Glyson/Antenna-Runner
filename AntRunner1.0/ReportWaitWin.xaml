@@ -4,17 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AntRunner" ResizeMode="NoResize" WindowStyle="ToolWindow"
-        mc:Ignorable="d" Title="ReportWaitWin" Height="319.39" Width="621.098"
+        mc:Ignorable="d" Title="ReportWaitWin" Height="300" Width="485.4"
         xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell">
     <shell:WindowChrome.WindowChrome>
-        <shell:WindowChrome GlassFrameThickness="1" ResizeBorderThickness="1" CaptionHeight="30"/>
+        <shell:WindowChrome GlassFrameThickness="1" ResizeBorderThickness="1" CaptionHeight="300"/>
     </shell:WindowChrome.WindowChrome>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="26*"/>
-        </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="290,61.707,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
-        <Button Content="取消" HorizontalAlignment="Left" Margin="270,151.707,0,0" VerticalAlignment="Top" Width="93" Height="37" Click="Button_Click" Grid.Row="1"/>
-    </Grid>
+    <Border BorderBrush="#FF106455" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="171*"/>
+                <RowDefinition Height="79*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"  Orientation="Horizontal" Background="#FF106455">
+                <TextBlock Margin="7,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold">请稍等</TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
+                <TextBlock  TextWrapping="Wrap" Text="正在导出 . . .  " />
+                <TextBlock  TextWrapping="Wrap" Text="{Binding Source={x:Static local:DataAccess.Progress}, StringFormat={}{0:P0}}"  />
+            </StackPanel>
+            <Border Grid.Row="2" Background="AliceBlue" BorderBrush="LightGray" BorderThickness="0,1,0,0">
+                <Button Content="取消" HorizontalAlignment="Center" VerticalAlignment="Center" Width="93" Height="37" Click="Button_Click" 
+                shell:WindowChrome.IsHitTestVisibleInChrome="True" >
+                    <Button.Template >
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" Background="SteelBlue">
+                                <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                           VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>                               
+                            </Border>
+                            <ControlTemplate.Triggers >
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#FF2974B1"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#FF0093FF"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template> 
+                </Button>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

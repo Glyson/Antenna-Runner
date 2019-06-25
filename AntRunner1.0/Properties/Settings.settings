@@ -45,13 +45,13 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="TraceFormat" Type="System.String" Scope="User">
-      <Value Profile="(Default)">SWR</Value>
+      <Value Profile="(Default)">LOG_SWR</Value>
     </Setting>
     <Setting Name="Trace" Type="System.String" Scope="User">
       <Value Profile="(Default)">S11</Value>
     </Setting>
     <Setting Name="Instrument" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Agilent_8753ES</Value>
     </Setting>
   </Settings>
 </SettingsFile>

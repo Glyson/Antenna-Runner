@@ -28,13 +28,9 @@ namespace AntRunner
     {
 
         public SetupWin()
-        {
-            Settings.Default.TraceFormat = TraceFormat.LOG.ToString ();
+        { 
+
             InitializeComponent();
-            Settings.Default.Para1.MarkerType = MarkerType.Markers.ToString();
-            Settings.Default.Para2.MarkerType = MarkerType.Markers.ToString();
-            Settings.Default.Para3.MarkerType = MarkerType.Markers.ToString();
-            Settings.Default.Para4.MarkerType = MarkerType.Markers.ToString();
             RefreshGPIB();
             //InitCOM();
             if (MainWindow.Self.State == State.Running)
@@ -303,6 +299,21 @@ namespace AntRunner
             {
                 Settings.Default.Instrument = Instrument.Agilent_8753ES.ToString();
             }
+        }
+
+        private void bdr_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Maximized;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
         }
 
         //private void InitCOM()

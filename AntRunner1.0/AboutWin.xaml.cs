@@ -50,10 +50,11 @@ namespace AntRunner
             listTips.Add("快去工作！");
             listTips.Add("别玩了！");
             listTips.Add("你是帅哥还是美女？");
-            listTips.Add("不懂扫我？");
+            listTips.Add("不懂扫我！");
             listTips.Add("小生恭候多时了！");
             listTips.Add("感觉人生到达了高潮！");
             listTips.Add("你很有探索精神哦！");
+            listTips.Add("这都被你发现了！");
 
         }
 
@@ -90,7 +91,7 @@ namespace AntRunner
 
             Border b = new Border();
             b.Background = Brushes.AliceBlue;
-            b.BorderBrush = Brushes.Gray;
+            b.BorderBrush = Brushes.SteelBlue;
             b.BorderThickness = new Thickness(1);
             TextBlock blk = new TextBlock();
             b.Child = blk;

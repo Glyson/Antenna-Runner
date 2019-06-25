@@ -195,6 +195,8 @@ namespace AntRunner
                     Settings.Default.MatchCnt = 2;
 
                 Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
+                if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+                    return;
                 Start(Settings.Default.Para2, ref refer2, ref ellipse2, ref btnStart2, ref t2);
                 Start(Settings.Default.Para3, ref refer3, ref ellipse3, ref btnStart3, ref t3);
                 Start(Settings.Default.Para4, ref refer4, ref ellipse4, ref btnStart4, ref t4);
@@ -575,6 +577,10 @@ namespace AntRunner
             {
                 DataAccess.Report_LOG();
             }
+            else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+            {
+                DataAccess.Report_LOG8SWR();
+            }
             else
             {
                 Report2();
@@ -638,36 +644,45 @@ namespace AntRunner
         {
             bool pass;
             string path = null;
-            if (Settings.Default.TraceFormat == TraceFormat.SWR.ToString())
+            try
             {
-                SortedList<double, double> raw = vna.ReadTrace(para);
-                SortedList<double, double> list = new SortedList<double, double>();
-                List<double> markers = GetMarker(para.MarkerText);
-                foreach (double marker in markers)
+                if (Settings.Default.TraceFormat == TraceFormat.SWR.ToString())
                 {
-                    list.Add(marker, GetPointByTrace(raw, marker));
+                    SortedList<double, double> raw = vna.ReadTrace(para);
+                    SortedList<double, double> list = new SortedList<double, double>();
+                    List<double> markers = GetMarker(para.MarkerText);
+                    foreach (double marker in markers)
+                    {
+                        list.Add(marker, GetPointByTrace(raw, marker));
+                    }
+                    pass = CheckPass_SWR(list, para, out errors);
+                    path = DataAccess.Output(para, list, errors);
+                    return path;
                 }
-                pass = CheckPass_SWR(list, para, out errors);
-                path = DataAccess.Output(para, list, errors);
-                return path;
+                else if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
+                {
+                    SortedList<double, double> list = vna.ReadTrace(para);
+                    pass = CheckPass_LOG(list, para, out errors);
+                    path = DataAccess.Output(para, list, errors);
+                    return path;
+                }
+                else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+                {
+                    SortedList<double, double> s21 = vna.ReadTrace(para, 1);
+                    SortedList<double, double> s22 = vna.ReadTrace(para, 2);
+                    pass = CheckPass_LOG8SWR(s21, s22, para, out errors);
+                    path = DataAccess.OutputLOG8SWR(para, errors);
+                    return path;
+                }
+                else
+                {
+                    errors = new List<ErrorCode>();
+                    return null;
+                }
             }
-            else if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
+            catch (Exception ex)
             {
-                SortedList<double, double> list = vna.ReadTrace(para);
-                pass = CheckPass_LOG(list, para, out errors);
-                path = DataAccess.Output(para, list, errors);
-                return path;
-            }
-            else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
-            {
-                SortedList<double, double> list1 = vna.ReadTrace(para, 1);
-                SortedList<double, double> list2 = vna.ReadTrace(para, 2);
-                pass = CheckPass_LOG8SWR(list1, list2, para, out errors);
-                //path = DataAccess.Output(Settings.Default.Para2, list, errors);
-                return path;
-            }
-            else
-            {
+                AppLog.Error("CheckPass has error.", ex);
                 errors = new List<ErrorCode>();
                 return null;
             }
@@ -751,58 +766,46 @@ namespace AntRunner
             return errorCode.Count == 0;
         }
 
-        private bool CheckPass_LOG8SWR(SortedList<double, double> logList, SortedList<double, double> swrList, ParaObject para, out List<ErrorCode> errorCode)
+        private bool CheckPass_LOG8SWR(SortedList<double, double> s21, SortedList<double, double> s22, ParaObject para, out List<ErrorCode> errorCode)
         {
             errorCode = new List<ErrorCode>();
-            double powRef, fqRef, powMin, fqMin;
-            SortedList<double, double> referTrace = GetReferTrace(para);
-            GetTraceMin(referTrace, out fqRef, out powRef);
-            GetTraceMin(logList, out fqMin, out powMin);
-            double diffFreq = Math.Abs(para.DiffFreq);
-            double diffPower = Math.Abs(para.DiffPower);
-            double diffFreqBad = Math.Abs(para.DiffFreq_Bad);
-            double diffPowerBad = Math.Abs(para.DiffPower_Bad);
-            //errorCode.Add(ErrorCode.FreqL);
-            //errorCode.Add(ErrorCode.PowH);
-            //检查最低点的频率偏差(横向比较)
-            if (fqMin < fqRef - diffFreq)
-            {
-                errorCode.Add(ErrorCode.FreqL);
-            }
-            if (fqMin > fqRef + diffFreq)
-            {
-                errorCode.Add(ErrorCode.FreqH);
-            }
 
-            //检查最低点的功能偏差（纵向比较）
-            if (powMin < powRef - diffPower)
+            if (para.MarkerType == MarkerType.Points.ToString())
             {
-                errorCode.Add(ErrorCode.PowL);
+                string[] arr = para.MarkerText.Split('\r', '\n');
+                foreach (string str in arr)
+                {
+                    double freq = double.Parse(str);
+                    double p21 = GetPointByTrace(s21, freq);
+                    double p22 = GetPointByTrace(s22, freq);
+                    if (p21 < para.S21Min)
+                    {
+                        errorCode.Add(ErrorCode.PowS21L);
+                    }
+                    if (p21 > para.S21Max)
+                    {
+                        errorCode.Add(ErrorCode.PowS21H);
+                    }
+                    if (p22 > para.S22Max)
+                    {
+                        errorCode.Add(ErrorCode.PowS22H);
+                    }
+                }
             }
-            if (powMin > powRef + diffPower)
+            else
             {
-                errorCode.Add(ErrorCode.PowH);
-            }
-
-            //检查功率切线的频宽（频宽比较）
-            ParaObject para2 = new ParaObject();
-            para2.CutPow = para.CutPow;
-            para.Markers = GetMarkersInTrace(logList, para2);
-            double diffBW = Math.Abs(para.DiffBW);
-            if (para2.CutBW < para.CutBW - diffBW)
-            {
-                errorCode.Add(ErrorCode.FreqBandWidthL);
-            }
-            if (para2.CutBW > para.CutBW + diffBW)
-            {
-                errorCode.Add(ErrorCode.FreqBandWidthH);
-            }
-
-            //检查短路
-            if (powMin < powRef - diffPowerBad || powMin > powRef + diffPowerBad
-                || fqMin < fqRef - diffFreqBad || fqMin > fqRef + diffFreqBad)
-            {
-                errorCode.Add(ErrorCode.Bad);
+                if (s21.Where((i) => i.Key >= para.MarkerStart && i.Key <= para.MarkerStop && i.Value < para.S21Min).Count() > 0)
+                {
+                    errorCode.Add(ErrorCode.PowS21L);
+                }
+                if (s21.Where((i) => i.Key >= para.MarkerStart && i.Key <= para.MarkerStop && i.Value > para.S21Max).Count() > 0)
+                {
+                    errorCode.Add(ErrorCode.PowS21H);
+                }
+                if (s22.Where((i) => i.Key >= para.MarkerStart && i.Key <= para.MarkerStop && i.Value > para.S22Max).Count() > 0)
+                {
+                    errorCode.Add(ErrorCode.PowS22H);
+                }
             }
             return errorCode.Count == 0;
         }
@@ -992,6 +995,10 @@ namespace AntRunner
 
         private SortedList<double, double> GetRefer(ParaObject para)
         {
+            if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+            {
+                return new SortedList<double, double>();
+            }
             if (IsSkip)
             {
                 SortedList<double, double> list2 = new SortedList<double, double>();
@@ -1447,6 +1454,21 @@ namespace AntRunner
                     }
                 }
             }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = this.WindowState == System.Windows.WindowState.Maximized ? System.Windows.WindowState.Normal : System.Windows.WindowState.Maximized;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
         }
         //private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         //{

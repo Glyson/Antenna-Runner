@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\
+C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\
 AntRunner
 none
 false
 TRACE;DEBUG
-D:\Glyson\projects\Test\AntRunner1.0\App.xaml
+C:\Users\admin\Desktop\AntRunner1.0\App.xaml
 41857763457
 
-23-1791217379
-20-337503583
+25-155456133
+20-85234786
 AboutWin.xaml;MainWindow.xaml;ReportWaitWin.xaml;SetupWin.xaml;
 
-False
+True
 

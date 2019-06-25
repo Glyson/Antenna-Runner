@@ -12,7 +12,7 @@ namespace AntRunner
     public enum ErrorCode
     {
         [Description("Power Low")]
-        PowL=1,
+        PowL = 1,
         [Description("Power High")]
         PowH,
         [Description("Frequency Low")]
@@ -25,9 +25,15 @@ namespace AntRunner
         FreqBandWidthH,
         [Description("Short Circuit")]
         Bad,
+        [Description("Power(S21) Low")]
+        PowS21L = 1,
+        [Description("Power(S21) High")]
+        PowS21H,
+        [Description("Power(S22) High")]
+        PowS22H,
     }
     public enum Instrument
-    { 
+    {
         Agilent_5071C,
         Agilent_8753ES,
     }
@@ -37,6 +43,11 @@ namespace AntRunner
         LOG,
         LOG_SWR,
     }
+    public enum S22TraceFormat
+    {
+        SWR,
+        LOG,
+    }
     public enum TriggerType
     {
         Auto,
@@ -45,8 +56,8 @@ namespace AntRunner
     }
     public enum MarkerType
     {
+        Range,
         Points,
-        Markers,
     }
     public enum Trace
     {

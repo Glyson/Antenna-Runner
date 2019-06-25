@@ -110,6 +110,29 @@ namespace AntRunner
             }
         }
 
+        private double _markerStart = 1800;
+
+        public double MarkerStart
+        {
+            get { return _markerStart; }
+            set
+            {
+                _markerStart = value;
+                OnPropertyChanged("MarkerStart");
+            }
+        }
+        private double _markerStop = 2000;
+
+        public double MarkerStop
+        {
+            get { return _markerStop; }
+            set
+            {
+                _markerStop = value;
+                OnPropertyChanged("MarkerStop");
+            }
+        }
+
         private string _trace = "S11";
 
         public string Trace
@@ -269,6 +292,51 @@ namespace AntRunner
             {
                 _diffPower_Bad = value;
                 OnPropertyChanged("DiffPower_Bad");
+            }
+        }
+        private double _s21Min = 10;
+
+        public double S21Min
+        {
+            get { return _s21Min; }
+            set
+            {
+                _s21Min = value;
+                OnPropertyChanged("S21Min");
+            }
+        }
+        private double _s21Max = 10;
+
+        public double S21Max
+        {
+            get { return _s21Max; }
+            set
+            {
+                _s21Max = value;
+                OnPropertyChanged("S21Max");
+            }
+        }
+        private double _s22Max = 10;
+
+        public double S22Max
+        {
+            get { return _s22Max; }
+            set
+            {
+                _s22Max = value;
+                OnPropertyChanged("S22Max");
+            }
+        }
+
+        private S22TraceFormat _s22TraceFormat = S22TraceFormat.SWR;
+
+        public S22TraceFormat S22TraceFormat
+        {
+            get { return _s22TraceFormat; }
+            set
+            {
+                _s22TraceFormat = value;
+                OnPropertyChanged("S22TraceFormat");
             }
         }
 

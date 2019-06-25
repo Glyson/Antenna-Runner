@@ -274,3 +274,10 @@ E:\AntRunner1.0\bin\Debug\log4net.config
 D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\App.baml
 D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
 D:\Glyson\projects\Test\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml
+E:\AntRunner1.0\obj\x86\Debug\App.baml
+E:\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
+E:\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml
+C:\Users\admin\Desktop\AntRunner1.0\bin\Debug\log4net.config
+C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\App.baml
+C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
+C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml

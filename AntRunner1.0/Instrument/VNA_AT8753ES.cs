@@ -42,24 +42,30 @@ namespace AntRunner
 
         private void Setup(ParaObject para, int ch)
         {
-            Write("CHAN {0}", ch);// ChAN1
+            Write("CHAN{0}", ch);// ChAN1
             if (ch == 1)
+            {
+                Write("S21");
                 Write("LOGM");
+            }
             else if (ch == 2)
-                Write("SWR");
-            Write("S21");
+            {
+                Write("S22");
+                if (para.S22TraceFormat == S22TraceFormat.SWR)
+                {
+                    Write("SWR");//LOGM/SWR
+                }
+                else
+                {
+                    Write("LOGM");
+                }
+            }
             Write("STAR {0}", para.FreqStart * 1E6);
             Write("STOP {0}", para.FreqStop * 1E6);
             Write("POIN {0}", para.Points);
             Write("PWRR {0}", "PAUTO");//PAUTO, PMAN
             Write("POWE {0:0.##}", para.Power);
             Write("IFBW {0}", para.Bandwidth);//10,30,100,300,1000,3000,3700,6000
-
-            //Write("SENS{0}:SWE:TYPE LIN", ch);
-
-            ////Write("SENS{0}:BWID {1}", ch, Settings.Default.Para1.Bandwidth);  
-            //Write("INIT{0}:CONT ON", ch);
-
             Write("AUTO");
         }
         //private int AnalyzeIFBW(double bw)
@@ -92,11 +98,12 @@ namespace AntRunner
                     list2.Add(freq, 10);
                 return list2;
             }
-            string[] arr = ReadInsTrace(para, traceNum);
-            SortedList<double, double> list = FixTrace(para, arr, 1, 1);
+            int dimCnt = 2;
+            string[] arr = ReadInsTrace(para, traceNum, dimCnt);
+            SortedList<double, double> list = FixTrace(para, arr, dimCnt, 1);
             return list;
         }
-        private string[] ReadInsTrace(ParaObject para, int ch = 1)
+        private string[] ReadInsTrace(ParaObject para, int ch = 1, int dimCnt = 2)
         {
             Write("CHAN{0}", ch);
             Write("FORM4");
@@ -107,9 +114,9 @@ namespace AntRunner
             string[] arrCur;
             do
             {
-                cur += ses.ReadString();
-                arrCur = cur.Split(',');
-            } while (arrCur.Length < para.Points);
+                cur += ses.ReadString().Trim();
+                arrCur = cur.Split('\n', ',');
+            } while (arrCur.Length < para.Points * dimCnt);
             return arrCur;
         }
     }
