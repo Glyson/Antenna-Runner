@@ -76,7 +76,7 @@ namespace AntRunner
             }
         }
 
-        private string _markerType = "Points";
+        private string _markerType = "Range";
 
         public string MarkerType
         {

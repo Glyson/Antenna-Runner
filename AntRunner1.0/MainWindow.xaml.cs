@@ -46,6 +46,7 @@ namespace AntRunner
         Storyboard sb1, sb2, sb3, sb4;
         ReportWaitWin wReport;
         Thread tReport;
+        DataBase da;
 
         public State State
         {
@@ -61,13 +62,12 @@ namespace AntRunner
             bshPass = (Brush)brushConverter.ConvertFromString("#FF3092FC");
             bshTgr = (Brush)brushConverter.ConvertFromString("#FF28F31B");
 
-            sb1 = CreateStoryboard(ellipse1);
-            sb2 = CreateStoryboard(ellipse2);
-            sb3 = CreateStoryboard(ellipse3);
-            sb4 = CreateStoryboard(ellipse4);
+            sb1 = CreateStoryboard(ellipse1, vb1);
+            sb2 = CreateStoryboard(ellipse2, vb2);
+            sb3 = CreateStoryboard(ellipse3, vb3);
+            sb4 = CreateStoryboard(ellipse4, vb4);
 
-            //string unique = MyMD5.GetComputerId();
-
+            //string unique = MyMD5.GetComputerId(); 
             if (HasExpired())
             {
                 List<string> list = new List<string>();
@@ -107,17 +107,23 @@ namespace AntRunner
             InitCount();
         }
 
-        private Storyboard CreateStoryboard(Ellipse ele)
+        private Storyboard CreateStoryboard(Ellipse ele, Viewbox vb)
         {
             DoubleAnimation ani = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(300)));
             //ani.AutoReverse = true;
             ani.RepeatBehavior = new RepeatBehavior(TimeSpan.FromSeconds(5));
+            Storyboard.SetTarget(ani, ele);
+            Storyboard.SetTargetProperty(ani, new PropertyPath(Ellipse.OpacityProperty.ToString()));
+
+            DoubleAnimation ani2 = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(3000)));
+            Storyboard.SetTarget(ani2, vb);
+            Storyboard.SetTargetProperty(ani2, new PropertyPath(Ellipse.OpacityProperty.ToString()));
+
             Storyboard sb = new Storyboard();
 #if FUN1
             sb.Children.Add(ani);
+            sb.Children.Add(ani2);
 #endif
-            Storyboard.SetTarget(ani, ele);
-            Storyboard.SetTargetProperty(ani, new PropertyPath(Ellipse.OpacityProperty.ToString()));
             return sb;
         }
         private bool HasExpired()
@@ -131,10 +137,11 @@ namespace AntRunner
         }
         public void InitCount()
         {
-            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1);
-            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2);
-            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3);
-            DataAccess.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4);
+            da = DataBase.GetDataHandler(Helper.String2Enum<TraceFormat>(Settings.Default.TraceFormat));
+            da.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1);
+            da.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2);
+            da.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3);
+            da.GetCount8Pass(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4);
             tb1.Text = GetPercentStr(Count1, Pass1);
             tb2.Text = GetPercentStr(Count2, Pass2);
             tb3.Text = GetPercentStr(Count3, Pass3);
@@ -166,7 +173,7 @@ namespace AntRunner
                 }
                 catch (Exception ex)
                 {
-                    AppLog.Error("ScanGPIB has error.", ex);
+                    AppLog.Warn("ScanGPIB has error.", ex);
                     MainWindow.IsSkip = true;
                 }
 
@@ -193,7 +200,7 @@ namespace AntRunner
 
                 if (Settings.Default.MatchCnt < 2)
                     Settings.Default.MatchCnt = 2;
-
+                da = DataBase.GetDataHandler(Helper.String2Enum<TraceFormat>(Settings.Default.TraceFormat));
                 Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
                 if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
                     return;
@@ -262,184 +269,254 @@ namespace AntRunner
         }
         private void ThreadStart1()
         {
+            blk1.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                blk1.Text = "开始";
+            }));
             while (true)
             {
+                SortedList<double, double> list1 = null;
+                SortedList<double, double> list2 = null;
                 if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
                 {
-                    AutoTriger(Settings.Default.Para1);
+                    AutoTriger(Settings.Default.Para1, out list1, out list2);
                 }
                 else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
                 {
                     return;
                 }
-                Run1();
+                Run1(list1, list2);
                 manual1 = false;
             }
         }
         private void ThreadStart2()
         {
+            blk2.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                blk2.Text = "开始";
+            }));
             while (true)
             {
+                SortedList<double, double> list1 = null;
+                SortedList<double, double> list2 = null;
                 if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
                 {
-                    AutoTriger(Settings.Default.Para2);
+                    AutoTriger(Settings.Default.Para2, out list1, out list2);
                 }
                 else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
                 {
                     return;
                 }
-                Run2();
+                Run2(list1, list2);
                 manual2 = false;
             }
         }
         private void ThreadStart3()
         {
+            blk3.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                blk3.Text = "开始";
+            }));
             while (true)
             {
+                SortedList<double, double> list1 = null;
+                SortedList<double, double> list2 = null;
                 if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
                 {
-                    AutoTriger(Settings.Default.Para3);
+                    AutoTriger(Settings.Default.Para3, out list1, out list2);
                 }
                 else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
                 {
                     return;
                 }
-                Run3();
+                Run3(list1, list2);
                 manual3 = false;
             }
         }
         private void ThreadStart4()
         {
+            blk4.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                blk4.Text = "开始";
+            }));
             while (true)
             {
+                SortedList<double, double> list1 = null;
+                SortedList<double, double> list2 = null;
                 if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
                 {
-                    AutoTriger(Settings.Default.Para4);
+                    AutoTriger(Settings.Default.Para4, out list1, out list2);
                 }
                 else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
                 {
                     return;
                 }
-                Run4();
+                Run4(list1, list2);
                 manual4 = false;
             }
         }
-        private void Run1()
+        private void Run1(SortedList<double, double> list1, SortedList<double, double> list2)
         {
             bool pass;
             string path;
             List<ErrorCode> errors;
-            btnStart1.Dispatcher.BeginInvoke(new Action(delegate
+            btnStart1.Dispatcher.Invoke(new Action(delegate
             {
                 btnStart1.IsEnabled = false;
                 ellipse1.Fill = bshTgr;
             }));
             lock (vna)
             {
-                path = CheckPass(Settings.Default.Para1, out errors);
+                path = CheckPass(Settings.Default.Para1, list1, list2, out errors);
                 pass = errors.Count == 0;
-                LogMsg(Settings.Default.Para1.Trace, path, errors);
-                Count1++;
             }
-            this.Dispatcher.BeginInvoke(new Action(delegate
+            this.Dispatcher.Invoke(new Action(delegate
             {
-                if (pass) Pass1++;
-                ellipse1.Fill = pass ? bshPass : bshFail;
-                sb1.Begin(ellipse1, true);
-                blk1.Text = pass ? "合格" : "不合格";
-                tb1.Text = GetPercentStr(Count1, Pass1);
-                UpdateAll();
-                btnStart1.IsEnabled = true;
+                if (path == null)
+                {
+                    LogMsg(1, bshFail, "报错");
+                    txt1.Text = blk1.Text = "报错";
+                    txt1.Foreground = ellipse1.Fill = bshFail;
+                    sb1.Begin();
+                    btnStart1.IsEnabled = true;
+                }
+                else
+                {
+                    LogMsg(Settings.Default.Para1.Trace, path, errors);
+                    if (pass) Pass1++;
+                    Count1++;
+                    txt1.Text = blk1.Text = pass ? "合格" : "淘汰";
+                    txt1.Foreground = ellipse1.Fill = pass ? bshPass : bshFail;
+                    tb1.Text = GetPercentStr(Count1, Pass1);
+                    sb1.Begin();
+                    UpdateAll();
+                    btnStart1.IsEnabled = true;
+                }
             }));
         }
-        private void Run2()
+        private void Run2(SortedList<double, double> list1, SortedList<double, double> list2)
         {
             bool pass;
             string path;
             List<ErrorCode> errors;
-            btnStart2.Dispatcher.BeginInvoke(new Action(delegate
+            btnStart2.Dispatcher.Invoke(new Action(delegate
             {
                 btnStart2.IsEnabled = false;
                 ellipse2.Fill = bshTgr;
             }));
             lock (vna)
             {
-                path = CheckPass(Settings.Default.Para2, out errors);
+                path = CheckPass(Settings.Default.Para2, list1, list2, out errors);
                 pass = errors.Count == 0;
-                LogMsg(Settings.Default.Para2.Trace, path, errors);
-                Count2++;
             }
-            this.Dispatcher.BeginInvoke(new Action(delegate
+            this.Dispatcher.Invoke(new Action(delegate
             {
-                if (pass) Pass2++;
-                ellipse2.Fill = pass ? bshPass : bshFail;
-                sb2.Begin(ellipse2, true);
-                blk2.Text = pass ? "合格" : "不合格";
-                tb2.Text = GetPercentStr(Count2, Pass2);
-                UpdateAll();
-                btnStart2.IsEnabled = true;
+                if (path == null)
+                {
+                    LogMsg(2, bshFail, "报错");
+                    txt2.Text = blk2.Text = "报错";
+                    txt2.Foreground = ellipse1.Fill = bshFail;
+                    sb2.Begin();
+                    btnStart1.IsEnabled = true;
+                }
+                else
+                {
+                    LogMsg(Settings.Default.Para2.Trace, path, errors);
+                    if (pass) Pass2++;
+                    Count2++;
+                    txt2.Text = blk2.Text = pass ? "合格" : "淘汰";
+                    txt2.Foreground = ellipse2.Fill = pass ? bshPass : bshFail;
+                    tb2.Text = GetPercentStr(Count2, Pass2);
+                    sb2.Begin();
+                    UpdateAll();
+                    btnStart2.IsEnabled = true;
+                }
             }));
         }
-        private void Run3()
+        private void Run3(SortedList<double, double> list1, SortedList<double, double> list2)
         {
             bool pass;
             string path;
             List<ErrorCode> errors;
-            btnStart3.Dispatcher.BeginInvoke(new Action(delegate
+            btnStart3.Dispatcher.Invoke(new Action(delegate
             {
                 btnStart3.IsEnabled = false;
                 ellipse3.Fill = bshTgr;
             }));
             lock (vna)
             {
-                path = CheckPass(Settings.Default.Para3, out errors);
+                path = CheckPass(Settings.Default.Para3, list1, list2, out errors);
                 pass = errors.Count == 0;
-                LogMsg(Settings.Default.Para3.Trace, path, errors);
-                Count3++;
             }
-            this.Dispatcher.BeginInvoke(new Action(delegate
+            this.Dispatcher.Invoke(new Action(delegate
             {
-                if (pass) Pass3++;
-                ellipse3.Fill = pass ? bshPass : bshFail;
-                sb3.Begin(ellipse3, true);
-                blk3.Text = pass ? "合格" : "不合格";
-                tb3.Text = GetPercentStr(Count3, Pass3);
-                UpdateAll();
-                btnStart3.IsEnabled = true;
+                if (path == null)
+                {
+                    LogMsg(3, bshFail, "报错");
+                    txt3.Text = blk3.Text = "报错";
+                    txt3.Foreground = ellipse1.Fill = bshFail;
+                    sb3.Begin();
+                    btnStart1.IsEnabled = true;
+                }
+                else
+                {
+                    LogMsg(Settings.Default.Para3.Trace, path, errors);
+                    if (pass) Pass3++;
+                    Count3++;
+                    txt3.Text = blk3.Text = pass ? "合格" : "淘汰";
+                    txt3.Foreground = ellipse3.Fill = pass ? bshPass : bshFail;
+                    tb3.Text = GetPercentStr(Count3, Pass3);
+                    sb3.Begin();
+                    UpdateAll();
+                    btnStart3.IsEnabled = true;
+                }
             }));
         }
-        private void Run4()
+        private void Run4(SortedList<double, double> list1, SortedList<double, double> list2)
         {
             bool pass;
             string path;
             List<ErrorCode> errors;
-            btnStart4.Dispatcher.BeginInvoke(new Action(delegate
+            btnStart4.Dispatcher.Invoke(new Action(delegate
             {
                 btnStart4.IsEnabled = false;
                 ellipse4.Fill = bshTgr;
             }));
             lock (vna)
             {
-                path = CheckPass(Settings.Default.Para4, out errors);
+                path = CheckPass(Settings.Default.Para4, list1, list2, out errors);
                 pass = errors.Count == 0;
-                LogMsg(Settings.Default.Para4.Trace, path, errors);
-                Count4++;
             }
-            this.Dispatcher.BeginInvoke(new Action(delegate
+            this.Dispatcher.Invoke(new Action(delegate
             {
-                if (pass) Pass4++;
-                ellipse4.Fill = pass ? bshPass : bshFail;
-                sb4.Begin(ellipse4, true);
-                blk4.Text = pass ? "合格" : "不合格";
-                tb4.Text = GetPercentStr(Count4, Pass4);
-                UpdateAll();
-                btnStart4.IsEnabled = true;
+                if (path == null)
+                {
+                    LogMsg(4, bshFail, "报错");
+                    txt4.Text = blk4.Text = "报错";
+                    txt4.Foreground = ellipse1.Fill = bshFail;
+                    sb4.Begin();
+                    btnStart4.IsEnabled = true;
+                }
+                else
+                {
+                    LogMsg(Settings.Default.Para4.Trace, path, errors);
+                    if (pass) Pass4++;
+                    Count4++;
+                    txt4.Text = blk4.Text = pass ? "合格" : "淘汰";
+                    txt4.Foreground = ellipse4.Fill = pass ? bshPass : bshFail;
+                    tb4.Text = GetPercentStr(Count4, Pass4);
+                    sb4.Begin();
+                    UpdateAll();
+                    btnStart4.IsEnabled = true;
+                }
             }));
         }
-        private bool AutoTriger(ParaObject para)
+        private bool AutoTriger(ParaObject para, out SortedList<double, double> list1, out SortedList<double, double> list2)
         {
             Trace type = (Trace)Enum.Parse(typeof(Trace), para.Trace);
             SortedList<double, double> list = null;
+            list1 = null;
+            list2 = null;
             List<SortedList<double, double>> all = new List<SortedList<double, double>>();
             bool triggerDeep = false;
             while (true)
@@ -455,7 +532,11 @@ namespace AntRunner
                 Thread.Sleep(Settings.Default.AutoDelay);
                 lock (vna)
                 {
-                    list = vna.ReadTrace(para);//读曲线
+                    list = list1 = vna.ReadTrace(para);//读曲线
+                    if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+                    {
+                        list2 = vna.ReadTrace(para, 2);//读曲线
+                    }
                 }
                 if (IsDeep(list, Settings.Default.Deep))//如果是底噪，即触发过底噪，之前数据清空，路过
                 {
@@ -573,18 +654,8 @@ namespace AntRunner
         }
         private void Report()
         {
-            if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
-            {
-                DataAccess.Report_LOG();
-            }
-            else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
-            {
-                DataAccess.Report_LOG8SWR();
-            }
-            else
-            {
-                Report2();
-            }
+            da = DataBase.GetDataHandler(Helper.String2Enum<TraceFormat>(Settings.Default.TraceFormat));
+            da.Report();
             wReport.Dispatcher.Invoke(new Action(delegate
             {
                 wReport.Close();
@@ -615,7 +686,10 @@ namespace AntRunner
                 })));
                 tReport.Start();
 
-                wReport = new ReportWaitWin();
+                if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+                    wReport = new ReportWaitWin(Count1);
+                else
+                    wReport = new ReportWaitWin(Count1 + Count2 + Count3 + Count4);
                 wReport.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 wReport.Closing += Win_Closing;
                 wReport.Owner = this;
@@ -640,7 +714,7 @@ namespace AntRunner
             tReport.Abort();
         }
         #region Check
-        private string CheckPass(ParaObject para, out List<ErrorCode> errors)
+        private string CheckPass(ParaObject para, SortedList<double, double> list1, SortedList<double, double> list2, out List<ErrorCode> errors)
         {
             bool pass;
             string path = null;
@@ -648,30 +722,26 @@ namespace AntRunner
             {
                 if (Settings.Default.TraceFormat == TraceFormat.SWR.ToString())
                 {
-                    SortedList<double, double> raw = vna.ReadTrace(para);
                     SortedList<double, double> list = new SortedList<double, double>();
                     List<double> markers = GetMarker(para.MarkerText);
                     foreach (double marker in markers)
                     {
-                        list.Add(marker, GetPointByTrace(raw, marker));
+                        list.Add(marker, GetPointByTrace(list1, marker));
                     }
                     pass = CheckPass_SWR(list, para, out errors);
-                    path = DataAccess.Output(para, list, errors);
+                    path = da.Output(para, list, errors);
                     return path;
                 }
                 else if (Settings.Default.TraceFormat == TraceFormat.LOG.ToString())
                 {
-                    SortedList<double, double> list = vna.ReadTrace(para);
-                    pass = CheckPass_LOG(list, para, out errors);
-                    path = DataAccess.Output(para, list, errors);
+                    pass = CheckPass_LOG(list1, para, out errors);
+                    path = da.Output(para, list1, errors);
                     return path;
                 }
                 else if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
                 {
-                    SortedList<double, double> s21 = vna.ReadTrace(para, 1);
-                    SortedList<double, double> s22 = vna.ReadTrace(para, 2);
-                    pass = CheckPass_LOG8SWR(s21, s22, para, out errors);
-                    path = DataAccess.OutputLOG8SWR(para, errors);
+                    pass = CheckPass_LOG8SWR(list1, list2, para, out errors);
+                    path = da.Output(para, errors);
                     return path;
                 }
                 else
@@ -772,37 +842,58 @@ namespace AntRunner
 
             if (para.MarkerType == MarkerType.Points.ToString())
             {
-                string[] arr = para.MarkerText.Split('\r', '\n');
+                string[] arr = para.MarkerText.Trim().Split('\n');
+                arr = arr.Distinct().ToArray();
+                Dictionary<double, string> markers = new Dictionary<double, string>();
+                para.Markers = markers;
                 foreach (string str in arr)
                 {
                     double freq = double.Parse(str);
                     double p21 = GetPointByTrace(s21, freq);
                     double p22 = GetPointByTrace(s22, freq);
+                    markers.Add(freq, string.Format("{0},{1}", p21, p22));
                     if (p21 < para.S21Min)
                     {
-                        errorCode.Add(ErrorCode.PowS21L);
+                        if (!errorCode.Contains(ErrorCode.PowS21L))
+                            errorCode.Add(ErrorCode.PowS21L);
                     }
                     if (p21 > para.S21Max)
                     {
-                        errorCode.Add(ErrorCode.PowS21H);
+                        if (!errorCode.Contains(ErrorCode.PowS21H))
+                            errorCode.Add(ErrorCode.PowS21H);
                     }
                     if (p22 > para.S22Max)
                     {
-                        errorCode.Add(ErrorCode.PowS22H);
+                        if (!errorCode.Contains(ErrorCode.PowS22H))
+                            errorCode.Add(ErrorCode.PowS22H);
                     }
                 }
             }
             else
             {
-                if (s21.Where((i) => i.Key >= para.MarkerStart && i.Key <= para.MarkerStop && i.Value < para.S21Min).Count() > 0)
+                Dictionary<double, double> s21List = new Dictionary<double, double>();
+                Dictionary<double, double> s22List = new Dictionary<double, double>();
+                Dictionary<double, string> markers = new Dictionary<double, string>();
+                para.Markers = markers;
+                for (int i = 0; i < s21.Count; i++)
+                {
+                    double freq = s21.Keys[i];
+                    if (freq >= para.MarkerStart && freq <= para.MarkerStop)
+                    {
+                        s21List.Add(freq, s21.Values[i]);
+                        s22List.Add(freq, s22.Values[i]);
+                        markers.Add(freq, string.Format("{0},{1}", s21.Values[i], s22.Values[i]));
+                    }
+                }
+                if (s21List.Where((i) => i.Value < para.S21Min).Count() > 0)
                 {
                     errorCode.Add(ErrorCode.PowS21L);
                 }
-                if (s21.Where((i) => i.Key >= para.MarkerStart && i.Key <= para.MarkerStop && i.Value > para.S21Max).Count() > 0)
+                if (s21List.Where((i) => i.Value > para.S21Max).Count() > 0)
                 {
                     errorCode.Add(ErrorCode.PowS21H);
                 }
-                if (s22.Where((i) => i.Key >= para.MarkerStart && i.Key <= para.MarkerStop && i.Value > para.S22Max).Count() > 0)
+                if (s22List.Where((i) => i.Value > para.S22Max).Count() > 0)
                 {
                     errorCode.Add(ErrorCode.PowS22H);
                 }
@@ -1100,6 +1191,7 @@ namespace AntRunner
                 case 1:
                     if (t1 != null)
                     {
+                        sb1.Stop();
                         t1.Abort();
                         t1 = null;
                         ellipse1.Fill = Brushes.Gray;
@@ -1110,6 +1202,7 @@ namespace AntRunner
                 case 2:
                     if (t2 != null)
                     {
+                        sb2.Stop();
                         t2.Abort();
                         t2 = null;
                         ellipse2.Fill = Brushes.Gray;
@@ -1120,6 +1213,7 @@ namespace AntRunner
                 case 3:
                     if (t3 != null)
                     {
+                        sb3.Stop();
                         t3.Abort();
                         t3 = null;
                         ellipse3.Fill = Brushes.Gray;
@@ -1130,6 +1224,7 @@ namespace AntRunner
                 case 4:
                     if (t4 != null)
                     {
+                        sb4.Stop();
                         t4.Abort();
                         t4 = null;
                         ellipse4.Fill = Brushes.Gray;
@@ -1242,16 +1337,24 @@ namespace AntRunner
                 run = new Run(pass);
                 run.Foreground = bsh;
 
-                Uri u;
-                if (path != null && Uri.TryCreate(path, UriKind.Absolute, out u))
+                if (path != null)
                 {
-                    Hyperlink link = new Hyperlink(run);
-                    link.ToolTip = u.LocalPath;
-                    link.NavigateUri = u;
-                    link.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(link_RequestNavigate);
-                    ToolTipService.SetInitialShowDelay(link, 2000);
-                    pgp.Inlines.Add(link);
+                    Uri u;
+                    if (Uri.TryCreate(path, UriKind.Absolute, out u))
+                    {
+                        Hyperlink link = new Hyperlink(run);
+                        link.ToolTip = u.LocalPath;
+                        link.NavigateUri = u;
+                        link.RequestNavigate += new System.Windows.Navigation.RequestNavigateEventHandler(link_RequestNavigate);
+                        ToolTipService.SetInitialShowDelay(link, 2000);
+                        pgp.Inlines.Add(link);
+                    }
+                    else
+                    {
+                        pgp.Inlines.Add(run);
+                    }
                 }
+
                 StringBuilder errStr = new StringBuilder();
                 foreach (ErrorCode e in errors)
                 {
@@ -1268,193 +1371,6 @@ namespace AntRunner
         }
         #endregion
 
-        //LOG Report
-
-        //SWR Report
-        private void Report2()
-        {
-            List<SingleData> list1, list2, list3, list4;
-            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para1.Trace, out Count1, out Pass1, out list1);
-            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para2.Trace, out Count2, out Pass2, out list2);
-            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para3.Trace, out Count3, out Pass3, out list3);
-            DataAccess.GetSingleData_LOG(Settings.Default.OutputDir, Settings.Default.Para4.Trace, out Count4, out Pass4, out list4);
-
-            StreamWriter writer = null;
-            try
-            {
-                Excel.Application app = new Excel.Application();
-                Excel.Workbooks bks = app.Workbooks;
-                Excel.Workbook bk = bks.Add(true);
-                Excel.Worksheet sh = (Excel.Worksheet)bk.Sheets[1];
-                sh.Name = "Report Data";
-                ((Excel.Range)sh.Columns[2, Type.Missing]).NumberFormat = "@";
-                sh.Columns.ColumnWidth = 12;
-                sh.Columns[1, Type.Missing].ColumnWidth = 28;
-                int r = 0;
-                r++;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
-                sh.Cells[r, 1] = "Summary";
-                sh.Cells[r, 2] = "Pass/Sum";
-                sh.Cells[r, 3] = "Pass Rate";
-
-                sh.Cells[++r, 1] = "Port1(S11)";
-                sh.Cells[r, 2] = Pass1 + "/" + Count1;
-                sh.Cells[r, 3] = (Count1 == 0 ? 0 : Math.Round(Pass1 / (double)Count1 * 100, 4)) + "%";
-
-                sh.Cells[++r, 1] = "Port2(S22)";
-                sh.Cells[r, 2] = Pass2 + "/" + Count2;
-                sh.Cells[r, 3] = (Count2 == 0 ? 0 : Math.Round(Pass2 / (double)Count2 * 100, 4)) + "%";
-
-                sh.Cells[++r, 1] = "Port3(S33)";
-                sh.Cells[r, 2] = Pass3 + "/" + Count3;
-                sh.Cells[r, 3] = (Count3 == 0 ? 0 : Math.Round(Pass3 / (double)Count3 * 100, 4)) + "%";
-
-                sh.Cells[++r, 1] = "Port4(S44)";
-                sh.Cells[r, 2] = Pass4 + "/" + Count4;
-                sh.Cells[r, 3] = (Count4 == 0 ? 0 : Math.Round(Pass4 / (double)Count4 * 100, 4)) + "%";
-
-                int pass = Pass1 + Pass2 + Pass3 + Pass4;
-                int count = Count1 + Count2 + Count3 + Count4;
-                sh.Cells[++r, 1] = "Total";
-                sh.Cells[r, 2] = pass + "/" + count;
-                sh.Cells[r, 3] = (count == 0 ? 0 : Math.Round(pass / (double)count * 100, 4)) + "%";
-
-                //DUT information
-                r++;
-                r++;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
-                sh.Cells[r, 1] = "DUT Information";
-                r++;
-                sh.Cells[r, 1] = "Code";
-                sh.Cells[r, 2] = Settings.Default.Code;
-                r++;
-                sh.Cells[r, 1] = "Manufacturer";
-                sh.Cells[r, 2] = Settings.Default.Manufacture;
-                r++;
-                sh.Cells[r, 1] = "Memo";
-                sh.Cells[r, 2] = Settings.Default.Memo;
-
-                //Parameters
-                r++;
-                r++;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
-                sh.Cells[r, 1] = "Parameters";
-                sh.Cells[r, 2] = "S11";
-                sh.Cells[r, 3] = "S22";
-                sh.Cells[r, 4] = "S33";
-                sh.Cells[r, 5] = "S44";
-                r++;
-                sh.Cells[r, 1] = "Cut Power";
-                sh.Cells[r, 2] = string.Format("{0} MHz", Settings.Default.Para1.CutBW);
-                sh.Cells[r, 3] = string.Format("{0} MHz", Settings.Default.Para2.CutBW);
-                sh.Cells[r, 4] = string.Format("{0} MHz", Settings.Default.Para3.CutBW);
-                sh.Cells[r, 5] = string.Format("{0} MHz", Settings.Default.Para4.CutBW);
-                r++;
-                sh.Cells[r, 1] = "Frequency Difference";
-                sh.Cells[r, 2] = string.Format("{0} MHz", Settings.Default.Para1.DiffFreq);
-                sh.Cells[r, 3] = string.Format("{0} MHz", Settings.Default.Para2.DiffFreq);
-                sh.Cells[r, 4] = string.Format("{0} MHz", Settings.Default.Para3.DiffFreq);
-                sh.Cells[r, 5] = string.Format("{0} MHz", Settings.Default.Para4.DiffFreq);
-                r++;
-                sh.Cells[r, 1] = "Power Reference";
-                sh.Cells[r, 2] = string.Format("{0} dBm", Settings.Default.Para1.CutPow);
-                sh.Cells[r, 3] = string.Format("{0} dBm", Settings.Default.Para2.CutPow);
-                sh.Cells[r, 4] = string.Format("{0} dBm", Settings.Default.Para3.CutPow);
-                sh.Cells[r, 5] = string.Format("{0} dBm", Settings.Default.Para4.CutPow);
-                r++;
-                sh.Cells[r, 1] = "Power Difference";
-                sh.Cells[r, 2] = string.Format("{0} dB", Settings.Default.Para1.DiffPower);
-                sh.Cells[r, 3] = string.Format("{0} dB", Settings.Default.Para2.DiffPower);
-                sh.Cells[r, 4] = string.Format("{0} dB", Settings.Default.Para3.DiffPower);
-                sh.Cells[r, 5] = string.Format("{0} dB", Settings.Default.Para4.DiffPower);
-
-                //raw data
-                if (list1 != null && list1.Count > 0)
-                {
-                    InsertData(sh, ref r, list1, Settings.Default.Para1);
-                }
-                if (list2 != null && list2.Count > 0)
-                {
-                    InsertData(sh, ref r, list2, Settings.Default.Para1);
-                }
-                if (list3 != null && list3.Count > 0)
-                {
-                    InsertData(sh, ref r, list3, Settings.Default.Para1);
-                }
-                if (list4 != null && list4.Count > 0)
-                {
-                    InsertData(sh, ref r, list4, Settings.Default.Para1);
-                }
-
-
-
-                string root = string.Format("{0}\\{1}", Settings.Default.OutputDir, "Report");
-                if (!Directory.Exists(root))
-                    Directory.CreateDirectory(root);
-                string path = string.Format("{0}\\Report_{1}.xlsx", root, DateTime.Now.ToString("MMddHHmmss"));
-                app.AlertBeforeOverwriting = false;
-                bk.SaveAs(path, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Excel.XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                app.Quit();
-
-                System.Diagnostics.Process.Start(path);
-            }
-            catch (Exception ex)
-            {
-                if (writer != null)
-                {
-                    writer.Close();
-                    writer = null;
-                }
-                AppLog.Error("Report2 has error.", ex);
-                MessageBox.Show("Report error! \n\n\n" + ex.Message);
-            }
-            finally
-            {
-            }
-        }
-        private void InsertData(Excel.Worksheet sh, ref int r, List<SingleData> list1, ParaObject para)
-        {
-            r++;
-            int c = 0;
-            if (list1 != null && list1.Count > 0)
-            {
-                r++;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Interior.ColorIndex = 37;
-                ((Excel.Range)sh.Rows[r, Type.Missing]).Font.Bold = true;
-                c = 0;
-                sh.Cells[r, ++c] = string.Format("Data File ( {0} )", list1[0].TraceType);
-                sh.Cells[r, ++c] = "Code";
-                sh.Cells[r, ++c] = "Result";
-                c++;
-                foreach (KeyValuePair<double, double> item in list1[0].ReferData)
-                {
-                    sh.Cells[r, ++c] = Math.Round(item.Key, 2) + "(MHz)";
-                    sh.Cells[r + 1, c] = Math.Round(item.Value, 2);
-                }
-                foreach (SingleData data in list1)
-                {
-                    r++;
-                    c = 0;
-                    sh.Cells[r, ++c] = data.Filename;
-                    sh.Cells[r, ++c] = data.Code;
-                    sh.Cells[r, ++c] = data.Result;
-
-                    c++;
-                    foreach (KeyValuePair<double, double> item in data.ListData)
-                    {
-                        sh.Cells[r, ++c] = Math.Round(item.Value, 2);
-                    }
-                    if (data.Result == "Fail")
-                    {
-                        ((Excel.Range)sh.Rows[r, Type.Missing]).Font.ColorIndex = 3;
-                    }
-                }
-            }
-        }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {

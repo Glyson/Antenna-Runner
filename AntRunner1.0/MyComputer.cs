@@ -80,7 +80,7 @@ namespace AntRunner
                         }
                         catch(Exception ex)
                         {
-                            AppLog.Error("identifier has error.", ex);
+                            AppLog.Warn("Identifier has error.", ex);
                         }
                     }
                 }

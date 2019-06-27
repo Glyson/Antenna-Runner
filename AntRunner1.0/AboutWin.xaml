@@ -95,7 +95,7 @@
                 <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <TextBlock Text="Copyright " Foreground="Gray"/>
                     <TextBlock Name="tipTime" Text="©" Foreground="Gray"/>
-                    <TextBlock Text=" 2019 GLY All Rights Reserved." Foreground="Gray"/>
+                    <TextBlock Text=" 2019 ZPP All Rights Reserved." Foreground="Gray"/>
                 </StackPanel>
             </Border>
 

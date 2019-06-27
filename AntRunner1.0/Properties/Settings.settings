@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Manufacture" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Apple</Value>
+      <Value Profile="(Default)">Huawei</Value>
     </Setting>
     <Setting Name="Code" Type="System.String" Scope="User">
       <Value Profile="(Default)">001</Value>
@@ -36,13 +36,13 @@
       <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="AutoDelay" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">800</Value>
     </Setting>
     <Setting Name="AutoDiff" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">2</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="MatchCnt" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="TraceFormat" Type="System.String" Scope="User">
       <Value Profile="(Default)">LOG_SWR</Value>

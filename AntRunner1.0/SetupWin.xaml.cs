@@ -26,10 +26,8 @@ namespace AntRunner
     /// </summary>
     public partial class SetupWin : Window
     {
-
         public SetupWin()
-        { 
-
+        {
             InitializeComponent();
             RefreshGPIB();
             //InitCOM();

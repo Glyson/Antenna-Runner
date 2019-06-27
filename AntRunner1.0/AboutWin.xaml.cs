@@ -28,29 +28,26 @@ namespace AntRunner
             t.Tick += T_Tick;
             t.Start();
 
-            listTips.Add("点我干嘛！");
-            listTips.Add("你好调皮！");
-            listTips.Add("点我干嘛！");
-            listTips.Add("你好调皮！");
-            listTips.Add("点我干嘛！");
-            listTips.Add("你好调皮！");
-            listTips.Add("点我没用，扫我！！");
-            listTips.Add("点我没用，扫我！！");
+            listTips.Add("别玩了！");
+            listTips.Add("快去工作！");
             listTips.Add("你想干嘛!");
             listTips.Add("撩我？");
-            listTips.Add("一边去！");
+            listTips.Add("扫我吗！");
+            listTips.Add("不扫我何以扫天下！");
             listTips.Add("不要乱点哦！");
+            listTips.Add("点坏了要你赔哦！");
+
+            listTips.Add("点我干嘛！");
+            listTips.Add("你好调皮！");
+            listTips.Add("点我没用，扫我！！");
+            listTips.Add("一边去！");
             listTips.Add("小傻瓜！");
             listTips.Add("你好坏！");
             listTips.Add("坏！");
-            listTips.Add("扫我吗！");
             listTips.Add("扫我，一切皆有可能！");
             listTips.Add("不扫我何以扫天下！");
-            listTips.Add("不扫我何以扫天下！");
-            listTips.Add("快去工作！");
-            listTips.Add("别玩了！");
-            listTips.Add("你是帅哥还是美女？");
             listTips.Add("不懂扫我！");
+            listTips.Add("你是帅哥还是美女？");
             listTips.Add("小生恭候多时了！");
             listTips.Add("感觉人生到达了高潮！");
             listTips.Add("你很有探索精神哦！");
@@ -80,14 +77,10 @@ namespace AntRunner
             Close();
         }
 
+        int preIdx = -1;
         private void image2_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Random r = new Random();
-            Popup pop = new Popup();
-            pop.Placement = PlacementMode.Relative;
-            pop.HorizontalOffset = r.Next(400);
-            pop.VerticalOffset = r.Next(30, 280);
-            pop.PlacementTarget = this;
 
             Border b = new Border();
             b.Background = Brushes.AliceBlue;
@@ -95,9 +88,27 @@ namespace AntRunner
             b.BorderThickness = new Thickness(1);
             TextBlock blk = new TextBlock();
             b.Child = blk;
-            blk.Text = listTips[r.Next(listTips.Count)];
+            if (preIdx == 0 || preIdx == 2 || preIdx == 4 || preIdx == 6)
+            {
+                blk.Text = listTips[++preIdx];
+            }
+            else
+            {
+                preIdx = r.Next(listTips.Count);
+                blk.Text = listTips[preIdx];
+            }
+
+            Popup pop = new Popup();
+            pop.Placement = PlacementMode.Relative;
+            pop.PlacementTarget = this;
             pop.Child = b;
             pop.IsOpen = true;
+
+            blk.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            Size size = blk.DesiredSize;
+            double tipWidth = size.Width + 2;
+            pop.HorizontalOffset = r.Next((int)(485 - tipWidth));
+            pop.VerticalOffset = r.Next(30, 255);
             list.Add(DateTime.Now, pop);
         }
 

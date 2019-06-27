@@ -97,7 +97,10 @@
     <Compile Include="Converter\TriggerType2Visibility.cs" />
     <Compile Include="Converter\MarkerList2IsVisibility.cs" />
     <Compile Include="Converter\MarkerPoints2Visibility.cs" />
-    <Compile Include="DataAccess.cs" />
+    <Compile Include="DA\DataLOG.cs" />
+    <Compile Include="DA\DataBase.cs" />
+    <Compile Include="DA\DataLOG_SWR.cs" />
+    <Compile Include="DA\DataSWR.cs" />
     <Compile Include="EnumList.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="AppLog.cs" />

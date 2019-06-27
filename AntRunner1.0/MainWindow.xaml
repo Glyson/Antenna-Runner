@@ -8,7 +8,7 @@
         xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
         Title="Antenna Runner 1.0" Height="455" Width="781">
     <shell:WindowChrome.WindowChrome>
-        <shell:WindowChrome GlassFrameThickness="0"  ResizeBorderThickness="7.5" CaptionHeight="30" CornerRadius="2" />
+        <shell:WindowChrome GlassFrameThickness="0"  ResizeBorderThickness="7.5" CaptionHeight="30" CornerRadius="3" />
     </shell:WindowChrome.WindowChrome>
     <Window.Resources>
         <XmlDataProvider x:Key="menudata" Source="menu.xml" XPath="MenuData/Operation"></XmlDataProvider>
@@ -25,13 +25,13 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <Menu Height="30"  Foreground="White" Background="Transparent" FontWeight="Bold"
+                    <Menu Margin="1,0,0,0" VerticalAlignment="Center" Foreground="White" Background="Transparent" FontWeight="Bold"
                       ItemsSource="{Binding Source={StaticResource menudata}}" MenuItem.Click="StackPanel_Click_1"
                       shell:WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Left">
                         <Menu.ItemTemplate>
                             <HierarchicalDataTemplate DataType="Operation" ItemsSource="{Binding XPath=Operation}">
-                                <Label x:Name="lbl" Content="{Binding XPath=@Name}" Foreground="White" 
-                                       HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <Label x:Name="lbl" Content="{Binding XPath=@Name}" Foreground="White"  Padding="0" Height="22"
+                                       HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                             </HierarchicalDataTemplate>
                         </Menu.ItemTemplate>
                     </Menu>
@@ -174,7 +174,7 @@
                                                 <Button Name="btnStart1" Content="触发" Margin="0,0,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="23"  Width="60" Click="Button_Click" />
                                                 <TextBox VerticalContentAlignment="Center" Name="tb1" Width="Auto" MinWidth="120" IsReadOnly="True" Height="23" Text="90%"/>
                                                 <Ellipse Height="15" Name="ellipse1" Stroke="Transparent"  Fill="Gray" Width="15" Margin="5,0"/>
-                                                <TextBlock Name="blk1" VerticalAlignment="Center">准备好了</TextBlock>
+                                                <TextBlock Name="blk1" VerticalAlignment="Center">就绪</TextBlock>
                                             </StackPanel>
                                             <RichTextBox Margin="0" Name="rtb1" IsReadOnly="True" IsDocumentEnabled="True" 
                                                  VerticalScrollBarVisibility="Auto">
@@ -187,6 +187,9 @@
                                                     <Paragraph Name="pgp1"></Paragraph>
                                                 </FlowDocument>
                                             </RichTextBox>
+                                            <Viewbox Name="vb1" MaxHeight="200" MinHeight="30" Opacity="0" IsHitTestVisible="False">
+                                                <TextBlock Name="txt1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Foreground="SteelBlue">合格</TextBlock>
+                                            </Viewbox>
                                         </Grid>
                                     </xcad:LayoutDocument>
                                 </xcad:LayoutDocumentPane>
@@ -201,7 +204,7 @@
                                                 <Button Name="btnStart2"  Content="触发" Margin="0,0,5,0" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click" />
                                                 <TextBox Name="tb2" Width="Auto" VerticalContentAlignment="Center" MinWidth="120" IsReadOnly="True" Height="23" Text="90%"/>
                                                 <Ellipse Fill="Gray" Height="15" Name="ellipse2" Stroke="Transparent" Width="15" Margin="5,0"/>
-                                                <TextBlock Name="blk2" VerticalAlignment="Center">准备好了</TextBlock>
+                                                <TextBlock Name="blk2" VerticalAlignment="Center">就绪</TextBlock>
                                             </StackPanel>
                                             <RichTextBox Margin="0" Name="rtb2" IsReadOnly="True" IsDocumentEnabled="True"  VerticalScrollBarVisibility="Auto">
                                                 <RichTextBox.ContextMenu>
@@ -213,6 +216,9 @@
                                                     <Paragraph Name="pgp2"></Paragraph>
                                                 </FlowDocument>
                                             </RichTextBox>
+                                            <Viewbox Name="vb2"  MaxHeight="200" MinHeight="30"   Opacity="0" IsHitTestVisible="False">
+                                                <TextBlock Name="txt2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Foreground="SteelBlue">合格</TextBlock>
+                                            </Viewbox>
                                         </Grid>
                                     </xcad:LayoutDocument>
                                 </xcad:LayoutDocumentPane>
@@ -229,7 +235,7 @@
                                                 <Button Name="btnStart3"  Content="触发" Margin="0,0,5,0" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click"/>
                                                 <TextBox Name="tb3" Width="Auto" MinWidth="120" VerticalContentAlignment="Center" IsReadOnly="True" Height="23" Text="90%"/>
                                                 <Ellipse Fill="Gray" Height="15" Name="ellipse3" Stroke="Transparent" Width="15" Margin="5,0"/>
-                                                <TextBlock Name="blk3" VerticalAlignment="Center">准备好了</TextBlock>
+                                                <TextBlock Name="blk3" VerticalAlignment="Center">就绪</TextBlock>
                                             </StackPanel>
                                             <RichTextBox Margin="0" Name="rtb3" IsReadOnly="True" IsDocumentEnabled="True"  VerticalScrollBarVisibility="Auto">
                                                 <RichTextBox.ContextMenu>
@@ -241,6 +247,9 @@
                                                     <Paragraph Name="pgp3"></Paragraph>
                                                 </FlowDocument>
                                             </RichTextBox>
+                                            <Viewbox Name="vb3" MaxHeight="200" MinHeight="30"  Opacity="0" IsHitTestVisible="False">
+                                                <TextBlock Name="txt3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Foreground="SteelBlue">合格</TextBlock>
+                                            </Viewbox>
                                         </Grid>
                                     </xcad:LayoutDocument>
                                 </xcad:LayoutDocumentPane>
@@ -255,7 +264,7 @@
                                                 <Button  Name="btnStart4" Content="触发" Margin="0,0,5,0" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="60" Click="Button_Click"/>
                                                 <TextBox Name="tb4" Width="Auto" VerticalContentAlignment="Center" MinWidth="120" IsReadOnly="True" Height="23" Text="90%"/>
                                                 <Ellipse Fill="Gray" Height="15" Name="ellipse4" Stroke="Transparent" Width="15" Margin="5,0"/>
-                                                <TextBlock Name="blk4" VerticalAlignment="Center">准备好了</TextBlock>
+                                                <TextBlock Name="blk4" VerticalAlignment="Center">就绪</TextBlock>
                                             </StackPanel>
                                             <RichTextBox Margin="0" Name="rtb4" IsReadOnly="True" IsDocumentEnabled="True"  VerticalScrollBarVisibility="Auto">
                                                 <RichTextBox.ContextMenu>
@@ -267,6 +276,9 @@
                                                     <Paragraph Name="pgp4"></Paragraph>
                                                 </FlowDocument>
                                             </RichTextBox>
+                                            <Viewbox Name="vb4" MaxHeight="200" MinHeight="30" Opacity="0"  IsHitTestVisible="False">
+                                                <TextBlock Name="txt4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Foreground="SteelBlue">合格</TextBlock>
+                                            </Viewbox>
                                         </Grid>
                                     </xcad:LayoutDocument>
                                 </xcad:LayoutDocumentPane>
@@ -280,7 +292,16 @@
                             <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                                 <TextBlock VerticalAlignment="Center">总统计：</TextBlock>
                                 <TextBox Name="tbAll"  VerticalContentAlignment="Center" Width="Auto" Margin="8.5,0,0,0"
-                                 MinWidth="120" Height="23" Text="98/100 | 90%" IsReadOnly="True"></TextBox>
+                                         MinWidth="120" Height="23" Text="98/100 | 90%" IsReadOnly="True"></TextBox>
+                                <Border Height="23" Margin="5,0,0,0" BorderBrush="SteelBlue" BorderThickness="1" Padding="5,0">
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static prop:Settings.Default}, Path=Instrument}"></TextBlock>
+                                </Border>
+                                <Border Height="23" Margin="5,0,0,0" BorderBrush="SteelBlue" BorderThickness="1" Padding="5,0">
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat}"></TextBlock>
+                                </Border>
+                                <Border Height="23" Margin="5,0,0,0" BorderBrush="SteelBlue" BorderThickness="1" Padding="5,0">
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding Source={x:Static prop:Settings.Default}, Path=OutputDir}"></TextBlock>
+                                </Border>
                             </StackPanel>
                         </StatusBarItem>
                         <StatusBarItem Padding="0" HorizontalAlignment="Right">

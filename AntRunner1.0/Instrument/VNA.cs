@@ -122,7 +122,7 @@ namespace AntRunner
             }
             catch (Exception ex)
             {
-                AppLog.Error("ReadIDN has error.", ex);
+                AppLog.Warn("ReadIDN has error.", ex);
                 return ex.Message;
             }
         }

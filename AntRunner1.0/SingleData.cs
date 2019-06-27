@@ -49,6 +49,14 @@ namespace AntRunner
             get { return _memo; }
             set { _memo = value; }
         }
+        private SortedList<double, double> _referData;
+
+        public SortedList<double, double> ReferData
+        {
+            get { return _referData; }
+            set { _referData = value; }
+        }
+
         private SortedList<double, double> _listData;
 
         public SortedList<double, double> ListData
@@ -57,12 +65,12 @@ namespace AntRunner
             set { _listData = value; }
         }
 
-        private SortedList<double, double> _referData;
+        private SortedList<double, double> _listData2;
 
-        public SortedList<double, double> ReferData
+        public SortedList<double, double> ListData2
         {
-            get { return _referData; }
-            set { _referData = value; }
+            get { return _listData2; }
+            set { _listData2 = value; }
         }
     }
 }

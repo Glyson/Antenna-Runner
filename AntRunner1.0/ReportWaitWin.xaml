@@ -21,7 +21,7 @@
             </StackPanel>
             <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
                 <TextBlock  TextWrapping="Wrap" Text="正在导出 . . .  " />
-                <TextBlock  TextWrapping="Wrap" Text="{Binding Source={x:Static local:DataAccess.Progress}, StringFormat={}{0:P0}}"  />
+                <TextBlock Name="blk"  TextWrapping="Wrap" Text="0 %"  />
             </StackPanel>
             <Border Grid.Row="2" Background="AliceBlue" BorderBrush="LightGray" BorderThickness="0,1,0,0">
                 <Button Content="取消" HorizontalAlignment="Center" VerticalAlignment="Center" Width="93" Height="37" Click="Button_Click" 
@@ -30,7 +30,7 @@
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="border" Background="SteelBlue">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="White"
-                                           VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>                               
+                                           VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                             </Border>
                             <ControlTemplate.Triggers >
                                 <Trigger Property="IsMouseOver" Value="True">
@@ -41,7 +41,7 @@
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
-                    </Button.Template> 
+                    </Button.Template>
                 </Button>
             </Border>
         </Grid>

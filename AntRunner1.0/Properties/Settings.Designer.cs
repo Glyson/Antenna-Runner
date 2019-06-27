@@ -37,7 +37,7 @@ namespace AntRunner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Apple")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Huawei")]
         public string Manufacture {
             get {
                 return ((string)(this["Manufacture"]));
@@ -153,7 +153,7 @@ namespace AntRunner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("800")]
         public int AutoDelay {
             get {
                 return ((int)(this["AutoDelay"]));
@@ -165,7 +165,7 @@ namespace AntRunner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public double AutoDiff {
             get {
                 return ((double)(this["AutoDiff"]));
@@ -177,7 +177,7 @@ namespace AntRunner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int MatchCnt {
             get {
                 return ((int)(this["MatchCnt"]));
