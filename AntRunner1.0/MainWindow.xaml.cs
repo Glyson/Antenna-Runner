@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using Excel = Microsoft.Office.Interop.Excel;
+using Form = System.Windows.Forms;
 
 namespace AntRunner
 {
@@ -32,6 +33,7 @@ namespace AntRunner
         volatile int Pass1, Pass2, Pass3, Pass4;
         string code1, code2, code3, code4;
         Thread t1, t2, t3, t4;
+        Thread ts1;
         bool manual1, manual2, manual3, manual4;
         SortedList<double, double> refer1, refer2, refer3, refer4;
         Dictionary<double, double> markersCal1, markersCal2, markersCal3, markersCal4;
@@ -47,6 +49,8 @@ namespace AntRunner
         ReportWaitWin wReport;
         Thread tReport;
         DataBase da;
+        KeyboardHook k_hook;
+        StringBuilder readKeyText = new StringBuilder();
 
         public State State
         {
@@ -105,6 +109,43 @@ namespace AntRunner
             btnStart4.IsEnabled = false;
 
             InitCount();
+
+            k_hook = new KeyboardHook();
+            k_hook.KeyDownEvent += new Form.KeyEventHandler(k_hook_KeyDownEvent); ;//钩住键按下
+            //k_hook.KeyPressEvent += K_hook_KeyPressEvent;
+            k_hook.Start();
+        }
+
+        void K_hook_KeyPressEvent(object sender, Form.KeyPressEventArgs e)
+        {
+            readKeyText.Append(e.KeyChar);
+        }
+
+        void k_hook_KeyDownEvent(object sender, Form.KeyEventArgs e)
+        {
+            string key = "";
+            Form.Keys ForwardKey;
+            if ((e.KeyValue >= 8 && e.KeyValue <= 40) || (e.KeyValue >= 112 && e.KeyValue <= 123)) //功能键，F1-F12
+            {
+                key = e.KeyCode.ToString();
+                ForwardKey = e.KeyCode;
+            }
+            else if ((e.KeyValue >= 65 && e.KeyValue <= 90) || (e.KeyValue >= 48 && e.KeyValue <= 57)) // a-z/A-Z, 0-9
+            {
+                key = e.KeyCode.ToString().Substring(1);
+                ForwardKey = e.KeyCode;
+            }
+            else if (e.KeyValue >= 96 && e.KeyValue <= 111)//小键盘
+            {
+                key = e.KeyCode.ToString();
+                ForwardKey = e.KeyCode;
+            }
+            readKeyText.Append(key);
+            if (key == "\r")
+            {
+                Settings.Default.Para1.Code = readKeyText.ToString();
+                readKeyText.Clear();
+            }
         }
 
         private Storyboard CreateStoryboard(Ellipse ele, Viewbox vb)
@@ -147,18 +188,6 @@ namespace AntRunner
             tb3.Text = GetPercentStr(Count3, Pass3);
             tb4.Text = GetPercentStr(Count4, Pass4);
             tbAll.Text = GetPercentStr(Count1 + Count2 + Count3 + Count4, Pass1 + Pass2 + Pass3 + Pass4);
-        }
-
-        private void StartCOM1(string name)
-        {
-            SerialPort com = new SerialPort(name);
-            com.DataReceived += new SerialDataReceivedEventHandler(com_DataReceived1);
-            com.Open();
-        }
-
-        void com_DataReceived1(object sender, SerialDataReceivedEventArgs e)
-        {
-
         }
         private bool InitVNA()
         {
@@ -265,8 +294,15 @@ namespace AntRunner
                     td = new Thread(ThreadStart4);
                 }
                 td.Start();
+
+                if (Settings.Default.UserScanner)
+                {
+                    readKeyText.Clear();
+                    k_hook.Start();//安装键盘钩子
+                }
             }
         }
+
         private void ThreadStart1()
         {
             blk1.Dispatcher.BeginInvoke(new Action(delegate
@@ -415,9 +451,9 @@ namespace AntRunner
                 {
                     LogMsg(2, bshFail, "报错");
                     txt2.Text = blk2.Text = "报错";
-                    txt2.Foreground = ellipse1.Fill = bshFail;
+                    txt2.Foreground = ellipse2.Fill = bshFail;
                     sb2.Begin();
-                    btnStart1.IsEnabled = true;
+                    btnStart2.IsEnabled = true;
                 }
                 else
                 {
@@ -454,9 +490,9 @@ namespace AntRunner
                 {
                     LogMsg(3, bshFail, "报错");
                     txt3.Text = blk3.Text = "报错";
-                    txt3.Foreground = ellipse1.Fill = bshFail;
+                    txt3.Foreground = ellipse3.Fill = bshFail;
                     sb3.Begin();
-                    btnStart1.IsEnabled = true;
+                    btnStart3.IsEnabled = true;
                 }
                 else
                 {
@@ -493,7 +529,7 @@ namespace AntRunner
                 {
                     LogMsg(4, bshFail, "报错");
                     txt4.Text = blk4.Text = "报错";
-                    txt4.Foreground = ellipse1.Fill = bshFail;
+                    txt4.Foreground = ellipse4.Fill = bshFail;
                     sb4.Begin();
                     btnStart4.IsEnabled = true;
                 }
@@ -532,17 +568,12 @@ namespace AntRunner
                 Thread.Sleep(Settings.Default.AutoDelay);
                 lock (vna)
                 {
-                    list = list1 = vna.ReadTrace(para);//读曲线
-                    if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
-                    {
-                        list2 = vna.ReadTrace(para, 2);//读曲线
-                    }
+                    list = vna.ReadTrace(para);//读曲线
                 }
-                if (IsDeep(list, Settings.Default.Deep))//如果是底噪，即触发过底噪，之前数据清空，路过
+                if (da.IsDeep(list, Settings.Default.Deep))//如果是底噪，即触发过底噪，之前数据清空，路过
                 {
                     triggerDeep = true;
                     all.Clear();
-
 
                     //如果触发过底噪（说明重新拎过天线），且数据不是底噪，这个数据才是可用的
                     btnStart1.Dispatcher.BeginInvoke(new Action(delegate
@@ -584,6 +615,11 @@ namespace AntRunner
                     //如果所有曲线全匹配，ok，否则把最旧的数据删掉，再测一条曲线
                     if (MatchTrace(all, Settings.Default.AutoDiff))
                     {
+                        list1 = list;
+                        if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+                        {
+                            list2 = vna.ReadTrace(para, 2);//读曲线
+                        }
                         return true;
                     }
                     else
@@ -593,39 +629,33 @@ namespace AntRunner
                 }
             }
         }
+        /// <summary>
+        /// 多条曲线偏差比较，偏差必须在指定范围内
+        /// </summary>
+        /// <param name="lists">曲线列表</param>
+        /// <param name="diff">偏差值</param>
+        /// <returns></returns>
         private bool MatchTrace(List<SortedList<double, double>> lists, double diff)
         {
             if (lists.Count() <= 1)
-                return false;
+                return true;
 
             diff = Math.Abs(diff);
             int traceCnt = lists.Count();
-            for (int i = 0; i < lists[traceCnt - 1].Count(); i++)
+            List<double> tempList = new List<double>();
+            for (int i = 0; i < lists[0].Count(); i++)
             {
+                tempList.Clear();
                 for (int j = 0; j < traceCnt - 1; j++)
                 {
-                    if (Math.Abs(lists[traceCnt - 1].Values[i] - lists[j].Values[i]) > diff)
-                        return false;
+                    tempList.Add(lists[j].Values[i]);
                 }
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// 判断是否是底噪，（曲线全是deep值之上）
-        /// </summary>
-        /// <param name="trace"></param>
-        /// <param name="deep"></param>
-        /// <returns></returns>
-        private bool IsDeep(SortedList<double, double> trace, double deep)
-        {
-            foreach (KeyValuePair<double, double> item in trace)
-            {
-                if (item.Value < deep)
+                if (tempList.Max() - tempList.Min() > diff)
                     return false;
             }
             return true;
         }
+
         private List<double> GetMarker(string text)
         {
             List<double> list = new List<double>();
@@ -864,8 +894,8 @@ namespace AntRunner
                     }
                     if (p22 > para.S22Max)
                     {
-                        if (!errorCode.Contains(ErrorCode.PowS22H))
-                            errorCode.Add(ErrorCode.PowS22H);
+                        if (!errorCode.Contains(ErrorCode.StandingWaveS22H))
+                            errorCode.Add(ErrorCode.StandingWaveS22H);
                     }
                 }
             }
@@ -895,7 +925,7 @@ namespace AntRunner
                 }
                 if (s22List.Where((i) => i.Value > para.S22Max).Count() > 0)
                 {
-                    errorCode.Add(ErrorCode.PowS22H);
+                    errorCode.Add(ErrorCode.StandingWaveS22H);
                 }
             }
             return errorCode.Count == 0;
@@ -1198,6 +1228,11 @@ namespace AntRunner
                         blk1.Text = "停止";
                         btnStart1.IsEnabled = false;
                     }
+                    if (ts1 != null)
+                    {
+                        ts1.Abort();
+                        ts1 = null;
+                    }
                     break;
                 case 2:
                     if (t2 != null)
@@ -1244,6 +1279,7 @@ namespace AntRunner
 
         private void Stop()
         {
+            k_hook.Stop();
             Stop(1);
             Stop(2);
             Stop(3);
@@ -1301,7 +1337,7 @@ namespace AntRunner
             int port = int.Parse(trace.Last().ToString());
             bool isOK = errors == null || errors.Count == 0;
             Brush bsh = isOK ? Brushes.Blue : Brushes.Red;
-            string pass = isOK ? "Pass" : "Fail";
+            string pass = isOK ? "合格" : "淘汰";
             btnStart1.Dispatcher.BeginInvoke(new Action(delegate
             {
                 Paragraph pgp = pgp1;

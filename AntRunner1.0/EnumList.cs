@@ -9,28 +9,39 @@ using System.Windows.Data;
 
 namespace AntRunner
 {
+    public enum CompareType
+    {
+        [Description("全部高于")]
+        AllUp,
+        [Description("全部低于")]
+        AllDown,
+        [Description("高于")]
+        Up,
+        [Description("低于")]
+        Down,
+    }
     public enum ErrorCode
     {
-        [Description("Power Low")]
+        [Description("功率偏低")]
         PowL = 1,
-        [Description("Power High")]
+        [Description("功率偏高")]
         PowH,
-        [Description("Frequency Low")]
+        [Description("频率偏低")]
         FreqL,
-        [Description("Frequency High")]
+        [Description("频率偏高")]
         FreqH,
-        [Description("Frequency Width Low")]
+        [Description("频宽偏低")]
         FreqBandWidthL,
-        [Description("Frequency Width High")]
+        [Description("频宽偏高")]
         FreqBandWidthH,
-        [Description("Short Circuit")]
+        [Description("短路")]
         Bad,
-        [Description("Power(S21) Low")]
-        PowS21L = 1,
-        [Description("Power(S21) High")]
+        [Description("功率(S21)偏低")]
+        PowS21L,
+        [Description("功率(S21)偏高")]
         PowS21H,
-        [Description("Power(S22) High")]
-        PowS22H,
+        [Description("驻波(S22)偏高")]
+        StandingWaveS22H,
     }
     public enum Instrument
     {

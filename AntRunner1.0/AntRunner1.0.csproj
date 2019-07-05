@@ -92,11 +92,13 @@
     <Compile Include="AboutWin.xaml.cs">
       <DependentUpon>AboutWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KeyboardHook.cs" />
     <Compile Include="Converter\Instrument2IsVisibility.cs" />
     <Compile Include="Converter\TestType2Visibility.cs" />
     <Compile Include="Converter\TriggerType2Visibility.cs" />
     <Compile Include="Converter\MarkerList2IsVisibility.cs" />
     <Compile Include="Converter\MarkerPoints2Visibility.cs" />
+    <Compile Include="Converter\Enum2Description.cs" />
     <Compile Include="DA\DataLOG.cs" />
     <Compile Include="DA\DataBase.cs" />
     <Compile Include="DA\DataLOG_SWR.cs" />

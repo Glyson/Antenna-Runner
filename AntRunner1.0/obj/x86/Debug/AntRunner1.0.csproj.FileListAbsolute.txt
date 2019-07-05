@@ -281,3 +281,48 @@ C:\Users\admin\Desktop\AntRunner1.0\bin\Debug\log4net.config
 C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\App.baml
 C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
 C:\Users\admin\Desktop\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml
+F:\AntRunner1.0\bin\Debug\log4net.config
+F:\AntRunner1.0\bin\Debug\AntRunner.exe.config
+F:\AntRunner1.0\bin\Debug\AntRunner.exe
+F:\AntRunner1.0\bin\Debug\AntRunner.pdb
+F:\AntRunner1.0\obj\x86\Debug\AboutWin.baml
+F:\AntRunner1.0\obj\x86\Debug\App.baml
+F:\AntRunner1.0\obj\x86\Debug\AboutWin.g.cs
+F:\AntRunner1.0\obj\x86\Debug\MainWindow.g.cs
+F:\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
+F:\AntRunner1.0\obj\x86\Debug\SetupWin.g.cs
+F:\AntRunner1.0\obj\x86\Debug\App.g.cs
+F:\AntRunner1.0\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+F:\AntRunner1.0\obj\x86\Debug\AntRunner_MarkupCompile.cache
+F:\AntRunner1.0\obj\x86\Debug\AntRunner_MarkupCompile.lref
+F:\AntRunner1.0\obj\x86\Debug\MainWindow.baml
+F:\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml
+F:\AntRunner1.0\obj\x86\Debug\SetupWin.baml
+F:\AntRunner1.0\obj\x86\Debug\AntRunner.g.resources
+F:\AntRunner1.0\obj\x86\Debug\AntRunner.Properties.Resources.resources
+F:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.GenerateResource.Cache
+F:\AntRunner1.0\obj\x86\Debug\AntRunner.exe
+F:\AntRunner1.0\obj\x86\Debug\AntRunner.pdb
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\bin\Debug\AntRunner.exe.config
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner.exe
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner.pdb
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\bin\Debug\log4net.config
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\bin\Debug\AntRunner.exe
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\bin\Debug\AntRunner.pdb
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csprojResolveAssemblyReference.cache
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AboutWin.baml
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\App.baml
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AboutWin.g.cs
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\MainWindow.g.cs
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\SetupWin.g.cs
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\App.g.cs
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner_MarkupCompile.cache
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner_MarkupCompile.lref
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\MainWindow.baml
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\SetupWin.baml
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner.g.resources
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner.Properties.Resources.resources
+D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.GenerateResource.Cache

@@ -89,5 +89,41 @@ namespace AntRunner
                 AppLog.Error("GetCount8Pass has error.", ex);
             }
         }
+
+        /// <summary>
+        /// 判断是否是底噪，（曲线全是deep值之上）
+        /// </summary>
+        /// <param name="trace"></param>
+        /// <param name="deep"></param>
+        /// <returns></returns>
+        public bool IsDeep(SortedList<double, double> trace, double deep)
+        {
+            //foreach (KeyValuePair<double, double> item in trace)
+            //{
+            //    if (item.Value < deep)
+            //        return false;
+            //}
+            //return true;
+
+            if (Settings.Default.DeepCompareType == CompareType.AllUp)
+            {
+                return !(trace.Where(i => i.Value < deep).Count() > 0);
+            }
+            else if (Settings.Default.DeepCompareType == CompareType.AllDown)
+            {
+                return !(trace.Where(i => i.Value > deep).Count() > 0);
+            }
+            else if (Settings.Default.DeepCompareType == CompareType.Up)
+            {
+                return (trace.Where(i => i.Value > deep).Count() > 0);
+            }
+            else// CompareType.Down
+            {
+                return (trace.Where(i => i.Value < deep).Count() > 0);
+            }
+        }
     }
+
+
+
 }

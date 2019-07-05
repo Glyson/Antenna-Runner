@@ -9,6 +9,17 @@ namespace AntRunner
 {
     public class ParaObject : INotifyPropertyChanged
     {
+        private string _code = null;
+
+        public string Code
+        {
+            get { return _code; }
+            set
+            {
+                _code = value;
+            }
+        }
+
         private bool _enable = true;
 
         public bool Enable

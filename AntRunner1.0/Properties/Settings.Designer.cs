@@ -222,5 +222,29 @@ namespace AntRunner.Properties {
                 this["Instrument"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("AllUp")]
+        public global::AntRunner.CompareType DeepCompareType {
+            get {
+                return ((global::AntRunner.CompareType)(this["DeepCompareType"]));
+            }
+            set {
+                this["DeepCompareType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UserScanner {
+            get {
+                return ((bool)(this["UserScanner"]));
+            }
+            set {
+                this["UserScanner"] = value;
+            }
+        }
     }
 }

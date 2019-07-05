@@ -53,5 +53,11 @@
     <Setting Name="Instrument" Type="System.String" Scope="User">
       <Value Profile="(Default)">Agilent_8753ES</Value>
     </Setting>
+    <Setting Name="DeepCompareType" Type="AntRunner.CompareType" Scope="User">
+      <Value Profile="(Default)">AllUp</Value>
+    </Setting>
+    <Setting Name="UserScanner" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

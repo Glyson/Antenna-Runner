@@ -25,7 +25,15 @@ namespace AntRunner
                     writer = new StreamWriter(fs);
                     writer.WriteLine("Result," + (pass ? "Pass" : "Fail"));
                     writer.WriteLine("Error Code," + string.Join("|", errors));
-                    writer.WriteLine("DUT Code," + Settings.Default.Code);
+                    if (string.IsNullOrWhiteSpace(para.Code))
+                    {
+                        writer.WriteLine("DUT Code," + Settings.Default.Code.Trim());
+                    }
+                    else
+                    {
+                        writer.WriteLine("DUT Code," + para.Code.Trim());
+                        para.Code = null;
+                    }
                     writer.WriteLine("Memo," + Settings.Default.Memo);
                     writer.WriteLine("S22 Type," + para.S22TraceFormat);
                     writer.WriteLine("S21 Min," + para.S21Min);
@@ -316,7 +324,7 @@ namespace AntRunner
                     ++c;
                     tag = "正常";
                     ((Excel.Range)sh.Cells[r, c]).Font.ColorIndex = 1;
-                    if (data.Errors.Contains(ErrorCode.PowS22H.ToString()))
+                    if (data.Errors.Contains(ErrorCode.StandingWaveS22H.ToString()))
                     {
                         tag = "偏高";
                         ((Excel.Range)sh.Cells[r, c]).Interior.ColorIndex = 3;

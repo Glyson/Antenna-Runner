@@ -1,0 +1,8 @@
+2019-07-03 17:33:53,807 [10] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 179

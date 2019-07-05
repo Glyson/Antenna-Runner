@@ -10,15 +10,26 @@ using System.Windows.Threading;
 
 namespace AntRunner
 {
-    static class Helper
+    public static class Helper
     {
         public static string GetEnumDescription(Enum e)
         {
-            FieldInfo field= e.GetType().GetField(e.ToString());
+            FieldInfo field = e.GetType().GetField(e.ToString());
             object[] objs = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
             if (objs == null || objs.Length == 0)
                 return e.ToString();
             return ((DescriptionAttribute)objs[0]).Description;
+        }
+        public static List<string> GetEnumDescriptions(Type t)
+        {
+            List<string> list = new List<string>();
+            Array arr = Enum.GetValues(t);
+
+            foreach (object obj in arr)
+            {
+                list.Add(GetEnumDescription((Enum)obj));
+            }
+            return list;
         }
         public static TEnum String2Enum<TEnum>(string str)
         {
@@ -26,11 +37,21 @@ namespace AntRunner
             {
                 return (TEnum)Enum.Parse(typeof(TEnum), str);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AppLog.Error("GetEnumDescription has error.", ex);
                 return default(TEnum);
             }
+        }
+        public static object DescToEnum(string desc, Type t)
+        {
+            Array arr = Enum.GetValues(t);
+            foreach (object obj in arr)
+            {
+                if (GetEnumDescription((Enum)obj) == desc)
+                    return obj;
+            }
+            return arr.GetValue(0);
         }
         /// <summary>
         /// 刷新UI
