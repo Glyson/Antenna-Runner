@@ -18,9 +18,15 @@
         <my:Instrument2Visibility x:Key="i2v"/>
         <my:MarkerList2Visibility x:Key="ml2v"/>
         <my:MarkerPoints2Visibility x:Key="mp2v"/>
+        <my:Enum2Description x:Key="e2d"/>
         <ObjectDataProvider x:Key="S22Trace" ObjectType="{x:Type sys:Enum}" MethodName="GetValues">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="my:S22TraceFormat"></x:Type>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="CompareTypeList" ObjectType="{x:Type my:Helper}" MethodName="GetEnumDescriptions">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="my:CompareType"></x:Type>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <Style TargetType="TextBox">
@@ -186,16 +192,18 @@
                             <TextBlock Grid.Row="2" HorizontalAlignment="Right" Text="仪表地址 : " VerticalAlignment="Center"/>
                             <TextBlock Grid.Row="3" HorizontalAlignment="Right" Text="结果输出目录 : " VerticalAlignment="Center"/>
                             <TextBlock Grid.Row="4" HorizontalAlignment="Right" Text="端口开关 : " VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="测量方式: " VerticalAlignment="Center"/>
 
-                            <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="触发方式 : " VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="自动触发等待时间 : " VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="7" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="ms" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="自动触发极限值（底噪） : " VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="8" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="dBm" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="自动触发曲线偏差限值 : " VerticalAlignment="Center"/>
+
+                            <TextBlock Grid.Row="5" HorizontalAlignment="Right" Text="是否使用扫描枪: " VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="6" HorizontalAlignment="Right" Text="测量方式: " VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="7" HorizontalAlignment="Right" Text="触发方式 : " VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="8" HorizontalAlignment="Right" Text="自动触发等待时间 : " VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="8" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="ms" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="9" HorizontalAlignment="Right" Text="自动触发极限值（底噪） : " VerticalAlignment="Center"/>
                             <TextBlock Grid.Row="9" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="dBm" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="自动触发曲线匹配次数 : " VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="10" HorizontalAlignment="Right" Text="自动触发曲线偏差限值 : " VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="10" Grid.Column="1" Margin="125.6,8,0,7.2" HorizontalAlignment="Left" Text="dBm" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="11" HorizontalAlignment="Right" Text="自动触发曲线匹配次数 : " VerticalAlignment="Center"/>
 
                             <ComboBox HorizontalAlignment="Left" Name="cbIns" VerticalAlignment="Center" Width="270" Grid.Row="1" Grid.Column="1"
                               DisplayMemberPath="Value" SelectedValuePath="Value"
@@ -218,26 +226,32 @@
                                 <CheckBox Content="Port 4" Grid.Column="1" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" 
                               IsChecked="{Binding Source={x:Static prop:Settings.Default}, Path=Para4.Enable}" Margin="0,0,10,0"/>
                             </StackPanel>
-                            <ComboBox Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
+                            <CheckBox Grid.Row="5" Content="       " Grid.Column="1" Height="16" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              IsChecked="{Binding Source={x:Static prop:Settings.Default}, Path=UserScanner}" Margin="0,0,10,0"/>
+                            <ComboBox Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
                               DisplayMemberPath="Value" SelectedValuePath="Value"  
                               ItemsSource="{Binding Source={my:Enumeration {x:Type my:TraceFormat}}}"
                               SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=TraceFormat}"/>
-                            <ComboBox Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
+                            <ComboBox Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
                               DisplayMemberPath="Value" SelectedValuePath="Value"  
                               ItemsSource="{Binding Source={my:Enumeration {x:Type my:TriggerType}}}"
                               SelectedValue="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType}"/>
                             <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
                              IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDelay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" TextChanged="TextBox_TextChanged"/>
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDelay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" TextChanged="TextBox_TextChanged"/>
+                            <ComboBox Height="23" Grid.Row="9" Grid.Column="1" Width="75" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                      ItemsSource="{Binding Source={StaticResource CompareTypeList}}"
+                                      Text="{Binding Source={x:Static prop:Settings.Default}, Path=DeepCompareType,Converter={StaticResource e2d}}"/>
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="45"  Grid.Column="1"
+                                     IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
+                                     Text="{Binding Source={x:Static prop:Settings.Default}, Path=Deep, UpdateSourceTrigger=PropertyChanged}" 
+                                     Grid.Row="9" TextChanged="TextBox_TextChanged" Margin="75,4,0,4" />
                             <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
                              IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=Deep, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" TextChanged="TextBox_TextChanged" />
-                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"  Grid.Column="1"
-                             IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDiff, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" TextChanged="TextBox_TextChanged"/>
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=AutoDiff, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" TextChanged="TextBox_TextChanged"/>
                             <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Grid.Column="1"
                              IsEnabled="{Binding Source={x:Static prop:Settings.Default}, Path=TriggerType, Converter={StaticResource t2v}}"
-                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=MatchCnt, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" TextChanged="TextBox_TextChanged"/>
+                             Text="{Binding Source={x:Static prop:Settings.Default}, Path=MatchCnt, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" TextChanged="TextBox_TextChanged"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="端口1">

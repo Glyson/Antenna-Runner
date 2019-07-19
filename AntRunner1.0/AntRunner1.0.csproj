@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AntRunner</RootNamespace>
     <AssemblyName>AntRunner</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -46,6 +46,10 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\FirstFloor.ModernUI.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\log4net.dll</HintPath>
@@ -92,11 +96,13 @@
     <Compile Include="AboutWin.xaml.cs">
       <DependentUpon>AboutWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KeyboardHook.cs" />
     <Compile Include="Converter\Instrument2IsVisibility.cs" />
     <Compile Include="Converter\TestType2Visibility.cs" />
     <Compile Include="Converter\TriggerType2Visibility.cs" />
     <Compile Include="Converter\MarkerList2IsVisibility.cs" />
     <Compile Include="Converter\MarkerPoints2Visibility.cs" />
+    <Compile Include="Converter\Enum2Description.cs" />
     <Compile Include="DA\DataLOG.cs" />
     <Compile Include="DA\DataBase.cs" />
     <Compile Include="DA\DataLOG_SWR.cs" />

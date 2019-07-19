@@ -1,0 +1,400 @@
+2019-06-28 09:32:14,611 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 09:32:14,881 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 09:32:21,740 [10] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:38:13,071 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:39:27,415 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:43:34,211 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:44:41,894 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:46:39,395 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:47:58,823 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:49:06,038 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:49:53,856 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:51:29,545 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:53:15,784 [10] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 09:55:55,927 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 09:55:55,996 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 09:56:15,389 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 09:56:15,416 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:04:33,162 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:04:33,233 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:14:06,762 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:14:06,819 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:14:50,073 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:14:50,130 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:15:39,042 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:15:39,099 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:18:32,009 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:18:32,077 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:22:59,044 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:22:59,110 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:23:59,998 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:24:00,089 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:24:24,501 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:24:24,581 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:34:26,589 [8] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:34:26,655 [8] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:34:31,069 [8] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:34:31,097 [8] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:34:39,156 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:34:39,228 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:39:26,892 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 10:39:36,607 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 10:39:36,644 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-06-28 10:39:44,637 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 10:40:26,709 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 C:\Users\admin\Desktop\AntRunner1.0\MainWindow.xaml.cs:行号 171
+2019-06-28 13:39:11,696 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 C:\Users\admin\Desktop\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-06-28 13:39:11,794 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 C:\Users\admin\Desktop\AntRunner1.0\Instrument\VNA.cs:行号 125

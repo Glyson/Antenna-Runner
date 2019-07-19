@@ -1,0 +1,46 @@
+2019-07-05 10:09:05,055 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\MainWindow.xaml.cs:行号 200
+2019-07-05 10:09:09,083 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-07-05 10:09:09,173 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-07-05 10:09:13,456 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\MainWindow.xaml.cs:行号 200
+2019-07-05 10:09:15,875 [13] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataLOG.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\DA\DataLOG.cs:行号 40
+2019-07-05 10:09:15,894 [14] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataLOG.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\DA\DataLOG.cs:行号 40
+2019-07-05 10:09:15,903 [16] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataLOG.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\DA\DataLOG.cs:行号 40
+2019-07-05 10:09:15,915 [15] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataLOG.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\DA\DataLOG.cs:行号 40

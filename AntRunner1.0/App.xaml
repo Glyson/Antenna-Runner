@@ -7,7 +7,7 @@
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Window.Loaded">
                     <BeginStoryboard>
-                        <Storyboard> 
+                        <Storyboard>
                             <DoubleAnimation Storyboard.TargetProperty="Opacity"
                                             From="0.0" To="1" Duration="0:0:0.5" />
                         </Storyboard>

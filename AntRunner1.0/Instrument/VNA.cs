@@ -96,11 +96,18 @@ namespace AntRunner
         }
         public void Write(string cmd, params object[] paras)
         {
-            if (paras != null && paras.Length > 0)
+            try
             {
-                cmd = string.Format(cmd, paras);
+                if (paras != null && paras.Length > 0)
+                {
+                    cmd = string.Format(cmd, paras);
+                }
+                ses.Write(cmd);
             }
-            ses.Write(cmd);
+            catch (Exception ex)
+            {
+                AppLog.Error("Write has error.", ex);
+            }
         }
         public string Read(string cmd, params object[] paras)
         {

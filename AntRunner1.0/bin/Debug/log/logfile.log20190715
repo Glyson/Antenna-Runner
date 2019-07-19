@@ -1,0 +1,16 @@
+2019-07-15 15:40:35,371 [1] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-15 15:40:42,034 [1] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 D:\Glyson\projects\Test\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 D:\Glyson\projects\Test\AntRunner1.0\MainWindow.xaml.cs:行号 202
+2019-07-15 15:40:44,511 [12] ERROR AntRunner.AppLog [(null)] - Output has error.
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 AntRunner.DataLOG.Output(ParaObject para, SortedList`2 list, List`1 errors) 位置 D:\Glyson\projects\Test\AntRunner1.0\DA\DataLOG.cs:行号 40
+2019-07-15 15:41:12,707 [1] ERROR AntRunner.AppLog [(null)] - Start

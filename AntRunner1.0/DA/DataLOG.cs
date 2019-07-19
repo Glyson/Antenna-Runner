@@ -26,7 +26,7 @@ namespace AntRunner
                     writer = new StreamWriter(fs);
                     writer.WriteLine("Result," + (pass ? "Pass" : "Fail"));
                     writer.WriteLine("Error Code," + string.Join("|", errors));
-                    writer.WriteLine("DUT Code," + Settings.Default.Code);
+                    writer.WriteLine("DUT Code," + para.Code ?? Settings.Default.Code);
                     writer.WriteLine("Trace Type," + para.Trace);
                     writer.WriteLine("Cut Power," + para.CutPow);
                     writer.WriteLine("Frequency Width ," + para.CutBW);
