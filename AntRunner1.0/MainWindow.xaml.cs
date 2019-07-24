@@ -1,7 +1,6 @@
 ﻿#define FUN1//结果图标闪动提示
 
 using AntRunner.Properties;
-using FirstFloor.ModernUI.Windows.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -572,17 +571,25 @@ namespace AntRunner
             while (true)
             {
                 if (type == Trace.S11 && manual1)
-                    return true;
+                    goto AA;
                 else if (type == Trace.S22 && manual2)
-                    return true;
+                    goto AA;
                 if (type == Trace.S33 && manual3)
-                    return true;
+                    goto AA;
                 if (type == Trace.S44 && manual4)
-                    return true;
+                    goto AA;
                 Thread.Sleep(Settings.Default.AutoDelay);
                 lock (vna)
                 {
-                    list = vna.ReadTrace(para);//读曲线
+                    if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+                    {
+                        list = vna.ReadTrace(para, 2);//读曲线
+                    }
+                    else
+                    {
+                        list = vna.ReadTrace(para);//读曲线
+                    }
+
                 }
                 if (da.IsDeep(list, Settings.Default.Deep))//如果是底噪，即触发过底噪，之前数据清空，路过
                 {
@@ -629,10 +636,14 @@ namespace AntRunner
                     //如果所有曲线全匹配，ok，否则把最旧的数据删掉，再测一条曲线
                     if (MatchTrace(all, Settings.Default.AutoDiff))
                     {
-                        list1 = list;
                         if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
                         {
-                            list2 = vna.ReadTrace(para, 2);//读曲线
+                            list2 = list;
+                            list1 = vna.ReadTrace(para, 1);//读曲线
+                        }
+                        else
+                        {
+                            list1 = list;
                         }
                         return true;
                     }
@@ -642,6 +653,17 @@ namespace AntRunner
                     }
                 }
             }
+        AA:
+            if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
+            {
+                list2 = list;
+                list1 = vna.ReadTrace(para, 1);//读曲线
+            }
+            else
+            {
+                list1 = list;
+            }
+            return true;
         }
         /// <summary>
         /// 多条曲线偏差比较，偏差必须在指定范围内

@@ -1,0 +1,75 @@
+2019-07-17 20:27:39,247 [1] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 20:53:26,465 [8] ERROR AntRunner.AppLog [(null)] - GetSingleData has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.DataLOG.GetSingleData_LOG(String path, String traceType, Int32& count, Int32& pass, List`1& list) ?? F:\AntRunner1.0\DA\DataLOG.cs:?? 395
+2019-07-17 23:02:13,549 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:04:13,967 [13] ERROR AntRunner.AppLog [(null)] - Write has error.
+System.Threading.ThreadAbortException: ???????
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write32(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.viWrite(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.Write(String data)
+   ? NationalInstruments.VisaNS.MessageBasedSession.Write(String data)
+   ? AntRunner.VNA.Write(String cmd, Object[] paras) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 105
+2019-07-17 23:04:41,220 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:07:15,322 [13] ERROR AntRunner.AppLog [(null)] - Write has error.
+System.Threading.ThreadAbortException: ???????
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write32(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.viWrite(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.Write(String data)
+   ? NationalInstruments.VisaNS.MessageBasedSession.Write(String data)
+   ? AntRunner.VNA.Write(String cmd, Object[] paras) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 105
+2019-07-17 23:07:55,466 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:08:24,556 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:08:45,450 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:09:06,053 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:10:11,519 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:10:17,138 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:11:02,667 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:11:20,679 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:11:34,284 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:12:36,227 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:12:40,354 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:13:50,414 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.NullReferenceException: ???????????????
+   ? AntRunner.MainWindow.GetTraceMin(SortedList`2 trace, Double& freq, Double& pow) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 1080
+   ? AntRunner.MainWindow.CheckPass_LOG(SortedList`2 trace, ParaObject para, List`1& errorCode) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 832
+   ? AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) ?? F:\AntRunner1.0\MainWindow.xaml.cs:?? 780
+2019-07-17 23:17:03,028 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-17 23:19:01,080 [13] ERROR AntRunner.AppLog [(null)] - Write has error.
+System.Threading.ThreadAbortException: ???????
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write32(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.viWrite(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.Write(String data)
+   ? NationalInstruments.VisaNS.MessageBasedSession.Write(String data)
+   ? AntRunner.VNA.Write(String cmd, Object[] paras) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 105

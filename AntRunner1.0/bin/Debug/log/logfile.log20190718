@@ -1,0 +1,41 @@
+2019-07-18 00:14:28,394 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-18 00:14:55,869 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- ??????????? ---
+   ? NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   ? NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   ? NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   ? NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   ? NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   ? NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   ? AntRunner.VNA.ReadIDN(String gpib) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 125
+2019-07-18 00:15:51,224 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- ??????????? ---
+   ? NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   ? NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   ? NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   ? NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   ? NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   ? NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   ? AntRunner.VNA.ReadIDN(String gpib) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 125
+2019-07-18 01:10:05,001 [8] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-18 01:14:05,019 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-18 01:15:37,234 [12] ERROR AntRunner.AppLog [(null)] - Write has error.
+System.Threading.ThreadAbortException: ???????
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write32(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.Write(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.VisaDll.viWrite(IntPtr vi, String buf, Int32 count, Int32& retCount)
+   ? NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.Write(String data)
+   ? NationalInstruments.VisaNS.MessageBasedSession.Write(String data)
+   ? AntRunner.VNA.Write(String cmd, Object[] paras) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 105
+2019-07-18 01:19:18,857 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-18 01:19:35,882 [1] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-18 01:19:39,899 [1] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+NationalInstruments.VisaNS.VisaException: 完成操作前超时已过期。  VISA error code -1073807339 (0xBFFF0015), ErrorTimeout
+   ? NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   ? NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status)
+   ? NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.ReadString(Int32 countToRead)
+   ? NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite)
+   ? AntRunner.VNA.ReadIDN(String gpib) ?? F:\AntRunner1.0\Instrument\VNA.cs:?? 128
+2019-07-18 01:19:59,803 [1] ERROR AntRunner.AppLog [(null)] - Start

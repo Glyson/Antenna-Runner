@@ -10,11 +10,6 @@
 //------------------------------------------------------------------------------
 
 using AntRunner.Properties;
-using FirstFloor.ModernUI.Presentation;
-using FirstFloor.ModernUI.Windows;
-using FirstFloor.ModernUI.Windows.Controls;
-using FirstFloor.ModernUI.Windows.Converters;
-using FirstFloor.ModernUI.Windows.Navigation;
 using Microsoft.Windows.Shell;
 using System;
 using System.Diagnostics;

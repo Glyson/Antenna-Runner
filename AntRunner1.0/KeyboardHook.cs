@@ -85,14 +85,17 @@ namespace AntRunner
         {
             bool retKeyboard = true;
 
-
-            if (hKeyboardHook != 0)
+            try
             {
-                retKeyboard = UnhookWindowsHookEx(hKeyboardHook);
-                hKeyboardHook = 0;
+                if (hKeyboardHook != 0)
+                {
+                    retKeyboard = UnhookWindowsHookEx(hKeyboardHook);
+                    hKeyboardHook = 0;
+                }
             }
-
-            if (!(retKeyboard)) throw new Exception("卸载钩子失败！");
+            catch (Exception ex)
+            { }
+            //if (!(retKeyboard)) throw new Exception("卸载钩子失败！");
         }
         //ToAscii职能的转换指定的虚拟键码和键盘状态的相应字符或字符
         [DllImport("user32")]

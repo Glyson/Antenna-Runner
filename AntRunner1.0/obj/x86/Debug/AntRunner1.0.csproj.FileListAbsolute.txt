@@ -326,3 +326,7 @@ D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\SetupW
 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner.g.resources
 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner.Properties.Resources.resources
 D:\Glyson\My Projects\AntRunner\Antenna-Runner\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.GenerateResource.Cache
+F:\AntRunner1.0\bin\Debug\Microsoft.Windows.Shell.dll
+F:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csprojAssemblyReference.cache
+F:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.CoreCompileInputs.cache
+F:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.CopyComplete
