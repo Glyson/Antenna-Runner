@@ -133,7 +133,34 @@ namespace AntRunner
                 readKeyText.Append(e.KeyChar);
             }
         }
-        
+
+        void k_hook_KeyDownEvent(object sender, Form.KeyEventArgs e)
+        {
+            string key = "";
+            Form.Keys ForwardKey;
+            if ((e.KeyValue >= 8 && e.KeyValue <= 40) || (e.KeyValue >= 112 && e.KeyValue <= 123)) //功能键，F1-F12
+            {
+                key = e.KeyCode.ToString();
+                ForwardKey = e.KeyCode;
+            }
+            else if ((e.KeyValue >= 65 && e.KeyValue <= 90) || (e.KeyValue >= 48 && e.KeyValue <= 57)) // a-z/A-Z, 0-9
+            {
+                key = e.KeyCode.ToString().Substring(1);
+                ForwardKey = e.KeyCode;
+            }
+            else if (e.KeyValue >= 96 && e.KeyValue <= 111)//小键盘
+            {
+                key = e.KeyCode.ToString();
+                ForwardKey = e.KeyCode;
+            }
+            readKeyText.Append(key);
+            if (key == "\r")
+            {
+                Settings.Default.Para1.Code = readKeyText.ToString();
+                readKeyText.Clear();
+            }
+        }
+
         private Storyboard CreateStoryboard(Ellipse ele, Viewbox vb)
         {
             DoubleAnimation ani = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(300)));

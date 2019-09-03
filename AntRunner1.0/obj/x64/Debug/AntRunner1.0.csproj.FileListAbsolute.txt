@@ -1,0 +1,2 @@
+E:\AntRunner1.0\obj\x64\Debug\ResolveAssemblyReference.cache
+E:\AntRunner1.0\bin\x64\Debug\AntRunner.exe.config

@@ -1,0 +1,25 @@
+2019-07-24 08:50:48,550 [1] ERROR AntRunner.AppLog [(null)] - Start
+2019-07-24 08:50:52,893 [1] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 F:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 F:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-07-24 08:50:52,958 [1] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.DllNotFoundException: The VISA driver library cannot be found.  Either VISA is not installed, or VISA is improperly installed. ---> System.DllNotFoundException: 无法加载 DLL“Visa32.Dll”: 找不到指定的模块。 (异常来自 HRESULT:0x8007007E)。
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM32(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.OpenDefaultRM(IntPtr& sesn)
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.VisaDll.viOpenDefaultRM(VisaHandle& sesn)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 F:\AntRunner1.0\Instrument\VNA.cs:行号 125
