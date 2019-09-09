@@ -1,0 +1,1387 @@
+2019-09-05 20:00:45,858 [8] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:08:08,884 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:08:15,439 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:08:15,571 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:08:17,420 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:08:17,456 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:08:17,492 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:08:21,492 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 202
+2019-09-05 20:08:23,982 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:26,611 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:29,060 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:31,480 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:33,899 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:41,868 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:45,720 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:48,652 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:51,065 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:53,492 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:55,913 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:08:58,330 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:00,740 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:03,154 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:05,570 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:07,987 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:10,402 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:12,819 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:15,231 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:17,649 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:20,084 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:22,499 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:24,912 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:27,323 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:33,494 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 202
+2019-09-05 20:09:35,909 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:38,332 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:40,749 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:43,161 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:45,574 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:47,986 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:50,401 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:52,812 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:55,225 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:09:57,643 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:00,054 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:02,469 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:04,884 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:07,299 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:09,783 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 202
+2019-09-05 20:10:12,196 [19] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:31,789 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:10:35,769 [10] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 202
+2019-09-05 20:10:40,533 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:45,046 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:47,482 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:50,882 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:53,295 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:55,710 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:10:58,129 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:11:00,541 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:11:02,951 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:11:05,367 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:13:21,073 [8] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:13:23,286 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 202
+2019-09-05 20:13:25,740 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:13:28,156 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:13:30,568 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:13:33,002 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:13:35,417 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:13:37,832 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 905
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 797
+2019-09-05 20:15:41,374 [8] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:15:50,392 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 204
+2019-09-05 20:15:52,850 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:15:55,307 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:15:57,724 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:00,138 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:02,551 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:04,985 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:07,401 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:09,816 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:12,233 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:14,664 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:17,075 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:19,488 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:21,901 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:24,315 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:26,873 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:29,530 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:31,947 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:34,358 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:36,776 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:39,237 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:41,685 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:44,329 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:46,748 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:49,178 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:51,618 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:16:54,071 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:05,715 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 204
+2019-09-05 20:17:08,127 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:10,539 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:12,967 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:15,386 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:17,800 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:20,216 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:22,631 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:23,840 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 204
+2019-09-05 20:17:26,266 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:28,684 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:31,097 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:17:33,509 [18] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:19:21,760 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:19:25,569 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 204
+2019-09-05 20:19:28,043 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:19:30,463 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:19:32,878 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:19:52,040 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 204
+2019-09-05 20:19:54,458 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 907
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 799
+2019-09-05 20:22:10,968 [8] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:22:14,602 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 203
+2019-09-05 20:22:22,862 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:25,277 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:27,688 [14] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:31,651 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 203
+2019-09-05 20:22:34,088 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:36,503 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:38,914 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:41,327 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:43,740 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:46,154 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 909
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 801
+2019-09-05 20:22:48,317 [8] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:22:48,381 [8] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:22:53,527 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 203
+2019-09-05 20:23:27,297 [8] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 203
+2019-09-05 20:28:13,908 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:28:17,443 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:28:17,487 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:28:20,273 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:28:26,140 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:30,352 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:33,006 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:34,617 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:36,428 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:37,838 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:38,851 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:39,664 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:43,185 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:28:43,211 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:28:47,240 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:28:48,887 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:50,498 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:51,329 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:53,743 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:55,355 [16] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:28:57,854 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:28:57,883 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:29:08,187 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:29:11,134 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:31:15,264 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:31:17,723 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:31:21,384 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:31:22,397 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:31:23,008 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:31:23,240 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:31:28,259 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:31:35,671 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 919
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 811
+2019-09-05 20:35:40,326 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:35:43,927 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:35:45,149 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:46,056 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:46,460 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:46,635 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:46,958 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:48,827 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:48,902 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:49,640 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:49,672 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:50,453 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:50,488 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:51,406 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:51,442 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:35:52,282 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:04,643 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:09,648 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:12,634 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:12,669 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:14,654 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:16,853 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:19,351 [9] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:19,387 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:24,195 [9] WARN  AntRunner.AppLog [(null)] - ScanGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.MainWindow.InitVNA() 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 205
+2019-09-05 20:36:26,627 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:29,064 [17] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-05 20:36:41,209 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-05 20:36:43,424 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:43,469 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:45,929 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:45,961 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:46,000 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:47,723 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:47,757 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:47,793 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:48,100 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:48,131 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:48,166 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:48,295 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:48,326 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:48,362 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:48,591 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:36:48,624 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:36:48,660 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:38:00,142 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:38:00,175 [10] ERROR AntRunner.AppLog [(null)] - RefreshGPIB has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression, Int32 resourceNameBufferSize)
+   在 NationalInstruments.VisaNS.ResourceManager.FindResources(String expression)
+   在 AntRunner.VNA.ScanGPIB() 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 44
+   在 AntRunner.SetupWin.RefreshGPIB() 位置 G:\AntRunner1.0\SetupWin.xaml.cs:行号 67
+2019-09-05 20:38:00,210 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound ---> NationalInstruments.VisaNS.VisaException: 位置信息不足或系统中不存在该设备或资源。  VISA error code -1073807343 (0xBFFF0011), ErrorResourceNotFound
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-05 20:39:21,964 [10] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125

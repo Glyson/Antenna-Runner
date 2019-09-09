@@ -1,0 +1,245 @@
+2019-09-06 18:47:59,377 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 18:48:09,719 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+NationalInstruments.VisaNS.VisaException: 完成操作前超时已过期。  VISA error code -1073807339 (0xBFFF0015), ErrorTimeout
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status, Boolean setLastStatus)
+   在 NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status)
+   在 NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.ReadString(Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.ReadString(Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite, Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 128
+2019-09-06 18:48:12,342 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+NationalInstruments.VisaNS.VisaException: 完成操作前超时已过期。  VISA error code -1073807339 (0xBFFF0015), ErrorTimeout
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status, Boolean setLastStatus)
+   在 NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status)
+   在 NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.ReadString(Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.ReadString(Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite, Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 128
+2019-09-06 18:48:16,498 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+NationalInstruments.VisaNS.VisaException: 完成操作前超时已过期。  VISA error code -1073807339 (0xBFFF0015), ErrorTimeout
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status, Boolean setLastStatus)
+   在 NationalInstruments.VisaNS.Session.CheckStatusAndThrow(Int32 status)
+   在 NationalInstruments.VisaNS.Internal.MessageBasedSessionImpl.ReadString(Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.ReadString(Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite, Int32 countToRead)
+   在 NationalInstruments.VisaNS.MessageBasedSession.Query(String dataToWrite)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 128
+2019-09-06 18:48:21,735 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-06 18:48:22,014 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-06 18:48:48,703 [9] WARN  AntRunner.AppLog [(null)] - ReadIDN has error.
+System.ArgumentException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName ---> NationalInstruments.VisaNS.VisaException: 指定的资源引用无效。解析错误。  VISA error code -1073807342 (0xBFFF0012), ErrorInvalidResourceName
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 NationalInstruments.VisaNS.Internal.ErrorChecker.CheckStatusAndThrow(Int32 status, VisaHandle visaObject)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass, String& expandedUnaliasedName, String& aliasIfExists)
+   在 NationalInstruments.VisaNS.ResourceManager.ParseResource(String resourceName, HardwareInterfaceType& interfaceType, Int16& interfaceNumber, String& resourceClass)
+   在 NationalInstruments.VisaNS.ResourceManager.GetResourceIdentifier(String resourceString)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName, AccessModes accessMode, Int32 openTimeout)
+   在 NationalInstruments.VisaNS.ResourceManager.Open(String resourceName)
+   在 AntRunner.VNA.ReadIDN(String gpib) 位置 G:\AntRunner1.0\Instrument\VNA.cs:行号 125
+2019-09-06 19:08:05,285 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:14:29,645 [6] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-06 19:14:38,613 [6] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-06 19:14:52,502 [6] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-06 19:15:40,066 [6] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 935
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 827
+2019-09-06 19:18:21,754 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:18:57,281 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 921
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 813
+2019-09-06 19:19:30,406 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 921
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 813
+2019-09-06 19:19:55,494 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 921
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 813
+2019-09-06 19:20:22,362 [15] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 921
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 813
+2019-09-06 19:34:04,580 [16] ERROR AntRunner.AppLog [(null)] - Report_LOG8SWR has error.
+System.Runtime.InteropServices.COMException (0x800A03EC): Microsoft Excel 不能访问文件“C:\Report\CBA03000”。 可能的原因有以下几个:
+
+? 文件名称或路径不存在。
+? 文件正被其他程序使用。
+? 您正要保存的工作簿与当前打开的工作簿同名。
+   在 Microsoft.Office.Interop.Excel._Workbook.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 AntRunner.DataLOG_SWR.Report() 位置 G:\AntRunner1.0\DA\DataLOG_SWR.cs:行号 187
+2019-09-06 19:34:25,183 [25] ERROR AntRunner.AppLog [(null)] - Report_LOG8SWR has error.
+System.Runtime.InteropServices.COMException (0x800A03EC): Microsoft Excel 不能访问文件“C:\Report\5CF03000”。 可能的原因有以下几个:
+
+? 文件名称或路径不存在。
+? 文件正被其他程序使用。
+? 您正要保存的工作簿与当前打开的工作簿同名。
+   在 Microsoft.Office.Interop.Excel._Workbook.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 AntRunner.DataLOG_SWR.Report() 位置 G:\AntRunner1.0\DA\DataLOG_SWR.cs:行号 187
+2019-09-06 19:34:49,147 [27] ERROR AntRunner.AppLog [(null)] - Report_LOG8SWR has error.
+System.Runtime.InteropServices.COMException (0x800A03EC): Microsoft Excel 不能访问文件“C:\Report\F9513000”。 可能的原因有以下几个:
+
+? 文件名称或路径不存在。
+? 文件正被其他程序使用。
+? 您正要保存的工作簿与当前打开的工作簿同名。
+   在 Microsoft.Office.Interop.Excel._Workbook.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 AntRunner.DataLOG_SWR.Report() 位置 G:\AntRunner1.0\DA\DataLOG_SWR.cs:行号 187
+2019-09-06 19:35:53,727 [28] ERROR AntRunner.AppLog [(null)] - Report_LOG8SWR has error.
+System.Runtime.InteropServices.COMException (0x800A03EC): Microsoft Excel 不能访问文件“C:\Report\36523000”。 可能的原因有以下几个:
+
+? 文件名称或路径不存在。
+? 文件正被其他程序使用。
+? 您正要保存的工作簿与当前打开的工作簿同名。
+   在 Microsoft.Office.Interop.Excel._Workbook.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 AntRunner.DataLOG_SWR.Report() 位置 G:\AntRunner1.0\DA\DataLOG_SWR.cs:行号 187
+2019-09-06 19:37:15,322 [27] ERROR AntRunner.AppLog [(null)] - Report_LOG8SWR has error.
+System.Runtime.InteropServices.COMException (0x800A03EC): Microsoft Excel 不能访问文件“C:\Report\AC333000”。 可能的原因有以下几个:
+
+? 文件名称或路径不存在。
+? 文件正被其他程序使用。
+? 您正要保存的工作簿与当前打开的工作簿同名。
+   在 Microsoft.Office.Interop.Excel._Workbook.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 AntRunner.DataLOG_SWR.Report() 位置 G:\AntRunner1.0\DA\DataLOG_SWR.cs:行号 187
+2019-09-06 19:37:36,822 [13] ERROR AntRunner.AppLog [(null)] - Report_LOG8SWR has error.
+System.Runtime.InteropServices.COMException (0x800A03EC): Microsoft Excel 不能访问文件“C:\Report\EEC33000”。 可能的原因有以下几个:
+
+? 文件名称或路径不存在。
+? 文件正被其他程序使用。
+? 您正要保存的工作簿与当前打开的工作簿同名。
+   在 Microsoft.Office.Interop.Excel._Workbook.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   在 AntRunner.DataLOG_SWR.Report() 位置 G:\AntRunner1.0\DA\DataLOG_SWR.cs:行号 187
+2019-09-06 19:41:32,228 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:47:00,255 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:48:49,399 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:51:34,083 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:53:54,200 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:54:59,396 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:55:51,493 [12] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:56:31,365 [6] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 19:56:56,768 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:06,220 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:09,605 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:23,058 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:26,456 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:29,815 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:41,288 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:44,677 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:48,035 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:51,430 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 19:57:58,846 [13] ERROR AntRunner.AppLog [(null)] - CheckPass has error.
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Double.Parse(String s)
+   在 AntRunner.MainWindow.CheckPass_LOG8SWR(SortedList`2 s21, SortedList`2 s22, ParaObject para, List`1& errorCode) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 925
+   在 AntRunner.MainWindow.CheckPass(ParaObject para, SortedList`2 list1, SortedList`2 list2, List`1& errors) 位置 G:\AntRunner1.0\MainWindow.xaml.cs:行号 817
+2019-09-06 20:21:16,152 [8] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 20:24:08,890 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 20:26:35,705 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 20:28:10,413 [9] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 20:28:27,303 [10] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 20:29:23,764 [11] ERROR AntRunner.AppLog [(null)] - Start
+2019-09-06 20:53:59,193 [9] ERROR AntRunner.AppLog [(null)] - Start

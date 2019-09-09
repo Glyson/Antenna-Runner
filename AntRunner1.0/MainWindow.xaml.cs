@@ -50,7 +50,6 @@ namespace AntRunner
         Thread tReport;
         DataBase da;
         KeyboardHook k_hook;
-        StringBuilder readKeyText = new StringBuilder();
 
         public State State
         {
@@ -112,53 +111,50 @@ namespace AntRunner
             InitCount();
 
             k_hook = new KeyboardHook();
-            k_hook.KeyPressEvent += K_hook_KeyPressEvent;
-            k_hook.Start();
-        }
-
-        void K_hook_KeyPressEvent(object sender, Form.KeyPressEventArgs e)
-        {
-            if (!this.IsActive)
-            {
-                return;
-            }
-            char key = e.KeyChar;
-            if (key == '\r')
-            {
-                Settings.Default.Para1.Code = readKeyText.ToString();
-                readKeyText.Clear();
-            }
-            else
-            {
-                readKeyText.Append(e.KeyChar);
-            }
+            k_hook.KeyDownEvent += k_hook_KeyDownEvent;
         }
 
         void k_hook_KeyDownEvent(object sender, Form.KeyEventArgs e)
         {
-            string key = "";
-            Form.Keys ForwardKey;
-            if ((e.KeyValue >= 8 && e.KeyValue <= 40) || (e.KeyValue >= 112 && e.KeyValue <= 123)) //功能键，F1-F12
+            //if (!this.IsActive) return;
+
+            ReadScanner(sender, e);
+        }
+
+        DateTime previewTime;
+        StringBuilder inputKey = new StringBuilder();
+        bool scanOK = false;
+        private void ReadScanner(object sender, Form.KeyEventArgs e)
+        {
+            string temp = string.Empty;
+            DateTime nowTime = DateTime.Now;
+            if ((e.KeyData >= Form.Keys.D0 && e.KeyData <= Form.Keys.D9) || (e.KeyData >= Form.Keys.NumPad0 && e.KeyData <= Form.Keys.NumPad9))//判断是不是数字的键盘值
+                temp = (e.KeyData.ToString()).Last().ToString();
+            else if (e.KeyData.ToString().Contains("Subtract"))
+                temp = "-";
+            else if (e.KeyData.ToString().Contains("ShiftKey"))
+                temp = "";
+            else
+                temp = e.KeyData.ToString();
+            if ((nowTime - previewTime).Milliseconds < 20)//通过判断键盘输入的间隔来确定是扫描枪还是通过键盘输入的
             {
-                key = e.KeyCode.ToString();
-                ForwardKey = e.KeyCode;
+                if (e.KeyValue == (int)Form.Keys.Return && inputKey.Length > 2)
+                {
+                    Settings.Default.Para1.Code = inputKey.ToString();
+
+                    LogMsg(2, Brushes.Blue, inputKey.ToString());
+                    scanOK = true;
+                    inputKey.Clear();
+                    previewTime = DateTime.Now;
+                    return;
+                }
+                inputKey.Append(temp);
             }
-            else if ((e.KeyValue >= 65 && e.KeyValue <= 90) || (e.KeyValue >= 48 && e.KeyValue <= 57)) // a-z/A-Z, 0-9
+            else
             {
-                key = e.KeyCode.ToString().Substring(1);
-                ForwardKey = e.KeyCode;
+                inputKey = new StringBuilder(temp);
             }
-            else if (e.KeyValue >= 96 && e.KeyValue <= 111)//小键盘
-            {
-                key = e.KeyCode.ToString();
-                ForwardKey = e.KeyCode;
-            }
-            readKeyText.Append(key);
-            if (key == "\r")
-            {
-                Settings.Default.Para1.Code = readKeyText.ToString();
-                readKeyText.Clear();
-            }
+            previewTime = DateTime.Now;
         }
 
         private Storyboard CreateStoryboard(Ellipse ele, Viewbox vb)
@@ -243,6 +239,9 @@ namespace AntRunner
                 if (Settings.Default.MatchCnt < 2)
                     Settings.Default.MatchCnt = 2;
                 da = DataBase.GetDataHandler(Helper.String2Enum<TraceFormat>(Settings.Default.TraceFormat));
+
+                k_hook.Start();
+
                 Start(Settings.Default.Para1, ref refer1, ref ellipse1, ref btnStart1, ref t1);
                 if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
                     return;
@@ -308,9 +307,8 @@ namespace AntRunner
                 }
                 td.Start();
 
-                if (Settings.Default.UserScanner)
+                if (Settings.Default.UseScanner)
                 {
-                    readKeyText.Clear();
                     k_hook.Start();//安装键盘钩子
                 }
             }
@@ -326,14 +324,8 @@ namespace AntRunner
             {
                 SortedList<double, double> list1 = null;
                 SortedList<double, double> list2 = null;
-                if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
-                {
-                    AutoTriger(Settings.Default.Para1, out list1, out list2);
-                }
-                else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
-                {
-                    return;
-                }
+                AutoTriger(Settings.Default.Para1, out list1, out list2);
+
                 Run1(list1, list2);
                 manual1 = false;
             }
@@ -348,14 +340,8 @@ namespace AntRunner
             {
                 SortedList<double, double> list1 = null;
                 SortedList<double, double> list2 = null;
-                if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
-                {
-                    AutoTriger(Settings.Default.Para2, out list1, out list2);
-                }
-                else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
-                {
-                    return;
-                }
+                AutoTriger(Settings.Default.Para2, out list1, out list2);
+
                 Run2(list1, list2);
                 manual2 = false;
             }
@@ -370,14 +356,8 @@ namespace AntRunner
             {
                 SortedList<double, double> list1 = null;
                 SortedList<double, double> list2 = null;
-                if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
-                {
-                    AutoTriger(Settings.Default.Para3, out list1, out list2);
-                }
-                else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
-                {
-                    return;
-                }
+                AutoTriger(Settings.Default.Para3, out list1, out list2);
+
                 Run3(list1, list2);
                 manual3 = false;
             }
@@ -392,14 +372,8 @@ namespace AntRunner
             {
                 SortedList<double, double> list1 = null;
                 SortedList<double, double> list2 = null;
-                if (Settings.Default.TriggerType == TriggerType.Auto.ToString())
-                {
-                    AutoTriger(Settings.Default.Para4, out list1, out list2);
-                }
-                else if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
-                {
-                    return;
-                }
+                AutoTriger(Settings.Default.Para4, out list1, out list2);
+
                 Run4(list1, list2);
                 manual4 = false;
             }
@@ -570,14 +544,6 @@ namespace AntRunner
             bool triggerDeep = false;
             while (true)
             {
-                if (type == Trace.S11 && manual1)
-                    goto AA;
-                else if (type == Trace.S22 && manual2)
-                    goto AA;
-                if (type == Trace.S33 && manual3)
-                    goto AA;
-                if (type == Trace.S44 && manual4)
-                    goto AA;
                 Thread.Sleep(Settings.Default.AutoDelay);
                 lock (vna)
                 {
@@ -591,6 +557,30 @@ namespace AntRunner
                     }
 
                 }
+
+                if (type == Trace.S11 && manual1)
+                    goto AA;
+                else if (type == Trace.S22 && manual2)
+                    goto AA;
+                if (type == Trace.S33 && manual3)
+                    goto AA;
+                if (type == Trace.S44 && manual4)
+                    goto AA;
+
+                if (Settings.Default.TriggerType == TriggerType.Scanner.ToString())
+                {
+                    if (scanOK)
+                    {
+                        scanOK = false;
+                        goto AA;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+
+
                 if (da.IsDeep(list, Settings.Default.Deep))//如果是底噪，即触发过底噪，之前数据清空，路过
                 {
                     triggerDeep = true;
@@ -653,7 +643,7 @@ namespace AntRunner
                     }
                 }
             }
-        AA:
+            AA:
             if (Settings.Default.TraceFormat == TraceFormat.LOG_SWR.ToString())
             {
                 list2 = list;

@@ -309,3 +309,7 @@ F:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.CoreCompileInputs.cache
 F:\AntRunner1.0\obj\x86\Debug\AntRunner1.0.csproj.CopyComplete
 E:\AntRunner1.0\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\AntRunner1.0\bin\Debug\AntRunner.exe.config
+G:\AntRunner1.0\obj\x86\Debug\App.baml
+G:\AntRunner1.0\obj\x86\Debug\ReportWaitWin.g.cs
+G:\AntRunner1.0\bin\Debug\log4net.config
+G:\AntRunner1.0\obj\x86\Debug\ReportWaitWin.baml

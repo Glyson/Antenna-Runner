@@ -285,8 +285,24 @@ namespace AntRunner
                 //c++;
                 sh.Cells[r, ++c] = "S21";
                 ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+
+                List<double> fqs = new List<double>(listData[0].ListData.Keys);
+                foreach (double f in fqs)
+                {
+                    sh.Cells[r, ++c] = f;
+                    ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                }
+
+
                 sh.Cells[r, ++c] = "S22";
                 ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                foreach (double f in fqs)
+                {
+                    sh.Cells[r, ++c] = f;
+                    ((Excel.Range)sh.Cells[r, c]).ColumnWidth = 18;
+                }
+
+
                 foreach (SingleData data in listData)
                 {
                     Progress++;
@@ -320,6 +336,20 @@ namespace AntRunner
                     }
                     //string str = string.Format("{0:N2}", data.ListData.Keys[1]);
                     sh.Cells[r, ++c] = tag;
+                    foreach (double f in fqs)
+                    {
+                        if (data.ListData.ContainsKey(f))
+                        {
+                            sh.Cells[r, ++c] = Math.Round(data.ListData[f], 2);
+                        }
+                        else
+                        {
+                            sh.Cells[r, ++c] = "-";
+                        }
+                    }
+
+
+
 
                     ++c;
                     tag = "正常";
@@ -331,6 +361,17 @@ namespace AntRunner
                     }
                     //str = string.Format("{0:N2}", data.ListData.Values[1]);
                     sh.Cells[r, c] = tag;
+                    foreach (double f in fqs)
+                    {
+                        if (data.ListData.ContainsKey(f))
+                        {
+                            sh.Cells[r, ++c] = Math.Round(data.ListData2[f], 2);
+                        }
+                        else
+                        {
+                            sh.Cells[r, ++c] = "-";
+                        }
+                    }
 
                     //++c;
                     //sh.Cells[r, c] = string.Format("{0:N2}", data.ListData.Keys.First());

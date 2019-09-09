@@ -12,6 +12,59 @@ namespace AntRunner
 {
     public class DataSWR : DataBase
     {
+        #region single test output
+        public override string Output(ParaObject para, SortedList<double, double> list, List<ErrorCode> errors)
+        {
+            StreamWriter writer = null;
+            string path = null;
+            try
+            {
+                bool pass = !(errors != null && errors.Count > 0);
+                path = GetFilePath(para, pass);
+                using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+                {
+                    writer = new StreamWriter(fs);
+                    writer.WriteLine("Result," + (pass ? "Pass" : "Fail"));
+                    writer.WriteLine("Error Code," + string.Join("|", errors));
+                    writer.WriteLine("DUT Code," + para.Code ?? Settings.Default.Code);
+                    writer.WriteLine("Trace Type," + para.Trace);
+                    writer.WriteLine("Cut Power," + para.CutPow);
+                    writer.WriteLine("Frequency Width ," + para.CutBW);
+                    writer.WriteLine("Frequency Width Difference," + para.DiffBW);
+                    writer.WriteLine("Frequency Difference," + para.DiffFreq);
+                    writer.WriteLine("Power Difference," + para.DiffPower);
+                    writer.WriteLine("Memo," + Settings.Default.Memo);
+
+                    writer.WriteLine();
+                    writer.WriteLine("Calibration,Frequency,Data");
+                    foreach (KeyValuePair<double, double> item in (Dictionary<double, double>)para.MarkersCal)
+                    {
+                        writer.WriteLine(" ,{0},{1}", item.Key, item.Value);
+                    }
+
+                    writer.WriteLine();
+                    writer.WriteLine("Test,Frequency,Data");
+                    foreach (KeyValuePair<double, double> item in (Dictionary<double, double>)para.Markers)
+                    {
+                        writer.WriteLine(" ,{0},{1}", item.Key, item.Value);
+                    }
+                    writer.Flush();
+                    writer.Close();
+                    writer = null;
+                    fs.Close();
+                    return path;
+                }
+            }
+            catch (Exception ex)
+            {
+                File.Delete(path);
+                AppLog.Error("Output has error.", ex);
+                return null;
+            }
+        }
+        #endregion
+
+        #region report
         //SWR Report
         public override void Report()
         {
@@ -282,5 +335,6 @@ namespace AntRunner
                 }
             }
         }
+        #endregion
     }
 }
